@@ -1,16 +1,40 @@
 import { Link, NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import githubIcon from '../assets/GitHub_Invertocat_Black.svg'
 import linkedInIcon from '../assets/linkedin-svgrepo-com.svg'
 import './Navbar.css'
 
 export default function Navbar() {
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Change this value to adjust when the effect triggers (in pixels)
+            const scrollThreshold = 40;
+
+            if (window.scrollY > scrollThreshold) {
+                setIsScrolled(true)
+            } else {
+                setIsScrolled(false)
+            }
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll)
+
+        // Cleanup function to remove event listener
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
             <div className="navbar-container">
                 <NavLink to="/"
-                      className={({ isActive }) =>
-                          isActive ? 'navbar-logo active' : 'navbar-logo'
-                      }
+                         className={({ isActive }) =>
+                             `navbar-logo ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
+                         }
                 >
                     My Work
                 </NavLink>
@@ -20,7 +44,7 @@ export default function Navbar() {
                         <NavLink
                             to="/myLearning"
                             className={({ isActive }) =>
-                                isActive ? 'navbar-link active' : 'navbar-link'
+                                `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
                             }
                         >
                             My Learning
@@ -30,7 +54,7 @@ export default function Navbar() {
                         <NavLink
                             to="/about"
                             className={({ isActive }) =>
-                                isActive ? 'navbar-link active' : 'navbar-link'
+                                `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
                             }
                         >
                             About
@@ -40,7 +64,7 @@ export default function Navbar() {
                         <NavLink
                             to="/research"
                             className={({ isActive }) =>
-                                isActive ? 'navbar-link active' : 'navbar-link'
+                                `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
                             }
                         >
                             Research
@@ -48,9 +72,9 @@ export default function Navbar() {
                     </li>
                     <li className="navbar-item">
                         <NavLink
-                            to="/contact"
+                            to="/editor"
                             className={({ isActive }) =>
-                                isActive ? 'navbar-link active' : 'navbar-link'
+                                `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
                             }
                         >
                             Contact

@@ -1,15 +1,20 @@
 .navbar {
-    background-color: rgba(27, 55, 32, 0.6);  /* Semi-transparent background */
-    backdrop-filter: blur(10px);  /* Blur effect */
-    -webkit-backdrop-filter: blur(10px);  /* Safari support */
     padding: 0;
     position: fixed;
-    top: 0;
+    top: 20px;
     left: 5%;
     right: 5%;
-    /*width: 60%;*/
     z-index: 100;
     border-radius: 40px;
+    /* Smooth transition for all properties */
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Styles applied when scrolled */
+.navbar.scrolled {
+    background-color: rgba(27, 55, 32, 0.8);  /* Semi-transparent background */
+    backdrop-filter: blur(10px);  /* Blur effect */
+    -webkit-backdrop-filter: blur(10px);  /* Safari support */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -24,7 +29,7 @@
 }
 
 .navbar-logo {
-    color: #F8FFE5;
+    color: #1B3720;  /* Dark color for default state */
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
@@ -32,6 +37,15 @@
 }
 
 .navbar-logo:hover {
+    color: #4F86C6;  /* Slightly lighter on hover */
+}
+
+/* Text color when scrolled */
+.navbar-logo.scrolled {
+    color: #F8FFE5;  /* Light color for scrolled state */
+}
+
+.navbar-logo.scrolled:hover {
     color: #E5E1EE;
 }
 
@@ -48,28 +62,49 @@
 }
 
 .navbar-link {
-    color: #F8FFE5;
+    color: #1B3720;  /* Dark color for default state */
     text-decoration: none;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
     padding: 0.5rem 1rem;
     border-radius: 4px;
 }
 
 .navbar-link:hover {
+    color: #4F86C6;  /* Slightly lighter on hover */
+    background-color: rgba(27, 55, 32, 0.15);
+    border-radius: 10px;
+}
+
+/* Text color when scrolled */
+.navbar-link.scrolled {
+    color: #F8FFE5;  /* Light color for scrolled state */
+}
+
+.navbar-link.scrolled:hover {
     color: #E5E1EE;
     background-color: rgba(248, 255, 229, 0.1);
-    border-radius: 10px;
 }
 
 /* Active link styling */
 .navbar-link.active {
-    color: #E5E1EE;
-    background-color: rgba(248, 255, 229, 0.1);
+    color: #1B3720;
+    background-color: rgba(27, 55, 32, 0.2);
     border-radius: 10px;
 }
 
+/* Active link when scrolled */
+.navbar-link.active.scrolled {
+    color: #E5E1EE;
+    background-color: rgba(248, 255, 229, 0.1);
+}
+
 .navbar-logo.active {
+    color: #1B3720;
+}
+
+/* Active logo when scrolled */
+.navbar-logo.active.scrolled {
     color: #E5E1EE;
 }
 

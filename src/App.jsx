@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
+import CodeEditor from './pages/CodeEditor'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/editor" element={<CodeEditor />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
