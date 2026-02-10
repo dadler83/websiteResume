@@ -11,7 +11,84 @@ export default function MonacoEditor() {
     const editorRef = useRef(null)
     const typingIntervalRef = useRef(null)
 
-    const sampleCode = '// Start coding here...\n\nfunction hello() {\n  console.log("Hello, World!");\n}\n\nhello();'
+    const helloWorlds = [
+        {
+            'code': 'public class HelloWorld {\n' +
+                '    public static void main(String[] args) {\n' +
+                '        System.out.println("Hello, World!");\n' +
+                '    }\n' +
+                '}',
+            'lang': 'java',
+            'label': 'Java'
+        },
+        {
+            'code': 'function hello() {\n  console.log("Hello, World!");\n}\n\nhello();',
+            'lang': 'javascript',
+            'label': 'JavaScript'
+        },
+        {
+            'code': 'if __name__ == \'__main__\':\n\tprint("Hello, World!")\n',
+            'lang': 'python',
+            'label': 'Python'
+        },
+        {
+            'code': 'main :: IO ()\n' +
+                'main = putStrLn "Hello, World!"',
+            'lang': 'haskell',
+            'label': 'Haskell'
+        },
+        {
+            'code': '#include <iostream>\n' +
+                '\n' +
+                'int main() {\n' +
+                '    std::cout << "Hello, World!" << std::endl;\n' +
+                '    return 0;\n' +
+                '}',
+            'lang': 'cpp',
+            'label': 'C++'
+        },
+        {
+            'code': '#include <stdio.h>\n' +
+                '\n' +
+                'int main() {\n' +
+                '    printf("Hello, World!\\n");\n' +
+                '    return 0;\n' +
+                '}',
+            'lang': 'c',
+            'label': 'C'
+        },
+        {
+            'code': 'using System;\n' +
+                '\n' +
+                'class HelloWorld\n' +
+                '{\n' +
+                '    static void Main()\n' +
+                '    {\n' +
+                '        Console.WriteLine("Hello, World!");\n' +
+                '    }\n' +
+                '}',
+            'lang': 'cs',
+            'label': 'C#'
+        }
+    ]
+
+    // Color mapping for each language
+    const languageColors = {
+        'java': '#f89820',
+        'javascript': '#f7df1e',
+        'python': '#3776ab',
+        'haskell': '#5e5086',
+        'cpp': '#00599c',
+        'c': '#555555',
+        'cs': '#239120'
+    }
+
+    // Function to get a random code sample
+    function getRandomCodeSample() {
+        const randomIndex = Math.floor(Math.random() * helloWorlds.length);
+        setLanguage(helloWorlds[randomIndex]['lang']);
+        return helloWorlds[randomIndex];
+    }
 
     function handleEditorDidMount(editor, monaco) {
         editorRef.current = editor
@@ -126,30 +203,23 @@ export default function MonacoEditor() {
 
     // Type and then delete with a pause in between
     function typeAndDeleteCycle() {
+        // Get a random code sample
+        const randomSample = getRandomCodeSample()
+
         // Type the text
-        typeText(sampleCode, 10, () => {
+        typeText(randomSample.code, 10, () => {
             // Wait 2 seconds after typing completes
             setTimeout(() => {
                 // Then delete the text
-                deleteText(sampleCode, 10, () => {
+                deleteText(randomSample.code, 10, () => {
                     // Wait 1 second after deleting completes
                     setTimeout(() => {
-                        // Start the cycle again
+                        // Start the cycle again with a new random code
                         typeAndDeleteCycle()
                     }, 1000)
                 })
             }, 2000)
         })
-    }
-
-    // Type custom text (fast)
-    function typeFast() {
-        typeText(sampleCode, 10) // 10ms per character
-    }
-
-    // Type custom text (slow)
-    function deleteFast() {
-        deleteText(code, 10) // 10ms per character
     }
 
     // Move cursor to specific line and column
@@ -159,11 +229,6 @@ export default function MonacoEditor() {
             editorRef.current.revealLineInCenter(lineNumber)
             editorRef.current.focus()
         }
-    }
-
-    // Move cursor to start of file
-    function moveCursorToStart() {
-        moveCursor(1, 1)
     }
 
     // Move cursor to end of file
@@ -178,70 +243,71 @@ export default function MonacoEditor() {
         }
     }
 
-    function getFileExtension(lang) {
-        const extensions = {
-            javascript: 'js',
-            typescript: 'ts',
-            python: 'py',
-            java: 'java',
-            csharp: 'cs',
-            cpp: 'cpp',
-            html: 'html',
-            css: 'css',
-            json: 'json',
-            xml: 'xml',
-            markdown: 'md',
-            sql: 'sql',
-            go: 'go',
-            rust: 'rs',
-            php: 'php'
-        }
-        return extensions[lang] || 'txt'
+    // Get current language label
+    function getLanguageLabel() {
+        const currentLang = helloWorlds.find(hw => hw.lang === language);
+        return currentLang ? currentLang.label : language;
     }
 
     return (
         <div className="monaco-container">
-            <div className="editor-wrapper no-interaction">
-                <Editor
-                    height="600px"
-                    language={language}
-                    theme={theme}
-                    value={code}
-                    onChange={handleEditorChange}
-                    onMount={handleEditorDidMount}
-                    options={{
-                        readOnly: true,
-                        minimap: { enabled: false },
-                        fontSize: 14,
-                        wordWrap: 'on',
-                        automaticLayout: true,
-                        scrollBeyondLastLine: false,
-                        lineNumbers: 'on',
-                        renderWhitespace: 'selection',
-                        tabSize: 2,
-                        scrollbar: {
-                            vertical: 'hidden',
-                            horizontal: 'hidden',
-                            verticalScrollbarSize: 0,
-                            horizontalScrollbarSize: 0,
-                            useShadows: false,
-                        },
-                        cursorStyle: 'line',
-                        cursorBlinking: 'blink',
-                        domReadOnly: true,
-                        contextmenu: false,
-                        quickSuggestions: false,
-                        parameterHints: { enabled: false },
-                        suggestOnTriggerCharacters: false,
-                        acceptSuggestionOnEnter: 'off',
-                        tabCompletion: 'off',
-                        wordBasedSuggestions: false,
-                        selectionHighlight: false,
-                        occurrencesHighlight: false,
-                        links: false,
-                        hover: { enabled: false },
+            <div
+                className="language-wrapper"
+                style={{
+                    borderColor: languageColors[language] || '#ccc',
+                    boxShadow: `0 0 20px ${languageColors[language]}40`
+                }}
+            >
+                <div className="editor-wrapper no-interaction">
+                    <Editor
+                        height="600px"
+                        language={language}
+                        theme={theme}
+                        value={code}
+                        onChange={handleEditorChange}
+                        onMount={handleEditorDidMount}
+                        options={{
+                            readOnly: true,
+                            minimap: { enabled: false },
+                            fontSize: 14,
+                            wordWrap: 'on',
+                            automaticLayout: true,
+                            scrollBeyondLastLine: false,
+                            lineNumbers: 'on',
+                            renderWhitespace: 'selection',
+                            tabSize: 2,
+                            scrollbar: {
+                                vertical: 'hidden',
+                                horizontal: 'hidden',
+                                verticalScrollbarSize: 0,
+                                horizontalScrollbarSize: 0,
+                                useShadows: false,
+                            },
+                            cursorStyle: 'line',
+                            cursorBlinking: 'blink',
+                            domReadOnly: true,
+                            contextmenu: false,
+                            quickSuggestions: false,
+                            parameterHints: { enabled: false },
+                            suggestOnTriggerCharacters: false,
+                            acceptSuggestionOnEnter: 'off',
+                            tabCompletion: 'off',
+                            wordBasedSuggestions: false,
+                            selectionHighlight: false,
+                            occurrencesHighlight: false,
+                            links: false,
+                            hover: { enabled: false },
+                        }}
+                    />
+                </div>
+                <div
+                    className="language-label"
+                    style={{
+                        "backgroundColor": languageColors[language] || '#ccc'
                     }}
-                />
+                >
+                    {getLanguageLabel()}
+                </div>
             </div>
         </div>
     )

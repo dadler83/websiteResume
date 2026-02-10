@@ -1,7 +1,7 @@
 .monaco-container {
     width: 100%;
     max-width: 1400px;
-    height: 15vh;
+    /*height: 20vh;*/
     margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
@@ -165,9 +165,26 @@
     background-color: #e74c3c;
 }
 
+.language-wrapper {
+    border: 8px solid;
+    border-radius: 8px;
+    /*padding: 20px;*/
+    background: #1e1e1e;
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    /*max-height: 15vh;*/
+    height: 20vh;
+    position: relative;
+    /*gap: 15px;*/
+}
+
 .editor-wrapper {
     background-color: #1e1e1e;
     overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    height: 100%;
 }
 
 /* Disable all pointer interactions */
@@ -194,6 +211,23 @@
     opacity: 0 !important;
 }
 
+.language-label {
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    padding: 0.5rem 1.5rem;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    border-top-left-radius: 8px;
+    transition: background-color 0.5s ease;
+    z-index: 10;
+    pointer-events: none;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
     .monaco-toolbar {
@@ -216,5 +250,10 @@
 
     .editor-wrapper {
         height: 400px;
+    }
+
+    .language-label {
+        font-size: 14px;
+        padding: 0.4rem 1rem;
     }
 }

@@ -19,22 +19,6 @@ export default function Home() {
                         <h1>Hello World!</h1>
                         <h4>...or as I've also said</h4>
                         <MonacoEditor />
-                        {/*<div className="info-item">*/}
-                        {/*    <span className="info-label">Location:</span>*/}
-                        {/*    <span className="info-value">Your Location</span>*/}
-                        {/*</div>*/}
-                        {/*<div className="info-item">*/}
-                        {/*    <span className="info-label">Email:</span>*/}
-                        {/*    <span className="info-value">your.email@example.com</span>*/}
-                        {/*</div>*/}
-                        {/*<div className="info-item">*/}
-                        {/*    <span className="info-label">Status:</span>*/}
-                        {/*    <span className="info-value">Available for opportunities</span>*/}
-                        {/*</div>*/}
-                        {/*<div className="info-item">*/}
-                        {/*    <span className="info-label">Interests:</span>*/}
-                        {/*    <span className="info-value">Web Dev, Research, AI</span>*/}
-                        {/*</div>*/}
                     </div>
                 </div>
             </div>
