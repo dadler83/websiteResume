@@ -168,15 +168,12 @@
 .language-wrapper {
     border: 8px solid;
     border-radius: 8px;
-    /*padding: 20px;*/
     background: #1e1e1e;
     transition: border-color 0.5s ease, box-shadow 0.5s ease;
     display: flex;
     flex-direction: column;
-    /*max-height: 15vh;*/
-    height: 20vh;
+    max-height: 13rem;
     position: relative;
-    /*gap: 15px;*/
 }
 
 .editor-wrapper {
