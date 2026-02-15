@@ -1,7 +1,9 @@
 .home-container {
     min-height: 100vh;
     display: flex;
-    /*align-items: center;*/
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
     /*justify-content: center;*/
     padding: 2rem;
 }
@@ -62,7 +64,6 @@
     padding-left: 2.5rem;
     padding-right: 2.5rem;
     padding-bottom: 2.5rem;
-    width: 100%;
     max-width: 400px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -104,6 +105,60 @@
 .info-value {
     font-size: 1rem;
     color: #333;
+}
+
+.fathom-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.fathom-box {
+    display: flex;
+    align-items: center;
+    background-color: #F8FFE5;
+    border-radius: 20px;
+    padding: 5rem;
+    margin-top: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 20px;
+}
+
+.fathom-content {
+    padding-top: 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+.fathom-image {
+    flex-shrink: 0;
+    width: 60%;
+}
+
+.fathom-image img {
+    width: 60%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.fathom-content {
+    flex: 1;
+}
+
+.fathom-content p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 968px) {
+    .fathom-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .fathom-image img {
+        width: 120px;
+    }
 }
 
 /* Fade-in animation */
