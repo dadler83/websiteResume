@@ -1,0 +1,47 @@
+.pulse-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pulse-chart-container h3 {
+    color: #1B3720;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.pulse-chart-container svg {
+    background-color: #fafafa;
+    border-radius: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 968px) {
+    .pulse-chart-container {
+        padding: 1.5rem;
+    }
+
+    .pulse-chart-container h3 {
+        font-size: 1.25rem;
+    }
+
+    .pulse-chart-container svg {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .pulse-chart-container {
+        padding: 1rem;
+    }
+
+    .pulse-chart-container h3 {
+        font-size: 1.1rem;
+    }
+}
