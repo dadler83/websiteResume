@@ -57,9 +57,10 @@ export default function PulseChart() {
                 const shouldToggle = lastVoltage !== newVoltage;
                 const timeIncrement = 1; // Random time between 1-3 units
 
-                if (shouldToggle) {
-                    console.log(`toggle from ${lastVoltage} to ${newVoltage} at ${indexPtr.current}/${cycleLen}`);
-                }
+                // DEBUG
+                // if (shouldToggle) {
+                //     console.log(`toggle from ${lastVoltage} to ${newVoltage} at ${indexPtr.current}/${cycleLen}`);
+                // }
 
                 // Add transition points for hard pulse
                 if (shouldToggle) {
