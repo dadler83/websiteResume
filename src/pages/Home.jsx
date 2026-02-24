@@ -46,16 +46,18 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="new-section">
-                <h1>Signal Processing</h1>
-                <div className="horizontal-box">
-                    <PulseChart />
+            <div className="signal-content">
+                <div className="signal-box">
+                    <h1>Signal Processing</h1>
+                    <div className="horizontal-box">
+                        <PulseChart />
+                    </div>
                 </div>
-                <h1>System Architecture</h1>
-                <p>Databases, Operating Systems, IOT, Low-level Development</p>
-                {/*<h1>Art, Design, and Creativity?</h1>*/}
             </div>
 
+            <h1>System Architecture</h1>
+            <p>Databases, Operating Systems, IOT, Low-level Development</p>
+            {/*<h1>Art, Design, and Creativity?</h1>*/}
             {/*<TestKeyboardComponent/>*/}
 
 
