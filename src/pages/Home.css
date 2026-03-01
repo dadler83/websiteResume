@@ -41,7 +41,7 @@
 }
 
 .home-left p {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     text-align: left;
     line-height: 1.8;
     color: #333;
@@ -115,18 +115,30 @@
 .fathom-box {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #F8FFE5;
     border-radius: 20px;
     padding: 5rem;
     margin-top: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     gap: 20px;
+    width: 75%;
+    box-sizing: border-box;
 }
 
+
+.fathom-image img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
+
+
 .fathom-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    align-content: center;
-    display: flex;
+    justify-items: center;
     width: 95%;
     padding-top: 2rem;
     opacity: 0;
@@ -138,15 +150,17 @@
     /*width: 60%;*/
 }
 
-.fathom-image img {
-    width: 60%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.fathom-content p {
+.fathom-text p {
     margin: 0;
     line-height: 1.6;
+    font-size: 2rem;
+}
+
+.fathom-text {
+    display: grid;
+    gap: 1rem;
+    justify-self: start;
+    text-align: left;
 }
 
 .signal-box:hover {
