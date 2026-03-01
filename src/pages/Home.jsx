@@ -28,24 +28,25 @@ export default function Home() {
             <div className="fathom-content">
                 <div className="fathom-box">
                     <div className="fathom-image">
-                        <img src={fathom} alt="Fathom" />
+                        <img src={fathom} alt="HighQ Fathom Spectormeter" />
                     </div>
-                    <div className="fathom-content">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus arcu leo, id pellentesque dui eleifend ut. Sed at elit quis elit finibus vulputate in tempus sapien. Cras rhoncus dolor ex, a hendrerit tortor volutpat id. Integer nec tristique dui. Sed convallis semper nunc vitae finibus. Phasellus eu ligula tellus. Morbi ultrices pretium mi quis aliquet. Etiam lectus felis, blandit et dapibus sed, blandit non lectus. Curabitur ac luctus enim, nec facilisis massa. Suspendisse potenti. Nunc elementum magna ac ipsum aliquet, eget pellentesque eros aliquam. Sed in nibh sed ipsum gravida mollis pulvinar lobortis velit. Duis ut erat sit amet urna lacinia lacinia.
-                        </p>
-                        <br/>
-                        <p>
-                            Sed eu vulputate risus, in auctor magna. In quis dui vel massa rutrum consectetur sit amet id nulla. Proin in nibh ut leo tincidunt sollicitudin non in nisl. In posuere, est ultrices condimentum commodo, ex turpis fringilla tortor, eget tempor velit mauris sed ante. Sed et nisl vitae velit ultricies faucibus sit amet at magna. Ut pharetra est risus, non accumsan dolor auctor vitae. Fusce gravida tempus nisi, non congue purus dapibus sed. Ut quis enim sagittis erat rutrum placerat quis in enim. Integer at lacus in quam maximus malesuada id in ligula. Donec porta et est et pharetra. Sed et maximus turpis, non aliquet lacus. Pellentesque ut diam consectetur enim eleifend ornare ac ac nibh. Nullam convallis enim sed sollicitudin feugiat.
-                        </p>
-                        <br/>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus arcu leo, id pellentesque dui eleifend ut. Sed at elit quis elit finibus vulputate in tempus sapien. Cras rhoncus dolor ex, a hendrerit tortor volutpat id. Integer nec tristique dui. Sed convallis semper nunc vitae finibus. Phasellus eu ligula tellus. Morbi ultrices pretium mi quis aliquet. Etiam lectus felis, blandit et dapibus sed, blandit non lectus. Curabitur ac luctus enim, nec facilisis massa. Suspendisse potenti. Nunc elementum magna ac ipsum aliquet, eget pellentesque eros aliquam. Sed in nibh sed ipsum gravida mollis pulvinar lobortis velit. Duis ut erat sit amet urna lacinia lacinia.
-                        </p>
-                    </div>
+                </div>
+                <div className="fathom-content">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus arcu leo, id pellentesque dui eleifend ut. Sed at elit quis elit finibus vulputate in tempus sapien. Cras rhoncus dolor ex, a hendrerit tortor volutpat id. Integer nec tristique dui. Sed convallis semper nunc vitae finibus. Phasellus eu ligula tellus. Morbi ultrices pretium mi quis aliquet. Etiam lectus felis, blandit et dapibus sed, blandit non lectus. Curabitur ac luctus enim, nec facilisis massa. Suspendisse potenti. Nunc elementum magna ac ipsum aliquet, eget pellentesque eros aliquam. Sed in nibh sed ipsum gravida mollis pulvinar lobortis velit. Duis ut erat sit amet urna lacinia lacinia.
+                    </p>
+                    <br/>
+                    <p>
+                        Sed eu vulputate risus, in auctor magna. In quis dui vel massa rutrum consectetur sit amet id nulla. Proin in nibh ut leo tincidunt sollicitudin non in nisl. In posuere, est ultrices condimentum commodo, ex turpis fringilla tortor, eget tempor velit mauris sed ante. Sed et nisl vitae velit ultricies faucibus sit amet at magna. Ut pharetra est risus, non accumsan dolor auctor vitae. Fusce gravida tempus nisi, non congue purus dapibus sed. Ut quis enim sagittis erat rutrum placerat quis in enim. Integer at lacus in quam maximus malesuada id in ligula. Donec porta et est et pharetra. Sed et maximus turpis, non aliquet lacus. Pellentesque ut diam consectetur enim eleifend ornare ac ac nibh. Nullam convallis enim sed sollicitudin feugiat.
+                    </p>
+                    <br/>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus arcu leo, id pellentesque dui eleifend ut. Sed at elit quis elit finibus vulputate in tempus sapien. Cras rhoncus dolor ex, a hendrerit tortor volutpat id. Integer nec tristique dui. Sed convallis semper nunc vitae finibus. Phasellus eu ligula tellus. Morbi ultrices pretium mi quis aliquet. Etiam lectus felis, blandit et dapibus sed, blandit non lectus. Curabitur ac luctus enim, nec facilisis massa. Suspendisse potenti. Nunc elementum magna ac ipsum aliquet, eget pellentesque eros aliquam. Sed in nibh sed ipsum gravida mollis pulvinar lobortis velit. Duis ut erat sit amet urna lacinia lacinia.
+                    </p>
                 </div>
             </div>
 
+            <h1>Some Things I do</h1>
             <div className="signal-content">
                 <div className="signal-box">
                     <h1>Signal Processing</h1>
