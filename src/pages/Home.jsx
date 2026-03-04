@@ -15,21 +15,21 @@ export default function Home() {
                         A Software Developer.
                         A Scientist.
                         A Designer. <br/>
-                        Just likes to learn.
+                        Learning to pass the time.
                     </p>
                 </div>
 
                 <div className="home-right">
                     <FlipCard
                         frontContent={
-                            <div className="rounded-box" style={{width:'100%', height: '100%'}}>
+                            <div className="rounded-box" style={{width:'100%', height: '100%', maxWidth: '30rem'}}>
                                 <h1>Hello World!</h1>
                                 <h4>...or as I've also said</h4>
                                 <MonacoEditor />
                             </div>
                         }
                         backContent={
-                            <div className="rounded-box" style={{width:'95%', height: '95%'}}>
+                            <div className="rounded-box" style={{width:'95%', height: '93%', maxWidth: '30rem'}}>
                                 <h1>Hello World!</h1>
                             </div>
                         }
@@ -38,11 +38,23 @@ export default function Home() {
                 </div>
             </div>
             <div className="fathom-content">
-                <div className="fathom-box">
-                    <div className="fathom-image">
-                        <img src={fathom} alt="HighQ Fathom Spectormeter" />
-                    </div>
-                </div>
+
+                <FlipCard
+                    frontContent={
+                        <div className="fathom-box" style={{width:'95%', height: '100%'}}>
+                            <div className="fathom-image">
+                                <img src={fathom} alt="HighQ Fathom Spectormeter" />
+                            </div>
+                        </div>
+                    }
+                    backContent={
+                        <div className="fathom-box" style={{width:'95%', height: '100%'}}>
+                            {/*<div className="fathom-image">*/}
+                            {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
+                            {/*</div>*/}
+                        </div>
+                    }
+                />
                 <div className="fathom-text">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus arcu leo, id pellentesque dui eleifend ut.
@@ -59,17 +71,17 @@ export default function Home() {
                 </div>
             </div>
 
-            <h1>Some Things I do</h1>
+            <h1 className={"section-header"}>Some Things I do</h1>
             <div className="signal-content">
                 <div className="signal-box">
-                    <h1>Signal Processing</h1>
+                    <h1 className={"section-header"}>Signal Processing</h1>
                     <div className="horizontal-box">
                         <PulseChart />
                     </div>
                 </div>
             </div>
 
-            <h1>System Architecture</h1>
+            <h1 className={"section-header"}>System Architecture</h1>
             <p>Databases, Operating Systems, IOT, Low-level Development</p>
             {/*<h1>Art, Design, and Creativity?</h1>*/}
             {/*<TestKeyboardComponent/>*/}

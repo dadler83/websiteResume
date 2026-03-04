@@ -226,8 +226,6 @@ export default function MonacoEditor() {
     function moveCursor(lineNumber, column) {
         if (editorRef.current) {
             editorRef.current.setPosition({ lineNumber, column })
-            editorRef.current.revealLineInCenter(lineNumber)
-            editorRef.current.focus()
         }
     }
 

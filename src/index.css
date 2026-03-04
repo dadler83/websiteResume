@@ -1,5 +1,25 @@
+@font-face {
+    font-family: "Kingsman";
+    src: url("assets/fonts/kingsman-font/KingsmanDemo-1GVgg.ttf") format("truetype");
+}
+
+/*@font-face {*/
+/*    font-family: "Progress";*/
+/*    src: url("assets/fonts/progress-font/ProgressPersonalUse-EaJdz.ttf") format("truetype");*/
+/*}*/
+
+@font-face {
+    font-family: "Melanin";
+    src: url("assets/fonts/Melanin-R9xZA.otf") format("woff");
+}
+
+@font-face {
+    font-family: "MontserratSemibold";
+    src: url("assets/fonts/MontserratSemibold-8M8PB.otf") format("woff");
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: MontserratSemibold, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
