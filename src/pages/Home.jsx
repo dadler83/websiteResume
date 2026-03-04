@@ -3,6 +3,7 @@ import fathom from "../assets/FATHOM.png"
 import MonacoEditor from "../components/MonacoEditor.jsx";
 import PulseChart from "../components/PulseChart.jsx";
 import TestKeyboardComponent from "../components/TestKeyboardComponent.jsx";
+import FlipCard from "../components/FlipCard.jsx";
 
 export default function Home() {
     return (
@@ -19,11 +20,21 @@ export default function Home() {
                 </div>
 
                 <div className="home-right">
-                    <div className="rounded-box">
-                        <h1>Hello World!</h1>
-                        <h4>...or as I've also said</h4>
-                        <MonacoEditor />
-                    </div>
+                    <FlipCard
+                        frontContent={
+                            <div className="rounded-box" style={{width:'100%', height: '100%'}}>
+                                <h1>Hello World!</h1>
+                                <h4>...or as I've also said</h4>
+                                <MonacoEditor />
+                            </div>
+                        }
+                        backContent={
+                            <div className="rounded-box" style={{width:'95%', height: '95%'}}>
+                                <h1>Hello World!</h1>
+                            </div>
+                        }
+                    />
+
                 </div>
             </div>
             <div className="fathom-content">
