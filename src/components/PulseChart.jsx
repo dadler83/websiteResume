@@ -8,6 +8,11 @@ export default function PulseChart() {
     const numPoints = 200;
     const indexPtr = useRef(0);
 
+    // Committed (applied) value used by voltageAtPoint
+    const [analogValue, setAnalogValue] = useState(200);
+    // Draft value while the user is dragging the slider
+    const [analogDraftValue, setAnalogDraftValue] = useState(200);
+
     /**
      * TODO: generate voltages for default pwm val, instead of filler 0s
      * @returns {{time: *, voltage: number}[]}
@@ -18,15 +23,15 @@ export default function PulseChart() {
                 return { time: index, voltage: 0 };
             });
 
-
         return voltages;
     }
 
-    const voltageAtPoint = (seqPtr, analog=200) => {
+    const voltageAtPoint = (seqPtr, analog = 200) => {
+
         const percentOn = analog / 255;
         let numPointsOn = Math.round(percentOn * cycleLen);
 
-        if (seqPtr >= 0 && seqPtr < numPointsOn) {
+        if ((seqPtr >= 0 && seqPtr < numPointsOn) || percentOn === 1) {
             return 5;
         } else {
             return 0;
@@ -49,18 +54,14 @@ export default function PulseChart() {
                 const lastTime = lastPoint.time;
 
                 indexPtr.current = (indexPtr.current + 1) % cycleLen;
-                const lastVoltage = voltageAtPoint(indexPtr.current - 1);
-                const newVoltage = voltageAtPoint(indexPtr.current);
+
+                // Use committed (applied) analog value here
+                const lastVoltage = voltageAtPoint(indexPtr.current - 1, analogValue);
+                const newVoltage = voltageAtPoint(indexPtr.current, analogValue);
 
                 // Generate a new point at the end
-                // Randomly decide if we should toggle voltage or stay the same
                 const shouldToggle = lastVoltage !== newVoltage;
-                const timeIncrement = 1; // Random time between 1-3 units
-
-                // DEBUG
-                // if (shouldToggle) {
-                //     console.log(`toggle from ${lastVoltage} to ${newVoltage} at ${indexPtr.current}/${cycleLen}`);
-                // }
+                const timeIncrement = 1;
 
                 // Add transition points for hard pulse
                 if (shouldToggle) {
@@ -83,17 +84,17 @@ export default function PulseChart() {
                 }));
                 return newData;
             });
-        }, 10);
+        }, 30);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [analogValue]); // only changes when user "commits" a new slider value
 
     useEffect(() => {
         if (pulseData.length === 0) return;
 
         // Set up dimensions
         const margin = { top: 20, right: 30, bottom: 40, left: 50 };
-        const width = 800 - margin.left - margin.right;
+        const width = 600 - margin.left - margin.right;
         const height = 300 - margin.top - margin.bottom;
 
         // Clear previous SVG content
@@ -114,6 +115,9 @@ export default function PulseChart() {
         const yScale = d3.scaleLinear()
             .domain([-0.5, 5.5])
             .range([height, 0]);
+
+        // PWM average voltage (duty-cycle * 5V)
+        const pwmAvgVoltage = (analogValue / 255) * 5;
 
         // Create line generator with step interpolation for hard pulses
         const line = d3.line()
@@ -177,6 +181,30 @@ export default function PulseChart() {
             .attr('stroke-dasharray', '5,5')
             .attr('opacity', 0.5);
 
+        // --- PWM average indicator line (red dashed) ---
+        // IMPORTANT: do NOT animate this on every pulseData tick.
+        // Set it directly here; animation is handled by a separate effect that runs only when analogValue changes.
+        svg.append('line')
+            .attr('class', 'pwm-avg-line')
+            .attr('x1', 0)
+            .attr('x2', width)
+            .attr('y1', yScale(pwmAvgVoltage))
+            .attr('y2', yScale(pwmAvgVoltage))
+            .attr('stroke', '#D7263D')
+            .attr('stroke-width', 2)
+            .attr('stroke-dasharray', '6,6')
+            .attr('opacity', 0.9);
+
+        svg.append('text')
+            .attr('class', 'pwm-avg-label')
+            .attr('x', width - 4)
+            .attr('y', yScale(pwmAvgVoltage) - 6)
+            .attr('fill', '#D7263D')
+            .attr('font-size', '12px')
+            .attr('font-weight', 'bold')
+            .attr('text-anchor', 'end')
+            .text('pwm');
+
         // Add the line path with smooth transition
         const path = svg.append('path')
             .datum(pulseData)
@@ -191,12 +219,75 @@ export default function PulseChart() {
             .duration(500)
             .ease(d3.easeLinear);
 
-    }, [pulseData]); // Re-render when data changes
+    }, [pulseData]); // <-- only redraw the whole svg when pulseData changes (not analogValue)
+
+    // Animate the PWM average line ONLY when analogValue changes.
+    useEffect(() => {
+        const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+        const width = 800 - margin.left - margin.right;
+        const height = 300 - margin.top - margin.bottom;
+
+        const yScale = d3.scaleLinear()
+            .domain([-0.5, 5.5])
+            .range([height, 0]);
+
+        const pwmAvgVoltage = (analogValue / 255) * 5;
+
+        const svg = d3.select(svgRef.current).select('g');
+
+        svg.select('.pwm-avg-line')
+            .interrupt()
+            .transition()
+            .duration(10000)
+            .ease(d3.easeCubicInOut)
+            .attr('y1', yScale(pwmAvgVoltage))
+            .attr('y2', yScale(pwmAvgVoltage));
+
+        svg.select('.pwm-avg-label')
+            .transition()
+            .duration(10000)
+            .ease(d3.easeCubicOut)
+            .attr('y', yScale(pwmAvgVoltage) - 6);
+
+    }, [analogValue]);
+
+    const commitAnalogDraftValue = () => {
+        setAnalogValue(analogDraftValue);
+    };
 
     return (
         <div className="pulse-chart-container">
             <h3>Digital Pulse Signal (Live)</h3>
             <svg ref={svgRef}></svg>
+
+            {/* Slider controlling the analog (PWM) value */}
+            <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', }}>
+                <label
+                    htmlFor="analog-slider"
+                    style={{ display: 'flex', width: '80px', alignItems: 'center', gap: '8px', marginBottom: '6px' }}
+                >
+                    <span>PWM:</span>
+                    <strong>{analogDraftValue}</strong>
+                </label>
+
+                <input
+                    id="analog-slider"
+                    type="range"
+                    min="0"
+                    max="255"
+                    step="1"
+                    value={analogDraftValue}
+                    onChange={(e) => setAnalogDraftValue(Number(e.target.value))}
+                    onMouseUp={commitAnalogDraftValue}
+                    onTouchEnd={commitAnalogDraftValue}
+                    onKeyUp={(e) => {
+                        // commit when user finishes keyboard adjustments (arrows/page up/down/home/end)
+                        const commitKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'];
+                        if (commitKeys.includes(e.key)) commitAnalogDraftValue();
+                    }}
+                    style={{ width: '500px', maxWidth: '60%' }}
+                />
+            </div>
         </div>
     );
 }
