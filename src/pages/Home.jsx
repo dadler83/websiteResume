@@ -57,17 +57,13 @@ export default function Home() {
                 />
                 <div className="fathom-text">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus arcu leo, id pellentesque dui eleifend ut.
-                        Sed at elit quis elit finibus vulputate in tempus sapien. Cras rhoncus dolor ex, a hendrerit tortor volutpat id. Integer nec tristique dui.
+                        I lead firmware and GUI development for HighQ's <a href={"https://highqtechnologies.com/"}>Fathom Spectrometer</a>,
+                        the world's first quantum-enabled EPR spectrometer.
+                        <br/> <br/>
+                        <br/> <br/>
+                        My work has involved developing robust data acquisition systems, implementing real-time signal processing algorithms,
+                        and creating user-friendly interfaces for data visualization.
                     </p>
-                    <br/>
-                    <p>
-                        Sed convallis semper nunc vitae finibus. Phasellus eu ligula tellus. Morbi ultrices pretium mi quis aliquet. Etiam lectus felis, blandit et dapibus sed, blandit non lectus. Curabitur ac luctus enim, nec facilisis massa. Suspendisse potenti. Nunc elementum magna ac ipsum aliquet, eget pellentesque eros aliquam. Sed in nibh sed ipsum gravida mollis pulvinar lobortis velit. Duis ut erat sit amet urna lacinia lacinia.
-                    </p>
-                    {/*<br/>*/}
-                    {/*<p>*/}
-                    {/*    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus arcu leo, id pellentesque dui eleifend ut. Sed at elit quis elit finibus vulputate in tempus sapien. Cras rhoncus dolor ex, a hendrerit tortor volutpat id. Integer nec tristique dui. Sed convallis semper nunc vitae finibus. Phasellus eu ligula tellus. Morbi ultrices pretium mi quis aliquet. Etiam lectus felis, blandit et dapibus sed, blandit non lectus. Curabitur ac luctus enim, nec facilisis massa. Suspendisse potenti. Nunc elementum magna ac ipsum aliquet, eget pellentesque eros aliquam. Sed in nibh sed ipsum gravida mollis pulvinar lobortis velit. Duis ut erat sit amet urna lacinia lacinia.*/}
-                    {/*</p>*/}
                 </div>
             </div>
 
@@ -75,9 +71,21 @@ export default function Home() {
             <div className="signal-content">
                 <div className="signal-box">
                     <h1 className={"section-header"}>Signal Processing</h1>
-                    <div className="horizontal-box">
-                        <PulseChart />
-                    </div>
+                    <FlipCard
+                        frontContent={
+                            <div className="horizontal-box" style={{width:'95%', height: '100%'}}>
+                                <PulseChart />
+                            </div>
+                        }
+                        backContent={
+                            <div className="horizontal-box" style={{width:'95%', height: '100%', backgroundColor: '#f0f0f0'}}>
+                                {/*<div className="fathom-image">*/}
+                                {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
+                                {/*</div>*/}
+                            </div>
+                        }
+                    />
+
                 </div>
             </div>
 
