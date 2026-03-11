@@ -182,8 +182,6 @@ export default function PulseChart() {
             .attr('opacity', 0.5);
 
         // --- PWM average indicator line (red dashed) ---
-        // IMPORTANT: do NOT animate this on every pulseData tick.
-        // Set it directly here; animation is handled by a separate effect that runs only when analogValue changes.
         svg.append('line')
             .attr('class', 'pwm-avg-line')
             .attr('x1', 0)
@@ -219,12 +217,11 @@ export default function PulseChart() {
             .duration(500)
             .ease(d3.easeLinear);
 
-    }, [pulseData]); // <-- only redraw the whole svg when pulseData changes (not analogValue)
+    }, [pulseData]);
 
     // Animate the PWM average line ONLY when analogValue changes.
     useEffect(() => {
         const margin = { top: 20, right: 30, bottom: 40, left: 50 };
-        const width = 800 - margin.left - margin.right;
         const height = 300 - margin.top - margin.bottom;
 
         const yScale = d3.scaleLinear()
@@ -285,6 +282,8 @@ export default function PulseChart() {
                         const commitKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'];
                         if (commitKeys.includes(e.key)) commitAnalogDraftValue();
                     }}
+                    onClick={(e) => e.stopPropagation()}
+                    onPointerDown={(e) => e.stopPropagation()}
                     style={{ width: '500px', maxWidth: '60%' }}
                 />
             </div>

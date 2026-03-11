@@ -4,6 +4,7 @@ import MonacoEditor from "../components/MonacoEditor.jsx";
 import PulseChart from "../components/PulseChart.jsx";
 import TestKeyboardComponent from "../components/TestKeyboardComponent.jsx";
 import FlipCard from "../components/FlipCard.jsx";
+import ModulationChart from "../components/ModulationChart.jsx";
 
 export default function Home() {
     return (
@@ -85,7 +86,7 @@ export default function Home() {
                             </div>
                         }
                     />
-
+                    <ModulationChart/>
                 </div>
             </div>
 
