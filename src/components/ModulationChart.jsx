@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as d3 from "d3";
+import "./ModulationChart.css";
 
 /**
  * ModulationChart
@@ -18,7 +19,7 @@ export default function ModulationChart() {
 
     // Chart params
     const margin = { top: 20, right: 20, bottom: 40, left: 50 };
-    const innerWidth = 900 - margin.left - margin.right;
+    const innerWidth = 600 - margin.left - margin.right;
     const innerHeight = 360 - margin.top - margin.bottom;
 
     // Sampling
@@ -81,9 +82,7 @@ export default function ModulationChart() {
         const xScale = d3.scaleLinear().domain([tMin, tMax]).range([0, innerWidth]);
 
         // y domain based on computed data (with padding)
-        const yExtent = d3.extent(
-            data.flatMap((d) => [d.m, d.c, d.y])
-        );
+        const yExtent = d3.extent(data.flatMap((d) => [d.m, d.c, d.y]));
         const yPad = 0.2;
         const yMin = (yExtent[0] ?? -1) - yPad;
         const yMax = (yExtent[1] ?? 1) + yPad;
@@ -92,37 +91,33 @@ export default function ModulationChart() {
 
         // Axes
         g.append("g")
+            .attr("class", "mc-axis mc-axis-x")
             .attr("transform", `translate(0,${innerHeight})`)
-            .call(d3.axisBottom(xScale).ticks(10))
-            .call((axis) => axis.selectAll("text").attr("font-size", 11));
+            .call(d3.axisBottom(xScale).ticks(10));
 
         g.append("g")
-            .call(d3.axisLeft(yScale).ticks(7))
-            .call((axis) => axis.selectAll("text").attr("font-size", 11));
+            .attr("class", "mc-axis mc-axis-y")
+            .call(d3.axisLeft(yScale).ticks(7));
 
         // Labels
         g.append("text")
+            .attr("class", "mc-axis-label mc-axis-label-x")
             .attr("x", innerWidth / 2)
             .attr("y", innerHeight + 34)
             .attr("text-anchor", "middle")
-            .attr("fill", "#1B3720")
-            .attr("font-size", 12)
-            .attr("font-weight", 600)
             .text("Time (s)");
 
         g.append("text")
+            .attr("class", "mc-axis-label mc-axis-label-y")
             .attr("transform", "rotate(-90)")
             .attr("x", -innerHeight / 2)
             .attr("y", -38)
             .attr("text-anchor", "middle")
-            .attr("fill", "#1B3720")
-            .attr("font-size", 12)
-            .attr("font-weight", 600)
             .text("Amplitude");
 
         // Grid
         g.append("g")
-            .attr("opacity", 0.12)
+            .attr("class", "mc-grid")
             .call(
                 d3
                     .axisLeft(yScale)
@@ -150,175 +145,166 @@ export default function ModulationChart() {
         // Draw lines
         g.append("path")
             .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "#2E7D32") // green
-            .attr("stroke-width", 2)
+            .attr("class", "mc-line mc-line-message")
             .attr("d", lineM);
 
         g.append("path")
             .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "#1565C0") // blue
-            .attr("stroke-width", 1.6)
-            .attr("opacity", 0.85)
+            .attr("class", "mc-line mc-line-carrier")
             .attr("d", lineC);
 
         g.append("path")
             .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "#D7263D") // red
-            .attr("stroke-width", 2.2)
+            .attr("class", "mc-line mc-line-modulated")
             .attr("d", lineY);
 
         // Legend
-        const legend = g.append("g").attr("transform", `translate(0,0)`);
+        const legend = g.append("g").attr("class", "mc-legend").attr("transform", `translate(0,0)`);
 
         const legendItems = [
-            { label: "Signal m(t)", color: "#2E7D32" },
-            { label: "Carrier c(t)", color: "#1565C0" },
-            { label: "Modulated y(t)", color: "#D7263D" },
+            { label: "Signal m(t)", className: "mc-legend-swatch mc-swatch-message" },
+            { label: "Carrier c(t)", className: "mc-legend-swatch mc-swatch-carrier" },
+            { label: "Modulated y(t)", className: "mc-legend-swatch mc-swatch-modulated" },
         ];
 
         legendItems.forEach((item, i) => {
-            const row = legend.append("g").attr("transform", `translate(0,${i * 18})`);
-            row
-                .append("line")
-                .attr("x1", 0)
-                .attr("x2", 22)
-                .attr("y1", 8)
-                .attr("y2", 8)
-                .attr("stroke", item.color)
-                .attr("stroke-width", 3);
+            const row = legend.append("g").attr("class", "mc-legend-row").attr("transform", `translate(0,${i * 18})`);
 
-            row
-                .append("text")
-                .attr("x", 28)
-                .attr("y", 12)
-                .attr("fill", "#1B3720")
-                .attr("font-size", 12)
-                .text(item.label);
+            row.append("line").attr("class", item.className).attr("x1", 0).attr("x2", 22).attr("y1", 8).attr("y2", 8);
+
+            row.append("text").attr("class", "mc-legend-text").attr("x", 28).attr("y", 12).text(item.label);
         });
     }, [data]);
 
-    const sliderRowStyle = {
-        display: "grid",
-        gridTemplateColumns: "170px 1fr 90px",
-        alignItems: "center",
-        gap: "10px",
-        marginTop: "8px",
-    };
-
-    const sliderStyle = { width: "100%" };
+    const stop = (e) => e.stopPropagation();
 
     return (
-        <div style={{ maxWidth: 980 }}>
-            <h3 style={{ marginBottom: 8 }}>Signal + Carrier + AM Modulation</h3>
+        <div className="mc-container">
+            <h3 className="mc-title">Signal + Carrier + AM Modulation</h3>
 
             <svg ref={svgRef} />
 
-            <div style={{ marginTop: 12 }}>
-                <div style={{ fontWeight: 700, marginBottom: 6 }}>Signal (message)</div>
+            <div className="mc-controls">
+                <div className="mc-section">
+                    <div className="mc-section-title">Signal (message)</div>
 
-                <div style={sliderRowStyle}>
-                    <label htmlFor="msgAmp">Amplitude</label>
-                    <input
-                        id="msgAmp"
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={msgAmp}
-                        onChange={(e) => setMsgAmp(Number(e.target.value))}
-                        style={sliderStyle}
-                    />
-                    <div>{msgAmp.toFixed(2)}</div>
+                    <div className="mc-slider-row">
+                        <label htmlFor="msgAmp">Amplitude</label>
+                        <input
+                            id="msgAmp"
+                            className="mc-slider"
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value={msgAmp}
+                            onChange={(e) => setMsgAmp(Number(e.target.value))}
+                            onPointerDown={stop}
+                            onPointerUp={stop}
+                            onClick={stop}
+                        />
+                        <div className="mc-slider-value">{msgAmp.toFixed(2)}</div>
+                    </div>
+
+                    <div className="mc-slider-row">
+                        <label htmlFor="msgFreq">Frequency (Hz)</label>
+                        <input
+                            id="msgFreq"
+                            className="mc-slider"
+                            type="range"
+                            min="0.5"
+                            max="10"
+                            step="0.1"
+                            value={msgFreq}
+                            onChange={(e) => setMsgFreq(Number(e.target.value))}
+                            onPointerDown={stop}
+                            onPointerUp={stop}
+                            onClick={stop}
+                        />
+                        <div className="mc-slider-value">{msgFreq.toFixed(1)}</div>
+                    </div>
+
+                    <div className="mc-slider-row">
+                        <label htmlFor="msgPhase">Phase (rad)</label>
+                        <input
+                            id="msgPhase"
+                            className="mc-slider"
+                            type="range"
+                            min={(-Math.PI).toString()}
+                            max={Math.PI.toString()}
+                            step="0.01"
+                            value={msgPhase}
+                            onChange={(e) => setMsgPhase(Number(e.target.value))}
+                            onPointerDown={stop}
+                            onPointerUp={stop}
+                            onClick={stop}
+                        />
+                        <div className="mc-slider-value">{msgPhase.toFixed(2)}</div>
+                    </div>
                 </div>
 
-                <div style={sliderRowStyle}>
-                    <label htmlFor="msgFreq">Frequency (Hz)</label>
-                    <input
-                        id="msgFreq"
-                        type="range"
-                        min="0.5"
-                        max="10"
-                        step="0.1"
-                        value={msgFreq}
-                        onChange={(e) => setMsgFreq(Number(e.target.value))}
-                        style={sliderStyle}
-                    />
-                    <div>{msgFreq.toFixed(1)}</div>
+                <div className="mc-section">
+                    <div className="mc-section-title">Carrier</div>
+
+                    <div className="mc-slider-row">
+                        <label htmlFor="carFreq">Frequency (Hz)</label>
+                        <input
+                            id="carFreq"
+                            className="mc-slider"
+                            type="range"
+                            min="5"
+                            max="100"
+                            step="1"
+                            value={carFreq}
+                            onChange={(e) => setCarFreq(Number(e.target.value))}
+                            onPointerDown={stop}
+                            onPointerUp={stop}
+                            onClick={stop}
+                        />
+                        <div className="mc-slider-value">{carFreq.toFixed(0)}</div>
+                    </div>
+
+                    <div className="mc-slider-row">
+                        <label htmlFor="carPhase">Phase (rad)</label>
+                        <input
+                            id="carPhase"
+                            className="mc-slider"
+                            type="range"
+                            min={(-Math.PI).toString()}
+                            max={Math.PI.toString()}
+                            step="0.01"
+                            value={carPhase}
+                            onChange={(e) => setCarPhase(Number(e.target.value))}
+                            onPointerDown={stop}
+                            onPointerUp={stop}
+                            onClick={stop}
+                        />
+                        <div className="mc-slider-value">{carPhase.toFixed(2)}</div>
+                    </div>
                 </div>
 
-                <div style={sliderRowStyle}>
-                    <label htmlFor="msgPhase">Phase (rad)</label>
-                    <input
-                        id="msgPhase"
-                        type="range"
-                        min={(-Math.PI).toString()}
-                        max={(Math.PI).toString()}
-                        step="0.01"
-                        value={msgPhase}
-                        onChange={(e) => setMsgPhase(Number(e.target.value))}
-                        style={sliderStyle}
-                    />
-                    <div>{msgPhase.toFixed(2)}</div>
-                </div>
-            </div>
+                <div className="mc-section">
+                    <div className="mc-section-title">Modulation</div>
 
-            <div style={{ marginTop: 14 }}>
-                <div style={{ fontWeight: 700, marginBottom: 6 }}>Carrier</div>
+                    <div className="mc-slider-row">
+                        <label htmlFor="modIndex">Modulation index k</label>
+                        <input
+                            id="modIndex"
+                            className="mc-slider"
+                            type="range"
+                            min="0"
+                            max="1.5"
+                            step="0.01"
+                            value={modIndex}
+                            onChange={(e) => setModIndex(Number(e.target.value))}
+                            onPointerDown={stop}
+                            onPointerUp={stop}
+                            onClick={stop}
+                        />
+                        <div className="mc-slider-value">{modIndex.toFixed(2)}</div>
+                    </div>
 
-                <div style={sliderRowStyle}>
-                    <label htmlFor="carFreq">Frequency (Hz)</label>
-                    <input
-                        id="carFreq"
-                        type="range"
-                        min="5"
-                        max="100"
-                        step="1"
-                        value={carFreq}
-                        onChange={(e) => setCarFreq(Number(e.target.value))}
-                        style={sliderStyle}
-                    />
-                    <div>{carFreq.toFixed(0)}</div>
-                </div>
-
-                <div style={sliderRowStyle}>
-                    <label htmlFor="carPhase">Phase (rad)</label>
-                    <input
-                        id="carPhase"
-                        type="range"
-                        min={(-Math.PI).toString()}
-                        max={(Math.PI).toString()}
-                        step="0.01"
-                        value={carPhase}
-                        onChange={(e) => setCarPhase(Number(e.target.value))}
-                        style={sliderStyle}
-                    />
-                    <div>{carPhase.toFixed(2)}</div>
-                </div>
-            </div>
-
-            <div style={{ marginTop: 14 }}>
-                <div style={{ fontWeight: 700, marginBottom: 6 }}>Modulation</div>
-
-                <div style={sliderRowStyle}>
-                    <label htmlFor="modIndex">Modulation index k</label>
-                    <input
-                        id="modIndex"
-                        type="range"
-                        min="0"
-                        max="1.5"
-                        step="0.01"
-                        value={modIndex}
-                        onChange={(e) => setModIndex(Number(e.target.value))}
-                        style={sliderStyle}
-                    />
-                    <div>{modIndex.toFixed(2)}</div>
-                </div>
-
-                <div style={{ marginTop: 6, fontSize: 12, color: "#355" }}>
-                    y(t) = (1 + k·m(t)) · c(t)
+                    <div className="mc-equation">y(t) = (1 + k·m(t)) · c(t)</div>
                 </div>
             </div>
         </div>

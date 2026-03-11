@@ -72,21 +72,36 @@ export default function Home() {
             <div className="signal-content">
                 <div className="signal-box">
                     <h1 className={"section-header"}>Signal Processing</h1>
-                    <FlipCard
-                        frontContent={
-                            <div className="horizontal-box" style={{width:'95%', height: '100%'}}>
-                                <PulseChart />
-                            </div>
-                        }
-                        backContent={
-                            <div className="horizontal-box" style={{width:'95%', height: '100%', backgroundColor: '#f0f0f0'}}>
-                                {/*<div className="fathom-image">*/}
-                                {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
-                                {/*</div>*/}
-                            </div>
-                        }
-                    />
-                    <ModulationChart/>
+                    <div className={"signal-widgets"}>
+                        <FlipCard
+                            frontContent={
+                                <div className="signal-widget-box" style={{width:'95%', height: '100%'}}>
+                                    <PulseChart />
+                                </div>
+                            }
+                            backContent={
+                                <div className="signal-widget-box" style={{width:'95%', height: '90%'}}>
+                                    {/*<div className="fathom-image">*/}
+                                    {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
+                                    {/*</div>*/}
+                                </div>
+                            }
+                        />
+                        <FlipCard
+                            frontContent={
+                                <div className="signal-widget-box" style={{width:'95%', height: '100%'}}>
+                                    <ModulationChart/>
+                                </div>
+                            }
+                            backContent={
+                                <div className="signal-widget-box" style={{width:'95%', height: '90%'}}>
+                                    {/*<div className="fathom-image">*/}
+                                    {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
+                                    {/*</div>*/}
+                                </div>
+                            }
+                        />
+                    </div>
                 </div>
             </div>
 

@@ -3,10 +3,10 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
     color: #1B3720;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
 }
 
 .pulse-chart-container h3 {
@@ -17,7 +17,7 @@
 }
 
 .pulse-chart-container svg {
-    background-color: #fafafa;
+    /*background-color: #fafafa;*/
     border-radius: 8px;
 }
 
