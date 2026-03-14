@@ -298,9 +298,11 @@
 
 /* Flip Card Row Section */
 :root {
-    --skill-card-width: 200px;
+    --skill-card-width: 320px;
+    --skill-card-height: 380px;
     --skill-card-gap: 1.5rem;
-    --skill-card-width-sm: 160px;
+    --skill-card-width-sm: 240px;
+    --skill-card-height-sm: 300px;
     --skill-card-gap-sm: 1rem;
 }
 
@@ -338,53 +340,34 @@
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.flip-card-carousel-btn:hover:not(:disabled) {
+.flip-card-carousel-btn:hover {
     background-color: #2d5a36;
     transform: scale(1.1);
-}
-
-.flip-card-carousel-btn:disabled {
-    opacity: 0.25;
-    cursor: not-allowed;
 }
 
 .flip-card-row {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 1.5rem;
-    /* Show ~3 cards at a time: 3 × var(--skill-card-width) + 2 × var(--skill-card-gap) */
-    max-width: calc(3 * var(--skill-card-width) + 2 * var(--skill-card-gap));
+    gap: var(--skill-card-gap);
+    /* Show ~2.5 cards at a time */
+    max-width: calc(2.5 * var(--skill-card-width) + 1.5 * var(--skill-card-gap));
     overflow-x: scroll;
     scrollbar-width: none;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     align-items: stretch;
-    padding-bottom: 0.5rem;
+    /* Fade cards in/out at left and right edges as they scroll */
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
 .flip-card-row::-webkit-scrollbar {
     display: none;
 }
 
-/* Individual card fade-in (staggered via inline animationDelay) */
-.fade-in-card {
-    opacity: 0;
-    animation: fadeInLeft 0.6s ease-out forwards;
+/* Individual carousel card */
+.skill-carousel-card {
     flex: 0 0 var(--skill-card-width);
-    min-height: 220px;
-    scroll-snap-align: start;
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    height: var(--skill-card-height);
 }
 
 /* Card inner styling for the row cards */
@@ -396,9 +379,8 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    min-height: 220px;
     border-radius: 20px;
-    padding: 1.5rem 1rem;
+    padding: 2.5rem 2rem;
     box-sizing: border-box;
     text-align: center;
 }
@@ -414,43 +396,53 @@
 
 .skill-card-front h3 {
     color: #1B3720;
-    font-size: 1.1rem;
-    margin: 0.5rem 0 0 0;
+    font-size: 1.4rem;
+    margin: 0.75rem 0 0 0;
 }
 
 .skill-card-front .skill-icon {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
 }
 
 .skill-card-back p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin: 0;
 }
 
-/* Responsive: allow horizontal scroll on smaller screens */
+/* Responsive: tablet shows ~2 cards */
 @media (max-width: 968px) {
     .flip-card-row {
         gap: var(--skill-card-gap-sm);
-        /* Show ~2 cards on tablet */
         max-width: calc(2 * var(--skill-card-width-sm) + 1 * var(--skill-card-gap-sm));
     }
 
-    .fade-in-card {
+    .skill-carousel-card {
         flex: 0 0 var(--skill-card-width-sm);
-        min-height: 180px;
+        height: var(--skill-card-height-sm);
     }
 
     .skill-card-front,
     .skill-card-back {
-        min-height: 180px;
-        padding: 1rem 0.75rem;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .skill-card-front h3 {
+        font-size: 1.2rem;
+    }
+
+    .skill-card-front .skill-icon {
+        font-size: 3rem;
+    }
+
+    .skill-card-back p {
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 480px) {
     .flip-card-row {
-        /* Show ~1 card on mobile */
-        max-width: var(--skill-card-width-sm);
+        /* Show ~1.2 cards on mobile so the fade edge is visible */
+        max-width: calc(1.2 * var(--skill-card-width-sm));
     }
 }
