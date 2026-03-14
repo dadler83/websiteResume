@@ -1,4 +1,5 @@
 import './Home.css'
+import { useRef, useState } from 'react';
 import fathom from "../assets/FATHOM.png"
 import MonacoEditor from "../components/MonacoEditor.jsx";
 import PulseChart from "../components/PulseChart.jsx";
