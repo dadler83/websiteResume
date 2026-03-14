@@ -6,6 +6,39 @@ import TestKeyboardComponent from "../components/TestKeyboardComponent.jsx";
 import FlipCard from "../components/FlipCard.jsx";
 import ModulationChart from "../components/ModulationChart.jsx";
 
+const skillCards = [
+    {
+        icon: '⚛️',
+        title: 'React',
+        description: 'Building dynamic, component-driven UIs with hooks and modern patterns.',
+    },
+    {
+        icon: '🐍',
+        title: 'Python',
+        description: 'Data analysis, scripting, and backend services using Python.',
+    },
+    {
+        icon: '⚡',
+        title: 'C / C++',
+        description: 'Low-level firmware and performance-critical systems development.',
+    },
+    {
+        icon: '📡',
+        title: 'Firmware',
+        description: 'Embedded systems programming for hardware-software integration.',
+    },
+    {
+        icon: '📊',
+        title: 'Signal Processing',
+        description: 'Real-time DSP algorithms and data visualization pipelines.',
+    },
+    {
+        icon: '🗄️',
+        title: 'Databases',
+        description: 'Designing and querying relational and document-based databases.',
+    },
+];
+
 export default function Home() {
     return (
         <div className="home-container">
@@ -128,6 +161,33 @@ export default function Home() {
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</div>*/}
+
+            <div className="flip-card-row-section">
+                <h1 className="section-header">Skills &amp; Tools</h1>
+                <div className="flip-card-row">
+                    {skillCards.map((card, index) => (
+                        <div
+                            key={card.title}
+                            className="fade-in-card"
+                            style={{ animationDelay: `${0.6 + index * 0.15}s` }}
+                        >
+                            <FlipCard
+                                frontContent={
+                                    <div className="skill-card-front">
+                                        <span className="skill-icon">{card.icon}</span>
+                                        <h3>{card.title}</h3>
+                                    </div>
+                                }
+                                backContent={
+                                    <div className="skill-card-back">
+                                        <p>{card.description}</p>
+                                    </div>
+                                }
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }
