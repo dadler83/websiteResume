@@ -297,11 +297,55 @@
 }
 
 /* Flip Card Row Section */
+:root {
+    --skill-card-width: 200px;
+    --skill-card-gap: 1.5rem;
+    --skill-card-width-sm: 160px;
+    --skill-card-gap-sm: 1rem;
+}
+
 .flip-card-row-section {
     width: 95%;
     padding: 2rem 0 3rem 0;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 0.3s forwards;
+    text-align: center;
+}
+
+.flip-card-carousel-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.flip-card-carousel-btn {
+    background-color: #1B3720;
+    color: #E5E1EE;
+    border: none;
+    border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.flip-card-carousel-btn:hover:not(:disabled) {
+    background-color: #2d5a36;
+    transform: scale(1.1);
+}
+
+.flip-card-carousel-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
 }
 
 .flip-card-row {
@@ -309,28 +353,27 @@
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    justify-content: flex-start;
+    /* Show ~3 cards at a time: 3 × var(--skill-card-width) + 2 × var(--skill-card-gap) */
+    max-width: calc(3 * var(--skill-card-width) + 2 * var(--skill-card-gap));
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     align-items: stretch;
-    scrollbar-width: thin;
+    padding-bottom: 0.5rem;
 }
 
 .flip-card-row::-webkit-scrollbar {
-    height: 6px;
-}
-
-.flip-card-row::-webkit-scrollbar-thumb {
-    background-color: rgba(27, 55, 32, 0.3);
-    border-radius: 3px;
+    display: none;
 }
 
 /* Individual card fade-in (staggered via inline animationDelay) */
 .fade-in-card {
     opacity: 0;
     animation: fadeInLeft 0.6s ease-out forwards;
-    flex: 0 0 200px;
+    flex: 0 0 var(--skill-card-width);
     min-height: 220px;
+    scroll-snap-align: start;
 }
 
 @keyframes fadeInLeft {
@@ -361,12 +404,10 @@
 }
 
 .skill-card-front {
-    background-color: #E5E1EE;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .skill-card-back {
-    background-color: #1B3720;
     color: #E5E1EE;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
@@ -390,11 +431,13 @@
 /* Responsive: allow horizontal scroll on smaller screens */
 @media (max-width: 968px) {
     .flip-card-row {
-        gap: 1rem;
+        gap: var(--skill-card-gap-sm);
+        /* Show ~2 cards on tablet */
+        max-width: calc(2 * var(--skill-card-width-sm) + 1 * var(--skill-card-gap-sm));
     }
 
     .fade-in-card {
-        flex: 0 0 160px;
+        flex: 0 0 var(--skill-card-width-sm);
         min-height: 180px;
     }
 
@@ -402,5 +445,12 @@
     .skill-card-back {
         min-height: 180px;
         padding: 1rem 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .flip-card-row {
+        /* Show ~1 card on mobile */
+        max-width: var(--skill-card-width-sm);
     }
 }

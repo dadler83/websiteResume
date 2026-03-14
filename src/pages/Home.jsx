@@ -12,35 +12,66 @@ const skillCards = [
         icon: '⚛️',
         title: 'React',
         description: 'Building dynamic, component-driven UIs with hooks and modern patterns.',
+        frontColor: '#C8ECFE',
+        backColor: '#1565C0',
     },
     {
         icon: '🐍',
         title: 'Python',
         description: 'Data analysis, scripting, and backend services using Python.',
+        frontColor: '#FFF3B0',
+        backColor: '#306998',
     },
     {
         icon: '⚡',
         title: 'C / C++',
         description: 'Low-level firmware and performance-critical systems development.',
+        frontColor: '#D4E6F1',
+        backColor: '#1A5276',
     },
     {
         icon: '📡',
         title: 'Firmware',
         description: 'Embedded systems programming for hardware-software integration.',
+        frontColor: '#FDEBD0',
+        backColor: '#784212',
     },
     {
         icon: '📊',
         title: 'Signal Processing',
         description: 'Real-time DSP algorithms and data visualization pipelines.',
+        frontColor: '#D5F5E3',
+        backColor: '#1E8449',
     },
     {
         icon: '🗄️',
         title: 'Databases',
         description: 'Designing and querying relational and document-based databases.',
+        frontColor: '#E8DAEF',
+        backColor: '#6C3483',
     },
 ];
 
 export default function Home() {
+    const carouselRef = useRef(null);
+    const [atStart, setAtStart] = useState(true);
+    const [atEnd, setAtEnd] = useState(false);
+
+    const scrollCarousel = (dir) => {
+        const el = carouselRef.current;
+        if (!el) return;
+        const card = el.querySelector('.fade-in-card');
+        // 24px = 1.5rem gap defined in --skill-card-gap CSS variable
+        const cardWidth = card ? card.offsetWidth + 24 : 224;
+        el.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+    };
+
+    const handleCarouselScroll = (e) => {
+        const el = e.currentTarget;
+        setAtStart(el.scrollLeft <= 0);
+        // Subtract 1px to account for sub-pixel rendering differences across browsers
+        setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 1);
+    };
     return (
         <div className="home-container">
             <div className="home-content">
@@ -165,28 +196,46 @@ export default function Home() {
 
             <div className="flip-card-row-section">
                 <h1 className="section-header">Skills &amp; Tools</h1>
-                <div className="flip-card-row">
-                    {skillCards.map((card, index) => (
-                        <div
-                            key={card.title}
-                            className="fade-in-card"
-                            style={{ animationDelay: `${0.6 + index * 0.15}s` }}
-                        >
-                            <FlipCard
-                                frontContent={
-                                    <div className="skill-card-front">
-                                        <span className="skill-icon">{card.icon}</span>
-                                        <h3>{card.title}</h3>
-                                    </div>
-                                }
-                                backContent={
-                                    <div className="skill-card-back">
-                                        <p>{card.description}</p>
-                                    </div>
-                                }
-                            />
-                        </div>
-                    ))}
+                <div className="flip-card-carousel-wrapper">
+                    <button
+                        className="flip-card-carousel-btn"
+                        onClick={() => scrollCarousel(-1)}
+                        disabled={atStart}
+                        aria-label="Scroll left"
+                    >&#8249;</button>
+                    <div
+                        className="flip-card-row"
+                        ref={carouselRef}
+                        onScroll={handleCarouselScroll}
+                    >
+                        {skillCards.map((card, index) => (
+                            <div
+                                key={card.title}
+                                className="fade-in-card"
+                                style={{ animationDelay: `${0.6 + index * 0.15}s` }}
+                            >
+                                <FlipCard
+                                    frontContent={
+                                        <div className="skill-card-front" style={{ backgroundColor: card.frontColor }}>
+                                            <span className="skill-icon">{card.icon}</span>
+                                            <h3>{card.title}</h3>
+                                        </div>
+                                    }
+                                    backContent={
+                                        <div className="skill-card-back" style={{ backgroundColor: card.backColor }}>
+                                            <p>{card.description}</p>
+                                        </div>
+                                    }
+                                />
+                            </div>
+                        ))}
+                    </div>
+                    <button
+                        className="flip-card-carousel-btn"
+                        onClick={() => scrollCarousel(1)}
+                        disabled={atEnd}
+                        aria-label="Scroll right"
+                    >&#8250;</button>
                 </div>
             </div>
         </div>
