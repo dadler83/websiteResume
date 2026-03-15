@@ -149,14 +149,23 @@ export default function SkillCarousel() {
 
     const scrollManual = (dir) => {
         const el = carouselRef.current;
-        if (!el || stepCacheRef.current <= 0) return;
+        const step = stepCacheRef.current;
+        if (!el || step <= 0) return;
 
         // Stop the rAF loop so it doesn't fight the browser's smooth scroll
         isArrowPausedRef.current = true;
         if (arrowTimerRef.current) clearTimeout(arrowTimerRef.current);
 
-        // Smooth-scroll one card in the chosen direction
-        el.scrollTo({ left: el.scrollLeft + dir * stepCacheRef.current, behavior: 'smooth' });
+        // Snap to an absolute card boundary so the destination is always a clean
+        // grid position regardless of where the continuous scroll stopped.
+        // 1. Find the nearest card index within the middle copy of tripleCards.
+        // 2. Advance by `dir` steps.
+        // 3. Scroll to exactly that grid position.
+        const setWidth = step * skillCards.length;
+        const relPos = el.scrollLeft - setWidth;
+        const nearestIndex = Math.round(relPos / step);
+        const targetLeft = setWidth + (nearestIndex + dir) * step;
+        el.scrollTo({ left: targetLeft, behavior: 'smooth' });
 
         // Wrap scrollLeft once the smooth animation finishes.
         // Use the 'scrollend' event where supported; fall back to a fixed timeout.
