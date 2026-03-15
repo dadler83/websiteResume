@@ -203,7 +203,7 @@
 .signal-widgets {
     align-items: center;
     justify-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     display: flex;
     width: 100%;
     opacity: 0;
@@ -298,8 +298,8 @@
 
 /* Flip Card Row Section */
 :root {
-    --skill-card-width: 320px;
-    --skill-card-height: 380px;
+    --skill-card-width: 400px;
+    --skill-card-height: 600px;
     --skill-card-gap: 1.5rem;
     --skill-card-width-sm: 240px;
     --skill-card-height-sm: 300px;
@@ -351,7 +351,7 @@
     flex-wrap: nowrap;
     gap: var(--skill-card-gap);
     /* Show ~2.5 cards at a time */
-    max-width: calc(2.5 * var(--skill-card-width) + 1.5 * var(--skill-card-gap));
+    max-width: calc(4.5 * var(--skill-card-width) + 1.5 * var(--skill-card-gap));
     overflow-x: scroll;
     scrollbar-width: none;
     align-items: stretch;
@@ -383,6 +383,14 @@
     padding: 2.5rem 2rem;
     box-sizing: border-box;
     text-align: center;
+}
+
+.skill-carousel-card .flip-card {
+    height: 100%;
+}
+
+.flip-card-inner .flip-card-front, .flip-card-inner .flip-card-back {
+    height: 100%;
 }
 
 .skill-card-front {
