@@ -53,10 +53,13 @@
     flex-wrap: nowrap;
     gap: var(--skill-card-gap);
     /* Show exactly 3 cards at a time */
-    max-width: calc(3 * var(--skill-card-width) + 2 * var(--skill-card-gap));
+    max-width: calc(4.5 * var(--skill-card-width) + 2 * var(--skill-card-gap));
     overflow-x: scroll;
     scrollbar-width: none;
     align-items: stretch;
+    /* Fade cards in/out at left and right edges as they scroll */
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    --webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
 .flip-card-row::-webkit-scrollbar {
