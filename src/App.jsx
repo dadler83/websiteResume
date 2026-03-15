@@ -9,7 +9,7 @@ import './App.css'
 
 function App() {
     return (
-        <>
+        <div className="app-wrapper">
             <Navbar />
 
             <main style={{ paddingTop: '80px', padding: '80px 2rem 2rem 2rem' }}>
@@ -22,7 +22,7 @@ function App() {
             </main>
 
             <Footer/>
-        </>
+        </div>
     )
 }
 
