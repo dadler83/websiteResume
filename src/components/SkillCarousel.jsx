@@ -1,5 +1,5 @@
 import './SkillCarousel.css';
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect } from 'react';
 import FlipCard from './FlipCard.jsx';
 
 const skillCards = [
@@ -50,82 +50,134 @@ const skillCards = [
 // Triple the array so scroll can loop seamlessly from either end
 const tripleCards = [...skillCards, ...skillCards, ...skillCards];
 
-// Auto-advance one card every N milliseconds
-const AUTO_SCROLL_INTERVAL_MS = 3000;
+// Continuous scroll speed in pixels per second
+const SCROLL_SPEED_PX_PER_SEC = 60;
+
+// How long (ms) to pause auto-scroll after an arrow button is clicked
+const ARROW_PAUSE_MS = 3000;
+
+// Fallback gap in px used when getComputedStyle cannot parse the gap value.
+// Matches the CSS variable --skill-card-gap (1.5rem @ 16px base = 24px).
+const DEFAULT_GAP_PX = 24;
 
 export default function SkillCarousel() {
     const carouselRef = useRef(null);
-    const isPausedRef = useRef(false);
 
-    /** Width of one card slot (card + gap). */
-    const getCardStep = useCallback(() => {
+    // rAF state
+    const rafIdRef        = useRef(null);
+    const lastTsRef       = useRef(null);   // null signals "reset timestamp on next frame"
+
+    // Pause flags (refs so they never trigger re-renders)
+    const isHoveredRef      = useRef(false);
+    const isArrowPausedRef  = useRef(false);
+    const arrowTimerRef     = useRef(null);
+
+    // Cached card step width so the rAF loop never touches the DOM for geometry
+    const stepCacheRef = useRef(0);
+
+    // ── helpers ──────────────────────────────────────────────────────────────
+
+    /** Measure and cache (cardWidth + gap). */
+    const computeStep = () => {
         const el = carouselRef.current;
-        if (!el) return 0;
+        if (!el) return;
         const card = el.querySelector('.skill-carousel-card');
-        if (!card) return 0;
-        // Read the gap from computed style; fall back to 24 (typical 1.5rem at default font size)
-        const gap = parseFloat(window.getComputedStyle(el).gap) || 24;
-        return card.offsetWidth + gap;
+        if (!card) { stepCacheRef.current = 0; return; }
+        const gap = parseFloat(window.getComputedStyle(el).gap) || DEFAULT_GAP_PX;
+        stepCacheRef.current = card.offsetWidth + gap;
+    };
+
+    /** Silently keep scrollLeft inside the middle copy of tripleCards. */
+    const wrapScroll = (el) => {
+        const setWidth = stepCacheRef.current * skillCards.length;
+        if (setWidth <= 0) return;
+        if (el.scrollLeft < setWidth)          el.scrollLeft += setWidth;
+        else if (el.scrollLeft >= setWidth * 2) el.scrollLeft -= setWidth;
+    };
+
+    // ── effects ──────────────────────────────────────────────────────────────
+
+    // Cache step on mount and keep it fresh on resize
+    useEffect(() => {
+        computeStep();
+        window.addEventListener('resize', computeStep);
+        return () => window.removeEventListener('resize', computeStep);
     }, []);
 
-    /** Total scroll width of one copy of skillCards. */
-    const getSetWidth = useCallback(() => {
-        const step = getCardStep();
-        return step > 0 ? step * skillCards.length : 0;
-    }, [getCardStep]);
-
-    /**
-     * Silently snap back to the equivalent position inside the middle copy.
-     * Called ~650 ms after each smooth scroll so the animation has finished.
-     */
-    const correctPosition = useCallback(() => {
-        const el = carouselRef.current;
-        if (!el) return;
-        const setWidth = getSetWidth();
-        if (setWidth <= 0) return;
-        if (el.scrollLeft < setWidth) {
-            el.scrollLeft += setWidth;
-        } else if (el.scrollLeft >= setWidth * 2) {
-            el.scrollLeft -= setWidth;
-        }
-    }, [getSetWidth]);
-
-    /** Advance the carousel by one card (auto or manual). */
-    const scrollOneCard = useCallback((dir = 1) => {
-        const el = carouselRef.current;
-        if (!el) return;
-        const step = getCardStep();
-        if (step <= 0) return;
-        el.scrollTo({ left: el.scrollLeft + dir * step, behavior: 'smooth' });
-        // Wait for the smooth-scroll animation (~600 ms) to finish before correcting position
-        setTimeout(correctPosition, 650);
-    }, [getCardStep, correctPosition]);
-
-    // On mount: jump to the beginning of the middle copy so we can scroll both ways
+    // Jump to the middle copy so we can scroll both ways immediately
     useEffect(() => {
-        const el = carouselRef.current;
-        if (!el) return;
         const t = setTimeout(() => {
-            const setWidth = getSetWidth();
+            const el = carouselRef.current;
+            if (!el) return;
+            computeStep();
+            const setWidth = stepCacheRef.current * skillCards.length;
             if (setWidth > 0) el.scrollLeft = setWidth;
         }, 50);
         return () => clearTimeout(t);
-    }, [getSetWidth]);
+    }, []);
 
-    // Auto-scroll: advance one card every AUTO_SCROLL_INTERVAL_MS unless paused
+    // Continuous rAF scroll loop
     useEffect(() => {
-        // Capture the interval ID in a local variable so the cleanup always clears
-        // the exact interval that this effect instance created, even if the ref changes.
-        const id = setInterval(() => {
-            if (!isPausedRef.current) scrollOneCard(1);
-        }, AUTO_SCROLL_INTERVAL_MS);
-        return () => clearInterval(id);
-    }, [scrollOneCard]);
+        const animate = (ts) => {
+            const paused = isHoveredRef.current || isArrowPausedRef.current;
 
-    const handleMouseEnter = () => { isPausedRef.current = true; };
-    const handleMouseLeave = () => { isPausedRef.current = false; };
+            if (!paused) {
+                const el = carouselRef.current;
+                if (el && lastTsRef.current !== null) {
+                    // Clamp dt to 100 ms so a hidden-tab resume doesn't jump
+                    const dt = Math.min(ts - lastTsRef.current, 100);
+                    el.scrollLeft += (SCROLL_SPEED_PX_PER_SEC * dt) / 1000;
+                    wrapScroll(el);
+                }
+                lastTsRef.current = ts;
+            } else {
+                // Clear timestamp so there's no position jump when we resume
+                lastTsRef.current = null;
+            }
 
-    const scrollManual = (dir) => scrollOneCard(dir);
+            rafIdRef.current = requestAnimationFrame(animate);
+        };
+
+        rafIdRef.current = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(rafIdRef.current);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // ── event handlers ───────────────────────────────────────────────────────
+
+    const handleMouseEnter = () => { isHoveredRef.current = true; };
+    const handleMouseLeave = () => { isHoveredRef.current = false; };
+
+    const scrollManual = (dir) => {
+        const el = carouselRef.current;
+        if (!el || stepCacheRef.current <= 0) return;
+
+        // Stop the rAF loop so it doesn't fight the browser's smooth scroll
+        isArrowPausedRef.current = true;
+        if (arrowTimerRef.current) clearTimeout(arrowTimerRef.current);
+
+        // Smooth-scroll one card in the chosen direction
+        el.scrollTo({ left: el.scrollLeft + dir * stepCacheRef.current, behavior: 'smooth' });
+
+        // Wrap scrollLeft once the smooth animation finishes.
+        // Use the 'scrollend' event where supported; fall back to a fixed timeout.
+        const onScrollEnd = () => {
+            clearTimeout(fallbackTimer);
+            wrapScroll(el);
+        };
+        el.addEventListener('scrollend', onScrollEnd, { once: true });
+        const fallbackTimer = setTimeout(() => {
+            el.removeEventListener('scrollend', onScrollEnd);
+            wrapScroll(el);
+        }, 700);
+
+        // Resume continuous scroll after the pause window
+        arrowTimerRef.current = setTimeout(() => {
+            isArrowPausedRef.current = false;
+            arrowTimerRef.current = null;
+        }, ARROW_PAUSE_MS);
+    };
+
+    // ── render ───────────────────────────────────────────────────────────────
 
     return (
         <div className="flip-card-row-section">
