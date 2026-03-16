@@ -2,9 +2,9 @@ import './Home.css'
 import fathom from "../assets/FATHOM.png"
 import MonacoEditor from "../components/MonacoEditor.jsx";
 import PulseChart from "../components/PulseChart.jsx";
-import TestKeyboardComponent from "../components/TestKeyboardComponent.jsx";
 import FlipCard from "../components/FlipCard.jsx";
 import ModulationChart from "../components/ModulationChart.jsx";
+import SkillCarousel from "../components/SkillCarousel.jsx";
 
 export default function Home() {
     return (
@@ -128,6 +128,8 @@ export default function Home() {
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</div>*/}
+
+            <SkillCarousel />
         </div>
     )
 }

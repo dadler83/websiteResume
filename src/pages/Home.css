@@ -203,7 +203,7 @@
 .signal-widgets {
     align-items: center;
     justify-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     display: flex;
     width: 100%;
     opacity: 0;
@@ -295,3 +295,4 @@
         font-size: 1.5rem;
     }
 }
+
