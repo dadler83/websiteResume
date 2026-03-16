@@ -1,0 +1,297 @@
+.about-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.about-hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    gap: 1rem;
+    opacity: 0;
+    animation: aboutFadeIn 0.8s ease-out forwards;
+}
+
+.about-hero h1 {
+    font-family: Kingsman;
+    font-size: 6rem;
+    color: #1B3720;
+    margin: 0;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.about-hero .about-subtitle {
+    font-family: MontserratSemibold;
+    font-size: 1.6rem;
+    color: #1B3720;
+    opacity: 0.75;
+    text-align: center;
+    margin: 0;
+}
+
+/* ── Bio ──────────────────────────────────────────────── */
+.about-bio {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    background-color: #E5E1EE;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: aboutFadeIn 0.8s ease-out 0.2s forwards;
+}
+
+.about-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: #1B3720;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 5rem;
+    color: #D2BBA0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.about-bio-text h2 {
+    font-family: Melanin;
+    font-size: 2rem;
+    color: #1B3720;
+    margin: 0 0 1rem 0;
+}
+
+.about-bio-text p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
+    margin: 0 0 0.75rem 0;
+}
+
+/* ── Section header ───────────────────────────────────── */
+.about-section-header {
+    font-family: Melanin;
+    font-size: 2.8rem;
+    color: #1B3720;
+    margin: 0;
+    align-self: flex-start;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* ── Experience timeline ──────────────────────────────── */
+.about-experience {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: aboutFadeIn 0.8s ease-out 0.4s forwards;
+}
+
+.experience-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+    background-color: #4F86C6;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.experience-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.85;
+    padding-top: 0.2rem;
+    white-space: nowrap;
+}
+
+.experience-details h3 {
+    font-family: MontserratSemibold;
+    font-size: 1.3rem;
+    margin: 0 0 0.3rem 0;
+}
+
+.experience-details .experience-company {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin: 0 0 0.75rem 0;
+    font-style: italic;
+}
+
+.experience-details p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* ── Education ────────────────────────────────────────── */
+.about-education {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: aboutFadeIn 0.8s ease-out 0.5s forwards;
+}
+
+.education-card {
+    background-color: #F8FFE5;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.education-card h3 {
+    font-family: MontserratSemibold;
+    font-size: 1.2rem;
+    color: #1B3720;
+    margin: 0 0 0.4rem 0;
+}
+
+.education-card .edu-institution {
+    font-size: 1rem;
+    color: #1B3720;
+    font-weight: 600;
+    opacity: 0.8;
+    margin: 0 0 0.3rem 0;
+}
+
+.education-card .edu-year {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 0.75rem 0;
+}
+
+.education-card p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Interests ────────────────────────────────────────── */
+.about-interests {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    opacity: 0;
+    animation: aboutFadeIn 0.8s ease-out 0.6s forwards;
+}
+
+.interest-card {
+    background-color: #E5E1EE;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interest-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.interest-icon {
+    font-size: 2.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.interest-card h3 {
+    font-family: MontserratSemibold;
+    font-size: 1.1rem;
+    color: #1B3720;
+    margin: 0 0 0.5rem 0;
+}
+
+.interest-card p {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ── Animation ────────────────────────────────────────── */
+@keyframes aboutFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+    .about-bio {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-avatar {
+        margin: 0 auto;
+    }
+
+    .about-education {
+        grid-template-columns: 1fr;
+    }
+
+    .about-interests {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .experience-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .about-hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .about-interests {
+        grid-template-columns: 1fr;
+    }
+
+    .about-container {
+        padding: 1rem;
+    }
+}
