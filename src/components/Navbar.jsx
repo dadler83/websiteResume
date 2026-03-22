@@ -74,22 +74,12 @@ export default function Navbar() {
                     </li>
                     <li className="navbar-item">
                         <NavLink
-                            to="/editor"
-                            className={({ isActive }) =>
-                                `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
-                            }
-                        >
-                            Contact
-                        </NavLink>
-                    </li>
-                    <li className="navbar-item">
-                        <NavLink
                             to="/style-guide"
                             className={({ isActive }) =>
                                 `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
                             }
                         >
-                            Style Guide
+                            Contact
                         </NavLink>
                     </li>
                 </ul>
