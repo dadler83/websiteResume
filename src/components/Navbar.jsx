@@ -82,6 +82,16 @@ export default function Navbar() {
                             Contact
                         </NavLink>
                     </li>
+                    <li className="navbar-item">
+                        <NavLink
+                            to="/style-guide"
+                            className={({ isActive }) =>
+                                `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
+                            }
+                        >
+                            Style Guide
+                        </NavLink>
+                    </li>
                 </ul>
                 <ul className="navbar-menu">
                     <li className="" style={{paddingTop: '5px'}}>

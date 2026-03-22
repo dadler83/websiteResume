@@ -1,0 +1,71 @@
+.style-guide-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.style-guide-intro {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+}
+
+.style-guide-section {
+    border-top: 2px solid #1B3720;
+    padding-top: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.style-guide-section > h2 {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #1B3720;
+    margin-bottom: 1.5rem;
+}
+
+.style-guide-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(27, 55, 32, 0.15);
+}
+
+.style-guide-item:last-child {
+    border-bottom: none;
+}
+
+.style-guide-label {
+    font-size: 0.75rem;
+    font-family: monospace;
+    background-color: rgba(27, 55, 32, 0.1);
+    color: #1B3720;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    align-self: start;
+    margin-top: 0.25rem;
+    white-space: nowrap;
+}
+
+.style-guide-block-link {
+    display: block;
+}
+
+/* Reset margins on headings/paragraphs inside items so grid spacing controls layout */
+.style-guide-item h1,
+.style-guide-item h2,
+.style-guide-item h3,
+.style-guide-item h4,
+.style-guide-item h5,
+.style-guide-item h6,
+.style-guide-item p,
+.style-guide-item blockquote {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.style-guide-item p + p {
+    margin-top: 0.75rem;
+}
