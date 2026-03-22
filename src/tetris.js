@@ -144,7 +144,7 @@ const tetrisSketch = (p) => {
         initBoard();
 
         // Make canvas focusable
-        let canvas = document.querySelector('canvas');
+        let canvas = p.canvas;
         canvas.setAttribute('tabindex', '0');
 
         // Set up focus/blur event listeners on the canvas
@@ -952,5 +952,4 @@ const tetrisSketch = (p) => {
     }
 }
 
-
-new p5(tetrisSketch, 'sketch1');
+export { tetrisSketch };

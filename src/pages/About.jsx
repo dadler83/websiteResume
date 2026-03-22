@@ -1,4 +1,5 @@
 import './About.css'
+import TetrisSketch from '../components/TetrisSketch.jsx'
 
 const experiences = [
     {
@@ -52,8 +53,8 @@ const interests = [
     },
     {
         icon: '🎮',
-        title: 'Game Dev',
-        description: 'Tinkering with small games to explore interactive design and logic.',
+        title: 'Gaming',
+        description: 'A lifelong gamer — playing and building games has sharpened my problem-solving and design instincts.',
     },
 ]
 
@@ -135,6 +136,31 @@ export default function About() {
                         <p>{item.description}</p>
                     </div>
                 ))}
+            </div>
+
+            {/* ── Gaming ─────────────────────────────── */}
+            <h2 className="about-section-header">Gaming</h2>
+            <div className="about-gaming">
+                <div className="gaming-blurb">
+                    <h3>A lifelong gamer</h3>
+                    <p>
+                        Video games have been a constant companion since childhood. They taught me
+                        problem-solving, pattern recognition, and — perhaps most importantly — how
+                        to stay calm under pressure when the blocks start falling faster.
+                    </p>
+                    <p>
+                        Tetris holds a special place in my heart. It's elegant in its simplicity,
+                        infinitely replayable, and genuinely hard to master. I even wrote my own
+                        p5.js implementation with SRS wall kicks, a piece-bag randomizer, and a
+                        lock-delay system — give it a try!
+                    </p>
+                    <p className="gaming-controls">
+                        <strong>Controls:</strong> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; C Hold
+                    </p>
+                </div>
+                <div className="gaming-sketch-wrapper">
+                    <TetrisSketch />
+                </div>
             </div>
 
         </div>
