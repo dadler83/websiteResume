@@ -39,6 +39,8 @@ const tetrisSketch = (p) => {
 // Piece bag for pseudo-random generation
     let pieceBag = [];
 
+//     TODO: in react, the initial rotation buffers aren't functioning
+//     TODO: focus canvas so it stays 'started' after clicking play?
 // Input delay counters for continuous key press
     let moveCounter = 0;
     let rotateCounter = 0;
@@ -47,7 +49,7 @@ const tetrisSketch = (p) => {
     const rotateDelay = 100; // ms between rotations when held
     const hardDropDelay = 200; // ms between hard drops when held
     const initialMoveDelay = 300; // ms initial delay before continuous movement
-    const initialRotateDelay = 500; // ms initial delay before continuous rotation
+    const initialRotateDelay = 1000; // ms initial delay before continuous rotation
 
 // Track if keys were just pressed
     let moveInitial = false;
@@ -144,7 +146,7 @@ const tetrisSketch = (p) => {
         initBoard();
 
         // Make canvas focusable
-        let canvas = document.querySelector('canvas');
+        let canvas = p.canvas;
         canvas.setAttribute('tabindex', '0');
 
         // Set up focus/blur event listeners on the canvas
@@ -155,14 +157,21 @@ const tetrisSketch = (p) => {
         canvas.addEventListener('click', () => {
             canvas.focus();
         });
+
+        // Prevent game keys from scrolling the page while canvas is focused
+        canvas.addEventListener('keydown', (e) => {
+            const gameKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '];
+            if (gameKeys.includes(e.key)) {
+                e.preventDefault();
+            }
+        });
     }
 
     function startGame() {
         gameStarted = true;
         startButton.hide();
         initGame();
-        // let canvas = document.querySelector('canvas');
-        // canvas.focus();
+        p.canvas.focus();
         canvasFocused = true;
     }
 
@@ -952,5 +961,4 @@ const tetrisSketch = (p) => {
     }
 }
 
-
-new p5(tetrisSketch, 'sketch1');
+export { tetrisSketch };
