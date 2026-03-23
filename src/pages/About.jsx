@@ -155,7 +155,7 @@ export default function About() {
                         lock-delay system — give it a try!
                     </p>
                     <p className="gaming-controls">
-                        <strong>Controls:</strong> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; C Hold
+                        <strong>Controls:</strong> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
                     </p>
                 </div>
                 <div className="gaming-sketch-wrapper">

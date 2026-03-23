@@ -155,6 +155,14 @@ const tetrisSketch = (p) => {
         canvas.addEventListener('click', () => {
             canvas.focus();
         });
+
+        // Prevent game keys from scrolling the page while canvas is focused
+        canvas.addEventListener('keydown', (e) => {
+            const gameKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '];
+            if (gameKeys.includes(e.key)) {
+                e.preventDefault();
+            }
+        });
     }
 
     function startGame() {
