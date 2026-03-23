@@ -254,7 +254,7 @@ export default function PulseChart() {
 
     return (
         <div className="pulse-chart-container">
-            <h3>Digital Pulse Signal (Live)</h3>
+            <h4>Digital Pulse Signal (Live)</h4>
             <svg ref={svgRef}></svg>
 
             {/* Slider controlling the analog (PWM) value */}

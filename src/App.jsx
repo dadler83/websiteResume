@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
 import CodeEditor from './pages/CodeEditor'
+import StyleGuide from './pages/StyleGuide'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/editor" element={<CodeEditor />} />
+                    <Route path="/style-guide" element={<StyleGuide />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>

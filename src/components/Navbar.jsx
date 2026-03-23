@@ -74,7 +74,7 @@ export default function Navbar() {
                     </li>
                     <li className="navbar-item">
                         <NavLink
-                            to="/editor"
+                            to="/style-guide"
                             className={({ isActive }) =>
                                 `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
                             }

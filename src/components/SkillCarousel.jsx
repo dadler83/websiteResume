@@ -190,7 +190,7 @@ export default function SkillCarousel() {
 
     return (
         <div className="flip-card-row-section">
-            <h1 className="section-header">Skills &amp; Tools</h1>
+            <h3 className={"section-header"}>System Architecture</h3>
             <div className="flip-card-carousel-wrapper">
                 <button
                     className="flip-card-carousel-btn"
