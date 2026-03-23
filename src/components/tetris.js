@@ -47,7 +47,7 @@ const tetrisSketch = (p) => {
     const rotateDelay = 100; // ms between rotations when held
     const hardDropDelay = 200; // ms between hard drops when held
     const initialMoveDelay = 300; // ms initial delay before continuous movement
-    const initialRotateDelay = 500; // ms initial delay before continuous rotation
+    const initialRotateDelay = 1000; // ms initial delay before continuous rotation
 
 // Track if keys were just pressed
     let moveInitial = false;
@@ -169,8 +169,7 @@ const tetrisSketch = (p) => {
         gameStarted = true;
         startButton.hide();
         initGame();
-        // let canvas = document.querySelector('canvas');
-        // canvas.focus();
+        p.canvas.focus();
         canvasFocused = true;
     }
 
