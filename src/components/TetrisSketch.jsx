@@ -1,19 +1,22 @@
-import { useEffect, useRef } from 'react'
+import {useEffect, useRef, useState} from 'react'
 import p5 from 'p5'
 import { tetrisSketch } from '../tetris.js'
 
 export default function TetrisSketch() {
     const containerRef = useRef(null)
+    const [instance, instanceSetter] = useState(null);
 
     useEffect(() => {
-        if (!containerRef.current) return
+        if (!containerRef.current) return;
 
-        const instance = new p5(tetrisSketch, containerRef.current)
+        if (instance !== null) return;
+        const canvas = new p5(tetrisSketch, containerRef.current);
+        instanceSetter(canvas);
 
         return () => {
-            instance.remove()
+            canvas.remove();
         }
-    }, [])
+    }, [instance, instanceSetter])
 
     return <div ref={containerRef} className="tetris-sketch-container" />
 }
