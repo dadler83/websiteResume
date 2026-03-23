@@ -39,6 +39,8 @@ const tetrisSketch = (p) => {
 // Piece bag for pseudo-random generation
     let pieceBag = [];
 
+//     TODO: in react, the initial rotation buffers aren't functioning
+//     TODO: focus canvas so it stays 'started' after clicking play?
 // Input delay counters for continuous key press
     let moveCounter = 0;
     let rotateCounter = 0;
