@@ -180,7 +180,7 @@ export default function ModulationChart() {
 
     return (
         <div className="mc-container">
-            <h3 className="mc-title">Signal + Carrier + AM Modulation</h3>
+            <h4 className="mc-title">Signal + Carrier + AM Modulation</h4>
 
             <svg ref={svgRef} />
 
