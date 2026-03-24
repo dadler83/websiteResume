@@ -1,5 +1,6 @@
 import './About.css'
 import TetrisSketch from '../components/TetrisSketch.jsx'
+import RoundedPictureFrame from '../components/RoundedPictureFrame.jsx'
 
 const experiences = [
     {
@@ -70,7 +71,9 @@ export default function About() {
 
             {/* ── Bio ────────────────────────────────── */}
             <section className="about-bio">
-                <div className="about-avatar">👤</div>
+                <div className="about-avatar">
+                    <RoundedPictureFrame size="180px" interval={3000} />
+                </div>
                 <div className="about-bio-text">
                     <h2>A little about me</h2>
                     <p>
