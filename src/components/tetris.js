@@ -39,7 +39,6 @@ const tetrisSketch = (p) => {
 // Piece bag for pseudo-random generation
     let pieceBag = [];
 
-//     TODO: in react, the initial rotation buffers aren't functioning
 //     TODO: focus canvas so it stays 'started' after clicking play?
 // Input delay counters for continuous key press
     let moveCounter = 0;
@@ -673,7 +672,8 @@ const tetrisSketch = (p) => {
         dropCounter = 0;
     }
 
-    p.keyPressed = () => {
+    p.keyPressed = (event) => {
+        if (event && event.repeat) return; // Ignore OS key-repeat events; debounce/delay logic is handled in draw()
         if (! gameStarted || gameOver || lineClearPaused || !                     canvasFocused) return;
 
         // Reset counters on initial key press for immediate response
