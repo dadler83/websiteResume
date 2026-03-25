@@ -11,6 +11,11 @@
 <div id="sketch1"></div>
 <div id="sketch2"></div>
 
-<script src="tetris.js"></script>
+<script type="module" src="tetris.js"></script>
+<script type="module">
+    // import p5 from 'p5'
+    import { tetrisSketch } from './tetris.js'
+    new p5(tetrisSketch, document.querySelector('#sketch1'))
+</script>
 </body>
 </html>
