@@ -1,5 +1,7 @@
 import './About.css'
 import TetrisSketch from '../components/TetrisSketch.jsx'
+import RoundedPictureFrame from '../components/RoundedPictureFrame.jsx'
+import FlipCard from '../components/FlipCard.jsx'
 
 const experiences = [
     {
@@ -70,7 +72,9 @@ export default function About() {
 
             {/* ── Bio ────────────────────────────────── */}
             <section className="about-bio">
-                <div className="about-avatar">👤</div>
+                <div className="about-avatar">
+                    <RoundedPictureFrame size="100%" interval={3000} />
+                </div>
                 <div className="about-bio-text">
                     <h2>A little about me</h2>
                     <p>
@@ -115,15 +119,6 @@ export default function About() {
                         Completed senior capstone project on real-time audio signal processing.
                     </p>
                 </div>
-                <div className="education-card">
-                    <h3>Minor in Physics</h3>
-                    <p className="edu-institution">State University</p>
-                    <p className="edu-year">2019 – 2023</p>
-                    <p>
-                        Coursework in quantum mechanics, electromagnetism, and optical systems —
-                        providing the scientific foundation behind my work with spectroscopy hardware.
-                    </p>
-                </div>
             </div>
 
             {/* ── Interests ──────────────────────────── */}
@@ -154,12 +149,15 @@ export default function About() {
                         p5.js implementation with SRS wall kicks, a piece-bag randomizer, and a
                         lock-delay system — give it a try!
                     </p>
+                </div>
+                <div className="gaming-sketch-wrapper">
+                    <FlipCard
+                        frontContent={<TetrisSketch />}
+                        backContent={<div />}
+                    />
                     <p className="gaming-controls">
                         <strong>Controls:</strong> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
                     </p>
-                </div>
-                <div className="gaming-sketch-wrapper">
-                    <TetrisSketch />
                 </div>
             </div>
 
