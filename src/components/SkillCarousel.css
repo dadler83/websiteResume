@@ -23,6 +23,7 @@
     justify-content: center;
     gap: 1rem;
     margin-top: 1.5rem;
+    max-width: 95vw;
 }
 
 .flip-card-carousel-btn {
@@ -57,9 +58,11 @@
     overflow-x: scroll;
     scrollbar-width: none;
     align-items: stretch;
+    /* Vertical padding so hovered cards (translateY(-10px)) aren't clipped */
+    padding: 10px 0;
     /* Fade cards in/out at left and right edges as they scroll */
     mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-    --webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
 .flip-card-row::-webkit-scrollbar {
