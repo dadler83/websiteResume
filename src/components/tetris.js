@@ -39,7 +39,6 @@ const tetrisSketch = (p) => {
 // Piece bag for pseudo-random generation
     let pieceBag = [];
 
-//     TODO: in react, the initial rotation buffers aren't functioning
 //     TODO: focus canvas so it stays 'started' after clicking play?
 // Input delay counters for continuous key press
     let moveCounter = 0;
@@ -48,8 +47,8 @@ const tetrisSketch = (p) => {
     const moveDelay = 60; // ms between moves when held
     const rotateDelay = 100; // ms between rotations when held
     const hardDropDelay = 200; // ms between hard drops when held
-    const initialMoveDelay = 300; // ms initial delay before continuous movement
-    const initialRotateDelay = 1000; // ms initial delay before continuous rotation
+    const initialMoveDelay = 200; // ms initial delay before continuous movement
+    const initialRotateDelay = 200; // ms initial delay before continuous rotation
 
 // Track if keys were just pressed
     let moveInitial = false;
@@ -245,7 +244,7 @@ const tetrisSketch = (p) => {
                 p.fill(colors[i]);
                 p.text(letters[i],
                     p.width / 2 + letterOrigin +
-                        letterSpacing.slice(0, i).reduce((prev, curr) => (prev + curr), 0),
+                    letterSpacing.slice(0, i).reduce((prev, curr) => (prev + curr), 0),
                     p.height / 2 - 100);
             }
             p.noStroke();
@@ -348,9 +347,9 @@ const tetrisSketch = (p) => {
             }
 
             // Handle continuous left/right movement
-            let currentMoveDelay = moveInitial ?                             initialMoveDelay :                      moveDelay;
+            let currentMoveDelay = moveInitial ? initialMoveDelay : moveDelay;
             if (p.keyIsDown(p.LEFT_ARROW) && moveCounter > currentMoveDelay) {
-                currentPiece.             x--;
+                currentPiece.x--;
                 if (collides(currentPiece)) currentPiece.x++;
                 else resetLockDelay(); // Reset lock delay on successful move
                 moveCounter = 0;
@@ -358,7 +357,7 @@ const tetrisSketch = (p) => {
             }
 
             if (p.keyIsDown(p.RIGHT_ARROW) && moveCounter > currentMoveDelay) {
-                currentPiece.                    x++;
+                currentPiece.x++;
                 if (collides(currentPiece)) currentPiece.x--;
                 else resetLockDelay(); // Reset lock delay on successful move
                 moveCounter = 0;
@@ -371,7 +370,7 @@ const tetrisSketch = (p) => {
             }
 
             // Handle continuous rotation
-            let currentRotateDelay = rotateInitial ?                       initialRotateDelay :                    rotateDelay;
+            let currentRotateDelay = rotateInitial ? initialRotateDelay : rotateDelay;
             if (p.keyIsDown(p.UP_ARROW) && rotateCounter > currentRotateDelay) {
                 if (tryRotate(currentPiece, 1)) {
                     resetLockDelay();
@@ -673,23 +672,25 @@ const tetrisSketch = (p) => {
         dropCounter = 0;
     }
 
-    p.keyPressed = () => {
-        if (! gameStarted || gameOver || lineClearPaused || !                     canvasFocused) return;
+    p.keyPressed = (event) => {
+        if (event && event.repeat) return; // Ignore OS key-repeat events; debounce/delay logic is handled in draw()
+        if (! gameStarted || gameOver || lineClearPaused || !canvasFocused) return;
+        // console.log("input: ", p.keyCode);
 
         // Reset counters on initial key press for immediate response
-        if (p.keyCode === p.LEFT_ARROW) {
+        if (p.keyCode === p.LEFT_ARROW || p.keyCode === 37) {
             currentPiece.x--;
             if (collides(currentPiece)) currentPiece.x++;
             else resetLockDelay();
             moveCounter = 0;
             moveInitial = true; // Mark as initial press
-        } else if (p.   keyCode === p.RIGHT_ARROW) {
+        } else if (p.keyCode === p.RIGHT_ARROW || p.keyCode === 39) {
             currentPiece.x++;
             if (collides(currentPiece)) currentPiece.x--;
             else resetLockDelay();
             moveCounter = 0;
             moveInitial = true; // Mark as initial press
-        } else if (p.keyCode === p.UP_ARROW) {
+        } else if (p.keyCode === p.UP_ARROW || p.keyCode === 38) {
             if (tryRotate(currentPiece, 1)) {
                 resetLockDelay();
             }
