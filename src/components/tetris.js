@@ -244,7 +244,7 @@ const tetrisSketch = (p) => {
                 p.fill(colors[i]);
                 p.text(letters[i],
                     p.width / 2 + letterOrigin +
-                        letterSpacing.slice(0, i).reduce((prev, curr) => (prev + curr), 0),
+                    letterSpacing.slice(0, i).reduce((prev, curr) => (prev + curr), 0),
                     p.height / 2 - 100);
             }
             p.noStroke();
@@ -675,21 +675,22 @@ const tetrisSketch = (p) => {
     p.keyPressed = (event) => {
         if (event && event.repeat) return; // Ignore OS key-repeat events; debounce/delay logic is handled in draw()
         if (! gameStarted || gameOver || lineClearPaused || !canvasFocused) return;
+        // console.log("input: ", p.keyCode);
 
         // Reset counters on initial key press for immediate response
-        if (p.keyCode === p.LEFT_ARROW) {
+        if (p.keyCode === p.LEFT_ARROW || p.keyCode === 37) {
             currentPiece.x--;
             if (collides(currentPiece)) currentPiece.x++;
             else resetLockDelay();
             moveCounter = 0;
             moveInitial = true; // Mark as initial press
-        } else if (p.keyCode === p.RIGHT_ARROW) {
+        } else if (p.keyCode === p.RIGHT_ARROW || p.keyCode === 39) {
             currentPiece.x++;
             if (collides(currentPiece)) currentPiece.x--;
             else resetLockDelay();
             moveCounter = 0;
             moveInitial = true; // Mark as initial press
-        } else if (p.keyCode === p.UP_ARROW) {
+        } else if (p.keyCode === p.UP_ARROW || p.keyCode === 38) {
             if (tryRotate(currentPiece, 1)) {
                 resetLockDelay();
             }
