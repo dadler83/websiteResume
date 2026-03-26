@@ -21,7 +21,6 @@
 
 .about-hero h1 {
     font-family: Kingsman;
-    font-size: 6rem;
     color: #1B3720;
     margin: 0;
     text-align: center;
@@ -42,13 +41,9 @@
     width: 100%;
     max-width: 1100px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
-    background-color: #E5E1EE;
-    border-radius: 24px;
-    padding: 3rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     opacity: 0;
     animation: aboutFadeIn 0.8s ease-out 0.2s forwards;
 }
@@ -58,6 +53,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 .about-bio-text h2 {
@@ -82,7 +79,6 @@
     margin: 0;
     align-self: flex-start;
     width: 100%;
-    max-width: 1100px;
 }
 
 /* ── Experience timeline ──────────────────────────────── */
@@ -147,7 +143,7 @@
     width: 100%;
     max-width: 1100px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     opacity: 0;
     animation: aboutFadeIn 0.8s ease-out 0.5s forwards;
@@ -319,10 +315,6 @@
         margin: 0 auto;
     }
 
-    .about-education {
-        grid-template-columns: 1fr;
-    }
-
     .about-interests {
         grid-template-columns: 1fr 1fr;
     }
@@ -342,10 +334,6 @@
 }
 
 @media (max-width: 580px) {
-    .about-hero h1 {
-        font-size: 3.5rem;
-    }
-
     .about-interests {
         grid-template-columns: 1fr;
     }
