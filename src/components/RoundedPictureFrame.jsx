@@ -1,24 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import './RoundedPictureFrame.css';
+import img1 from '../assets/self-img/2026-MardiGras-DSLR-0725.jpg';
+import img2 from '../assets/self-img/2026-MardiGras-DSLR-0726.jpg';
+import img3 from '../assets/self-img/2026-MardiGras-DSLR-1295.jpg';
+import img4 from '../assets/self-img/IMG_7293.jpeg';
 
-// Default catalogue — replace src values with real photos as needed
 const DEFAULT_IMAGES = [
-    {
-        src: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="%231B3720"/><text x="50%25" y="54%25" dominant-baseline="middle" text-anchor="middle" font-size="120" font-family="serif">🧑‍💻</text></svg>',
-        alt: 'Developer',
-    },
-    {
-        src: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="%234F86C6"/><text x="50%25" y="54%25" dominant-baseline="middle" text-anchor="middle" font-size="120" font-family="serif">🔬</text></svg>',
-        alt: 'Scientist',
-    },
-    {
-        src: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="%23E5E1EE"/><text x="50%25" y="54%25" dominant-baseline="middle" text-anchor="middle" font-size="120" font-family="serif">🎸</text></svg>',
-        alt: 'Musician',
-    },
-    {
-        src: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="%23D5F5E3"/><text x="50%25" y="54%25" dominant-baseline="middle" text-anchor="middle" font-size="120" font-family="serif">🌿</text></svg>',
-        alt: 'Outdoors',
-    },
+    { src: img1, alt: 'Photo 1' },
+    { src: img2, alt: 'Photo 2' },
+    { src: img3, alt: 'Photo 3' },
+    { src: img4, alt: 'Photo 4' },
 ];
 
 // Duration (ms) of the cross-fade CSS transition
