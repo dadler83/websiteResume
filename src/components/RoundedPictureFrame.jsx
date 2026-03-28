@@ -27,7 +27,7 @@ const FADE_MS = 600;
  */
 export default function RoundedPictureFrame({
     images = DEFAULT_IMAGES,
-    interval = 3000,
+    interval = 8000,
     size = '180px',
 }) {
     const catalogue = images.length > 0 ? images : DEFAULT_IMAGES;
@@ -35,25 +35,22 @@ export default function RoundedPictureFrame({
     const [currentIndex, setCurrentIndex] = useState(0);
     const [visible, setVisible] = useState(true);
     const intervalRef = useRef(null);
-    const fadeOutRef = useRef(null);
 
     useEffect(() => {
         if (catalogue.length <= 1) return;
 
-        intervalRef.current = setInterval(() => {
+        intervalRef.current = setInterval(async () => {
             // Fade the current image out
             setVisible(false);
-
+            await new Promise((resolve) => setTimeout(resolve, FADE_MS));
             // After the fade-out completes, advance to the next image and fade back in
-            fadeOutRef.current = setTimeout(() => {
-                setCurrentIndex((prev) => (prev + 1) % catalogue.length);
-                setVisible(true);
-            }, FADE_MS);
+            setCurrentIndex((prev) => (prev + 1) % catalogue.length);
+            await new Promise((resolve) => setTimeout(resolve, FADE_MS));
+            setVisible(true);
         }, interval);
 
         return () => {
             clearInterval(intervalRef.current);
-            clearTimeout(fadeOutRef.current);
         };
     }, [interval, catalogue.length]); // eslint-disable-line react-hooks/exhaustive-deps
 

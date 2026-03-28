@@ -73,7 +73,7 @@ export default function About() {
             {/* ── Bio ────────────────────────────────── */}
             <section className="about-bio">
                 <div className="about-avatar">
-                    <RoundedPictureFrame size="100%" interval={3000} />
+                    <RoundedPictureFrame size="100%" interval={8000} />
                 </div>
                 <div className="about-bio-text">
                     <h2>A little about me</h2>
