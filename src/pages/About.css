@@ -268,14 +268,18 @@
 
 .gaming-controls {
     font-size: 0.9rem !important;
-    background-color: #E5E1EE;
+    background-color: #1B3720;
     border-radius: 12px;
     padding: 0.75rem 1rem !important;
-    color: #1B3720 !important;
+    color: #F8FFE5 !important;
 }
 
 .gaming-sketch-wrapper {
     display: flex;
+    background-color: #E5E1EE;
+    padding: 1rem;
+    padding-top: 3rem;
+    border-radius: 1rem;
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;

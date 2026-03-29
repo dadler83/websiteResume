@@ -12,13 +12,6 @@ const experiences = [
             'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer. Responsibilities include real-time data acquisition systems, DSP algorithm implementation, and building intuitive visualization interfaces.',
     },
     {
-        date: '2021 – 2023',
-        role: 'Software Engineering Intern',
-        company: 'Acme Embedded Systems',
-        description:
-            'Developed low-level C drivers for sensor peripherals, automated regression test suites in Python, and contributed to a Qt-based desktop application used in production hardware testing.',
-    },
-    {
         date: '2020 – 2021',
         role: 'Research Assistant',
         company: 'University Physics Lab',
@@ -27,38 +20,6 @@ const experiences = [
     },
 ]
 
-const interests = [
-    {
-        icon: '🎸',
-        title: 'Music',
-        description: 'Playing guitar and experimenting with audio synthesis in my free time.',
-    },
-    {
-        icon: '📐',
-        title: 'Design',
-        description: 'Typography, UI/UX, and the intersection of aesthetics and function.',
-    },
-    {
-        icon: '🔬',
-        title: 'Science',
-        description: 'Quantum physics, optics, and the engineering challenges they present.',
-    },
-    {
-        icon: '🌿',
-        title: 'Outdoors',
-        description: 'Hiking, camping, and recharging away from screens whenever possible.',
-    },
-    {
-        icon: '📚',
-        title: 'Learning',
-        description: 'Picking up new languages, frameworks, and concepts continuously.',
-    },
-    {
-        icon: '🎮',
-        title: 'Gaming',
-        description: 'A lifelong gamer — playing and building games has sharpened my problem-solving and design instincts.',
-    },
-]
 
 export default function About() {
     return (
@@ -121,18 +82,6 @@ export default function About() {
                 </div>
             </div>
 
-            {/* ── Interests ──────────────────────────── */}
-            <h2 className="about-section-header">Interests</h2>
-            <div className="about-interests">
-                {interests.map((item) => (
-                    <div className="interest-card" key={item.title}>
-                        <div className="interest-icon">{item.icon}</div>
-                        <h3>{item.title}</h3>
-                        <p>{item.description}</p>
-                    </div>
-                ))}
-            </div>
-
             {/* ── Gaming ─────────────────────────────── */}
             <h2 className="about-section-header">Gaming</h2>
             <div className="about-gaming">
@@ -150,14 +99,19 @@ export default function About() {
                         lock-delay system — give it a try!
                     </p>
                 </div>
-                <div className="gaming-sketch-wrapper">
+                <div>
                     <FlipCard
-                        frontContent={<TetrisSketch />}
-                        backContent={<div />}
+                        frontContent={
+                        <div className="gaming-sketch-wrapper">
+
+                            <TetrisSketch />
+                            <p className="gaming-controls">
+                                <strong>Controls:</strong>  <br/> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; <br/> ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
+                            </p>
+                        </div>
+                    }
+                        backContent={<div className="gaming-sketch-wrapper" style={{width: "100%", height: "100%", padding: "0"}}/>}
                     />
-                    <p className="gaming-controls">
-                        <strong>Controls:</strong> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
-                    </p>
                 </div>
             </div>
 

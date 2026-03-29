@@ -18,5 +18,10 @@ export default function TetrisSketch() {
         }
     }, [instance, instanceSetter])
 
-    return <div ref={containerRef} className="tetris-sketch-container" />
+    return <div
+        ref={containerRef}
+        className="tetris-sketch-container"
+        onClick={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
+    />
 }
