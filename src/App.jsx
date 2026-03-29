@@ -5,6 +5,7 @@ import About from './pages/About'
 import NotFound from './pages/NotFound'
 import CodeEditor from './pages/CodeEditor'
 import StyleGuide from './pages/StyleGuide'
+import CV from './pages/CV'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/editor" element={<CodeEditor />} />
                     <Route path="/style-guide" element={<StyleGuide />} />
+                    <Route path="/cv" element={<CV />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './About.css'
 import TetrisSketch from '../components/TetrisSketch.jsx'
 import RoundedPictureFrame from '../components/RoundedPictureFrame.jsx'
@@ -69,7 +70,10 @@ export default function About() {
             </div>
 
             {/* ── Education ──────────────────────────── */}
-            <h2 className="about-section-header">Education</h2>
+            <div className="about-education-header">
+                <h2 className="about-section-header">Education</h2>
+                <Link to="/cv" className="cv-link">View Full CV →</Link>
+            </div>
             <div className="about-education">
                 <div className="education-card">
                     <h3>B.S. Computer Science</h3>
