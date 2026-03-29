@@ -1,0 +1,22 @@
+.cv-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.cv-page h1 {
+    font-family: Melanin;
+    font-size: 2.8rem;
+    color: #1B3720;
+    margin: 2rem 0 1rem 0;
+}
+
+.cv-page p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
+    max-width: 800px;
+    text-align: center;
+}
