@@ -67,13 +67,11 @@ export default function About() {
                         </div>
                     </div>
                 ))}
+                <Link to="/cv" className="cv-link">View Full CV →</Link>
             </div>
 
             {/* ── Education ──────────────────────────── */}
-            <div className="about-education-header">
-                <h2 className="about-section-header">Education</h2>
-                <Link to="/cv" className="cv-link">View Full CV →</Link>
-            </div>
+            <h2 className="about-section-header">Education</h2>
             <div className="about-education">
                 <div className="education-card">
                     <h3>B.S. Computer Science</h3>

@@ -139,24 +139,13 @@
 }
 
 /* ── Education ────────────────────────────────────────── */
-.about-education-header {
-    width: 100%;
-    max-width: 1100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.about-education-header .about-section-header {
-    margin: 0;
-}
-
 .cv-link {
     font-family: MontserratSemibold;
     font-size: 1rem;
     color: #1B3720;
     text-decoration: none;
     white-space: nowrap;
+    align-self: flex-end;
     transition: opacity 0.2s ease;
 }
 
