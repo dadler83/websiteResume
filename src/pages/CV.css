@@ -14,7 +14,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     display: flex;
     flex-direction: column;
-    font-family: "Open Sans", MontserratSemibold, system-ui, sans-serif;
+    font-family: MontserratSemibold, system-ui, sans-serif;
     font-size: 12px;
     color: #000;
 }
