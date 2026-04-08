@@ -55,7 +55,7 @@ export default function About() {
             </section>
 
             {/* ── Experience ─────────────────────────── */}
-            <div>
+            <div className="about-section-header">
                 <h2 className="about-section-header">Experience</h2>
                 <Link to="/cv" className="cv-link">View Full CV →</Link>
             </div>
@@ -73,7 +73,7 @@ export default function About() {
             </div>
 
             {/* ── Education ──────────────────────────── */}
-            <div>
+            <div className="about-section-header">
                 <h2 className="about-section-header">Education</h2>
                 <Link to="/cv" className="cv-link">View Full CV →</Link>
             </div>

@@ -83,6 +83,7 @@
     margin: 0;
     align-self: flex-start;
     width: 100%;
+    max-height: 4rem;
 }
 
 /* ── Experience timeline ──────────────────────────────── */
@@ -151,7 +152,9 @@
     white-space: nowrap;
     align-self: flex-end;
     transition: opacity 0.2s ease;
-    float: right;
+    position: relative;
+    top: -4.5rem;
+    left: clamp(170px, 30vw, 500px);
 }
 
 .cv-link:hover {
@@ -356,6 +359,10 @@
 
     .gaming-sketch-wrapper {
         justify-self: center;
+    }
+
+    .about-section-header h2 {
+        text-align: left;
     }
 }
 
