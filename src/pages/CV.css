@@ -87,10 +87,10 @@
 }
 
 .cv-contact-icon {
-    width: 20px;
-    text-align: center;
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
-    font-size: 0.9em;
+    vertical-align: middle;
 }
 
 .cv-contact a {
@@ -172,7 +172,17 @@
 }
 
 .cv-section-icon {
+    width: 16px;
+    height: 16px;
     margin-right: 0.3em;
+    vertical-align: middle;
+}
+
+.cv-inline-icon {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 0.15em;
 }
 
 /* ── Education / Experience entries ───────────────────── */

@@ -1,5 +1,17 @@
 import './CV.css'
 
+// CV-specific icons
+import iconMail from '../assets/cv-icons/mail.svg'
+import iconLocation from '../assets/cv-icons/location.svg'
+import iconCalendar from '../assets/cv-icons/calendar.svg'
+import iconBriefcase from '../assets/cv-icons/briefcase.svg'
+import iconGradCap from '../assets/cv-icons/graduation-cap-solid.svg'
+import iconProjects from '../assets/cv-icons/projects.svg'
+
+// Existing brand icons (black variants)
+import iconGitHub from '../assets/GitHub_Invertocat_Black.svg'
+import iconLinkedIn from '../assets/linkedin-svgrepo-com.svg'
+
 const contact = {
     email: 'david@davidadler.dev',
     location: 'Portland, OR',
@@ -120,27 +132,27 @@ export default function CV() {
                         <h2 className="cv-sidebar-heading">Contact</h2>
                         <div className="cv-contact">
                             <div className="cv-contact-item">
-                                <span className="cv-contact-icon">✉</span>
+                                <img src={iconMail} alt="" className="cv-contact-icon" />
                                 <a href={`mailto:${contact.email}`}>{contact.email}</a>
                             </div>
                             <div className="cv-contact-item">
-                                <span className="cv-contact-icon">📍</span>
+                                <img src={iconLocation} alt="" className="cv-contact-icon" />
                                 <span>{contact.location}</span>
                             </div>
                             <div className="cv-contact-item">
-                                <span className="cv-contact-icon">🌐</span>
+                                <img src={iconMail} alt="" className="cv-contact-icon" />
                                 <a href={`https://${contact.website}`} target="_blank" rel="noopener noreferrer">
                                     {contact.website}
                                 </a>
                             </div>
                             <div className="cv-contact-item">
-                                <span className="cv-contact-icon">⌨</span>
+                                <img src={iconGitHub} alt="" className="cv-contact-icon" />
                                 <a href={`https://github.com/${contact.github}`} target="_blank" rel="noopener noreferrer">
                                     @{contact.github}
                                 </a>
                             </div>
                             <div className="cv-contact-item">
-                                <span className="cv-contact-icon">🔗</span>
+                                <img src={iconLinkedIn} alt="" className="cv-contact-icon" />
                                 <a href={`https://linkedin.com/in/${contact.linkedin}`} target="_blank" rel="noopener noreferrer">
                                     LinkedIn
                                 </a>
@@ -168,14 +180,14 @@ export default function CV() {
                         {/* Education */}
                         <section>
                             <h2 className="cv-section-heading">
-                                <span className="cv-section-icon">🎓</span> Education
+                                <img src={iconGradCap} alt="" className="cv-section-icon" /> Education
                             </h2>
                             {education.map((item) => (
                                 <div className="cv-entry" key={item.name}>
                                     <div className="cv-entry-header">
                                         <div className="cv-entry-info">
-                                            <span>📅 {item.date}</span>
-                                            <span>📍 {item.location}</span>
+                                            <span><img src={iconCalendar} alt="" className="cv-inline-icon" /> {item.date}</span>
+                                            <span><img src={iconLocation} alt="" className="cv-inline-icon" /> {item.location}</span>
                                         </div>
                                         <div className="cv-entry-name">{item.name}</div>
                                     </div>
@@ -187,14 +199,14 @@ export default function CV() {
                         {/* Experience */}
                         <section>
                             <h2 className="cv-section-heading">
-                                <span className="cv-section-icon">💼</span> Work Experience
+                                <img src={iconBriefcase} alt="" className="cv-section-icon" /> Work Experience
                             </h2>
                             {experience.map((item) => (
                                 <div className="cv-entry" key={item.name}>
                                     <div className="cv-entry-header">
                                         <div className="cv-entry-info">
-                                            <span>📅 {item.date}</span>
-                                            <span>📍 {item.location}</span>
+                                            <span><img src={iconCalendar} alt="" className="cv-inline-icon" /> {item.date}</span>
+                                            <span><img src={iconLocation} alt="" className="cv-inline-icon" /> {item.location}</span>
                                         </div>
                                         <div className="cv-entry-name">{item.name}</div>
                                     </div>
@@ -206,7 +218,7 @@ export default function CV() {
                         {/* Projects */}
                         <section>
                             <h2 className="cv-section-heading">
-                                <span className="cv-section-icon">🛠</span> Projects
+                                <img src={iconProjects} alt="" className="cv-section-icon" /> Projects
                             </h2>
                             {projects.map((item) => (
                                 <div className="cv-project" key={item.name}>
@@ -214,15 +226,15 @@ export default function CV() {
                                         <span className="cv-project-name">
                                             {item.link ? (
                                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                                    {item.name} 🔗
+                                                    {item.name}
                                                 </a>
                                             ) : (
                                                 item.name
                                             )}
                                         </span>
                                         <div className="cv-project-info">
-                                            <span>📅 {item.date}</span>
-                                            <span>⚙ {item.tech}</span>
+                                            <span><img src={iconCalendar} alt="" className="cv-inline-icon" /> {item.date}</span>
+                                            <span><img src={iconProjects} alt="" className="cv-inline-icon" /> {item.tech}</span>
                                         </div>
                                     </div>
                                     <p className="cv-entry-description">{item.description}</p>
