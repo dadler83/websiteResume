@@ -5,6 +5,8 @@
     gap: 3rem;
     align-items: center;
     padding: 2rem;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* ── Hero ─────────────────────────────────────────────── */
@@ -25,6 +27,9 @@
     margin: 0;
     text-align: center;
     line-height: 1.1;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .about-hero .about-subtitle {
@@ -147,9 +152,7 @@
     white-space: nowrap;
     align-self: flex-end;
     transition: opacity 0.2s ease;
-    position: relative;
-    top: -40px;
-    left: 30rem;
+    float: right;
 }
 
 .cv-link:hover {
@@ -301,6 +304,8 @@
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .tetris-sketch-container {
