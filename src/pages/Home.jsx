@@ -23,14 +23,14 @@ export default function Home() {
                 <div className="home-right">
                     <FlipCard
                         frontContent={
-                            <div className="rounded-box" style={{width:'100%', height: '100%', maxWidth: '30rem'}}>
+                            <div className="rounded-box" style={{width:'100%', height: '100%', maxWidth: '35rem'}}>
                                 <h2>Hello World!</h2>
                                 <h4>...or as I've also said</h4>
                                 <MonacoEditor />
                             </div>
                         }
                         backContent={
-                            <div className="rounded-box" style={{width:'95%', height: '93%', maxWidth: '30rem'}}>
+                            <div className="rounded-box" style={{width:'100%', height: '100%', padding: '0px'}}>
                                 <h2>Hello World!</h2>
                             </div>
                         }
@@ -42,14 +42,14 @@ export default function Home() {
 
                 <FlipCard
                     frontContent={
-                        <div className="fathom-box" style={{width:'95%', height: '100%'}}>
+                        <div className="fathom-box" style={{width:'100%', height: '100%'}}>
                             <div className="fathom-image">
                                 <img src={fathom} alt="HighQ Fathom Spectormeter" />
                             </div>
                         </div>
                     }
                     backContent={
-                        <div className="fathom-box" style={{width:'95%', height: '100%'}}>
+                        <div className="fathom-box" style={{width:'100%', height: '100%', padding: '0px', margin: '0px'}}>
                             {/*<div className="fathom-image">*/}
                             {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
                             {/*</div>*/}
@@ -75,12 +75,12 @@ export default function Home() {
                     <div className={"signal-widgets"}>
                         <FlipCard
                             frontContent={
-                                <div className="signal-widget-box" style={{width:'95%', height: '100%'}}>
+                                <div className="signal-widget-box" style={{width:'100%', height: '100%'}}>
                                     <PulseChart />
                                 </div>
                             }
                             backContent={
-                                <div className="signal-widget-box" style={{width:'95%', height: '90%'}}>
+                                <div className="signal-widget-box" style={{width:'100%', height: '100%', padding: '0px'}}>
                                     {/*<div className="fathom-image">*/}
                                     {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
                                     {/*</div>*/}
@@ -89,12 +89,12 @@ export default function Home() {
                         />
                         <FlipCard
                             frontContent={
-                                <div className="signal-widget-box" style={{width:'95%', height: '100%'}}>
+                                <div className="signal-widget-box" style={{width:'100%', height: '100%'}}>
                                     <ModulationChart/>
                                 </div>
                             }
                             backContent={
-                                <div className="signal-widget-box" style={{width:'95%', height: '90%'}}>
+                                <div className="signal-widget-box" style={{width:'100%', height: '100%', padding: '0px'}}>
                                     {/*<div className="fathom-image">*/}
                                     {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
                                     {/*</div>*/}
