@@ -4,6 +4,7 @@ import img1 from '../assets/self-img/2026-MardiGras-DSLR-0725.jpg';
 import img2 from '../assets/self-img/2026-MardiGras-DSLR-0726.jpg';
 import img3 from '../assets/self-img/2026-MardiGras-DSLR-1295.jpg';
 import img4 from '../assets/self-img/IMG_7293.jpeg';
+import {preload} from "react-dom";
 
 const DEFAULT_IMAGES = [
     { src: img1, alt: 'Photo 1' },
@@ -36,6 +37,10 @@ export default function RoundedPictureFrame({
     const [visible, setVisible] = useState(true);
     const intervalRef = useRef(null);
 
+    // for (const img of catalogue) {
+    //     preload(img.src, { as: 'image' });
+    // }
+
     useEffect(() => {
         if (catalogue.length <= 1) return;
 
@@ -44,6 +49,7 @@ export default function RoundedPictureFrame({
             setVisible(false);
             await new Promise((resolve) => setTimeout(resolve, FADE_MS));
             // After the fade-out completes, advance to the next image and fade back in
+            // todo: fix picture frame jumping
             setCurrentIndex((prev) => (prev + 1) % catalogue.length);
             await new Promise((resolve) => setTimeout(resolve, FADE_MS));
             setVisible(true);
