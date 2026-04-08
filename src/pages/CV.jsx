@@ -140,7 +140,7 @@ export default function CV() {
                                 <span>{contact.location}</span>
                             </div>
                             <div className="cv-contact-item">
-                                <img src={iconMail} alt="" className="cv-contact-icon" />
+                                <img src={iconProjects} alt="" className="cv-contact-icon" />
                                 <a href={`https://${contact.website}`} target="_blank" rel="noopener noreferrer">
                                     {contact.website}
                                 </a>
