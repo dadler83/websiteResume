@@ -5,15 +5,16 @@ export default function Giscus({ term }) {
         <section className="giscus-wrapper">
             <GiscusWidget
                 repo="dadler83/websiteResume"
-                repoId="R_kgDOOiVddw"
-                category="Blog Comments"
-                categoryId="DIC_kwDOOiVdd84Cla0e"
+                repoId="R_kgDOQ-A-uA"
+                category="Announcements"
+                categoryId="DIC_kwDOQ-A-uM4C6tDq"
                 mapping="specific"
+                strict="0"
                 term={term}
                 reactionsEnabled="1"
                 emitMetadata="0"
-                inputPosition="top"
-                theme="light"
+                inputPosition="bottom"
+                theme="preferred_color_scheme"
                 lang="en"
                 loading="lazy"
             />
