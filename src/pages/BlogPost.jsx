@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Markdown from 'react-markdown'
+import Giscus from '../components/Giscus'
 import './BlogPost.css'
 
 export default function BlogPost() {
@@ -82,6 +83,8 @@ export default function BlogPost() {
             <article className="blogpost-content">
                 <Markdown>{content}</Markdown>
             </article>
+
+            <Giscus term={slug} />
         </div>
     )
 }

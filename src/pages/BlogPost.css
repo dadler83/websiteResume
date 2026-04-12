@@ -214,6 +214,17 @@
     color: #555;
 }
 
+/* ── Giscus comments ──────────────────────────────────── */
+.giscus-wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(27, 55, 32, 0.15);
+    opacity: 0;
+    animation: blogpostFadeIn 0.8s ease-out 0.4s forwards;
+}
+
 /* ── Fade-in animation ────────────────────────────────── */
 @keyframes blogpostFadeIn {
     from {
