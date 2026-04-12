@@ -1,0 +1,135 @@
+.blog-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.blog-loading {
+    font-size: 1.2rem;
+    color: #1B3720;
+    opacity: 0.7;
+    padding-top: 4rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.blog-hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    gap: 1rem;
+    opacity: 0;
+    animation: blogFadeIn 0.8s ease-out forwards;
+}
+
+.blog-hero h1 {
+    font-family: Kingsman;
+    color: #1B3720;
+    margin: 0;
+    text-align: center;
+    line-height: 1.1;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+}
+
+.blog-subtitle {
+    font-family: MontserratSemibold;
+    font-size: 1.4rem;
+    color: #1B3720;
+    opacity: 0.75;
+    text-align: center;
+    margin: 0;
+}
+
+/* ── Post list ────────────────────────────────────────── */
+.blog-list {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: blogFadeIn 0.8s ease-out 0.2s forwards;
+}
+
+.blog-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-card {
+    background-color: #F8FFE5;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    text-align: left;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.blog-card-date {
+    font-size: 0.85rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.blog-card-title {
+    font-family: MontserratSemibold;
+    font-size: 1.5rem;
+    color: #1B3720;
+    margin: 0.5rem 0;
+}
+
+.blog-card-summary {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+}
+
+.blog-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.blog-tag {
+    background-color: #4F86C6;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+}
+
+/* ── Fade-in animation ────────────────────────────────── */
+@keyframes blogFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 580px) {
+    .blog-container {
+        padding: 1rem;
+    }
+
+    .blog-card {
+        padding: 1.5rem;
+    }
+}

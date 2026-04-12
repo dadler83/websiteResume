@@ -1,0 +1,23 @@
+[
+    {
+        "slug": "hello-world",
+        "title": "Hello World",
+        "date": "2026-04-01",
+        "summary": "Welcome to my blog! An introduction to what I'll be writing about — software development, science, and everything in between.",
+        "tags": ["general", "introduction"]
+    },
+    {
+        "slug": "react-markdown-guide",
+        "title": "Getting Started with React Markdown",
+        "date": "2026-04-05",
+        "summary": "How I built this blog using react-markdown, and why Markdown is a great choice for content-driven React applications.",
+        "tags": ["react", "web-development", "tutorial"]
+    },
+    {
+        "slug": "signal-processing-basics",
+        "title": "Signal Processing Basics",
+        "date": "2026-04-10",
+        "summary": "Fundamental signal processing concepts every developer should know — from sampling theory to filtering.",
+        "tags": ["signal-processing", "science", "tutorial"]
+    }
+]
