@@ -1,4 +1,4 @@
-.blog-container {
+.mylearning-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,38 +9,8 @@
     overflow-x: hidden;
 }
 
-.blog-back-link {
-    align-self: flex-start;
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: #4F86C6;
-    text-decoration: none;
-    font-weight: 600;
-    padding-top: 1rem;
-}
-
-.blog-back-link:hover {
-    text-decoration: underline;
-}
-
-.blog-empty {
-    font-size: 1.1rem;
-    color: #555;
-    text-align: center;
-    padding: 2rem 0;
-}
-
-.blog-loading {
-    font-size: 1.2rem;
-    color: #1B3720;
-    opacity: 0.7;
-    padding-top: 4rem;
-}
-
 /* ── Hero ─────────────────────────────────────────────── */
-.blog-hero {
+.mylearning-hero {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -48,10 +18,10 @@
     padding-top: 4rem;
     gap: 1rem;
     opacity: 0;
-    animation: blogFadeIn 0.8s ease-out forwards;
+    animation: mylearningFadeIn 0.8s ease-out forwards;
 }
 
-.blog-hero h1 {
+.mylearning-hero h1 {
     font-family: Kingsman;
     color: #1B3720;
     margin: 0;
@@ -60,7 +30,7 @@
     font-size: clamp(2.5rem, 6vw, 6rem);
 }
 
-.blog-subtitle {
+.mylearning-subtitle {
     font-family: MontserratSemibold;
     font-size: 1.4rem;
     color: #1B3720;
@@ -69,73 +39,60 @@
     margin: 0;
 }
 
-/* ── Post list ────────────────────────────────────────── */
-.blog-list {
+/* ── Topic grid ──────────────────────────────────────── */
+.mylearning-grid {
     width: 100%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     opacity: 0;
-    animation: blogFadeIn 0.8s ease-out 0.2s forwards;
+    animation: mylearningFadeIn 0.8s ease-out 0.2s forwards;
 }
 
-.blog-card-link {
+.mylearning-card-link {
     text-decoration: none;
     color: inherit;
 }
 
-.blog-card {
+.mylearning-card {
     background-color: #F8FFE5;
     border-radius: 20px;
     padding: 2rem 2.5rem;
-    text-align: left;
+    text-align: center;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
 }
 
-.blog-card:hover {
+.mylearning-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-.blog-card-date {
-    font-size: 0.85rem;
-    color: #555;
-    font-weight: 600;
+.mylearning-card-icon {
+    font-size: 3rem;
 }
 
-.blog-card-title {
+.mylearning-card-title {
     font-family: MontserratSemibold;
     font-size: 1.5rem;
     color: #1B3720;
-    margin: 0.5rem 0;
+    margin: 0;
 }
 
-.blog-card-summary {
+.mylearning-card-description {
     font-size: 1rem;
     color: #444;
     line-height: 1.7;
-    margin: 0 0 1rem 0;
-}
-
-.blog-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.blog-tag {
-    background-color: #4F86C6;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+    margin: 0;
 }
 
 /* ── Fade-in animation ────────────────────────────────── */
-@keyframes blogFadeIn {
+@keyframes mylearningFadeIn {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -148,11 +105,11 @@
 
 /* ── Responsive ───────────────────────────────────────── */
 @media (max-width: 580px) {
-    .blog-container {
+    .mylearning-container {
         padding: 1rem;
     }
 
-    .blog-card {
+    .mylearning-card {
         padding: 1.5rem;
     }
 }

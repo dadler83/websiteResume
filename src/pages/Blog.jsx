@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './Blog.css'
 
+const categoryLabels = {
+    'math-cs': 'Math & CS',
+    'biology': 'Biology',
+    'chemistry': 'Chemistry',
+}
+
 export default function Blog() {
+    const { category } = useParams()
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -10,12 +17,21 @@ export default function Blog() {
         fetch('/blog-posts/posts.json')
             .then((res) => res.json())
             .then((data) => {
-                const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date))
+                let filtered = data
+                if (category) {
+                    filtered = data.filter((p) => p.category === category)
+                }
+                const sorted = filtered.sort((a, b) => new Date(b.date) - new Date(a.date))
                 setPosts(sorted)
                 setLoading(false)
             })
             .catch(() => setLoading(false))
-    }, [])
+    }, [category])
+
+    const title = category ? (categoryLabels[category] || category) : 'Blog'
+    const subtitle = category
+        ? `Posts about ${categoryLabels[category] || category}.`
+        : 'Thoughts on software, science, and everything in between.'
 
     if (loading) {
         return (
@@ -27,14 +43,21 @@ export default function Blog() {
 
     return (
         <div className="blog-container">
+            {category && (
+                <Link to="/my-learning" className="blog-back-link">
+                    ← Back to My Learning
+                </Link>
+            )}
+
             <section className="blog-hero">
-                <h1>Blog</h1>
-                <p className="blog-subtitle">
-                    Thoughts on software, science, and everything in between.
-                </p>
+                <h1>{title}</h1>
+                <p className="blog-subtitle">{subtitle}</p>
             </section>
 
             <div className="blog-list">
+                {posts.length === 0 && (
+                    <p className="blog-empty">No posts in this category yet — check back soon!</p>
+                )}
                 {posts.map((post) => (
                     <Link
                         to={`/blog/${post.slug}`}
