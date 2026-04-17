@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Markdown from 'react-markdown'
 import Giscus from '../components/Giscus'
+import ModulationChart from '../components/ModulationChart'
 import './BlogPost.css'
 
 export default function BlogPost() {
@@ -41,6 +42,9 @@ export default function BlogPost() {
         fetchPost()
     }, [slug])
 
+    const backPath = meta?.category ? `/my-learning/${meta.category}` : '/blog'
+    const backLabel = meta?.category ? '← Back to topic' : '← Back to blog'
+
     if (loading) {
         return (
             <div className="blogpost-container">
@@ -55,7 +59,7 @@ export default function BlogPost() {
                 <h1>Post not found</h1>
                 <p>
                     Sorry, that blog post doesn't exist.{' '}
-                    <Link to="/blog">← Back to blog</Link>
+                    <Link to="/my-learning">← Back to My Learning</Link>
                 </p>
             </div>
         )
@@ -63,8 +67,8 @@ export default function BlogPost() {
 
     return (
         <div className="blogpost-container">
-            <Link to="/blog" className="blogpost-back">
-                ← Back to blog
+            <Link to={backPath} className="blogpost-back">
+                {backLabel}
             </Link>
 
             {meta && (
@@ -82,6 +86,7 @@ export default function BlogPost() {
 
             <article className="blogpost-content">
                 <Markdown>{content}</Markdown>
+                {slug === 'signal-processing-basics' && <ModulationChart />}
             </article>
 
             <Giscus term={slug} />
