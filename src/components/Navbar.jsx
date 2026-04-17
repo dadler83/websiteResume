@@ -49,16 +49,6 @@ export default function Navbar() {
                                 `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
                             }
                         >
-                            Blog
-                        </NavLink>
-                    </li>
-                    <li className="navbar-item">
-                        <NavLink
-                            to="/myLearning"
-                            className={({ isActive }) =>
-                                `navbar-link ${isActive ? 'active' : ''} ${isScrolled ? 'scrolled' : ''}`
-                            }
-                        >
                             My Learning
                         </NavLink>
                     </li>

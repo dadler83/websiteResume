@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Markdown from 'react-markdown'
 import Giscus from '../components/Giscus'
+import ModulationChart from '../components/ModulationChart'
 import './BlogPost.css'
 
 export default function BlogPost() {
@@ -82,6 +83,7 @@ export default function BlogPost() {
 
             <article className="blogpost-content">
                 <Markdown>{content}</Markdown>
+                {slug === 'signal-processing-basics' && <ModulationChart />}
             </article>
 
             <Giscus term={slug} />
