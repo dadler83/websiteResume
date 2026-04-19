@@ -47,6 +47,8 @@
     transform: rotateY(180deg);
     opacity: 0;
     z-index: 1;
+    /*box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);*/
+    border-radius: 1rem;
 }
 
 /* when flipped, fade front out and back in */

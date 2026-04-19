@@ -1,0 +1,172 @@
+.mylearning-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.mylearning-hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    gap: 1rem;
+    opacity: 0;
+    animation: mylearningFadeIn 0.8s ease-out forwards;
+}
+
+.mylearning-hero h1 {
+    font-family: Kingsman;
+    color: #1B3720;
+    margin: 0;
+    text-align: center;
+    line-height: 1.1;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+}
+
+.mylearning-subtitle {
+    font-family: MontserratSemibold;
+    font-size: 1.4rem;
+    color: #1B3720;
+    opacity: 0.75;
+    text-align: center;
+    margin: 0;
+}
+
+/* ── Topic grid ──────────────────────────────────────── */
+.mylearning-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: mylearningFadeIn 0.8s ease-out 0.2s forwards;
+}
+
+.mylearning-card-link:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 50%;
+}
+
+.mylearning-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.mylearning-card {
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-between;
+    gap: 0.75rem;
+    height: 100%;
+    min-height: 350px;
+}
+
+/* ── Per-topic card colors ────────────────────────────── */
+.mylearning-card--math-cs {
+    background-color: #DDEEFF;
+}
+
+.mylearning-card--biology {
+    background-color: #E0F2D8;
+}
+
+.mylearning-card--chemistry {
+    background-color: #EDE5F5;
+}
+
+.mylearning-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.mylearning-card-icon {
+    font-size: 1.2rem;
+}
+
+/* ── LaTeX name overlay (mirrors molecule-viewer-name) ── */
+.latex-viewer-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.latex-viewer-name {
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    font-size: 0.65rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1px 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.mylearning-card:hover .latex-viewer-name {
+    opacity: 1;
+}
+
+.mylearning-card-title {
+    font-family: MontserratSemibold;
+    color: #1B3720;
+    margin: 0;
+}
+
+.mylearning-card-description {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Fade-in animation ────────────────────────────────── */
+@keyframes mylearningFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 890px) {
+    .mylearning-container {
+        padding: 1rem;
+    }
+
+    .mylearning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mylearning-card-link:last-child {
+        width: 100%;
+    }
+
+    .mylearning-card {
+        padding: 1.5rem;
+    }
+}

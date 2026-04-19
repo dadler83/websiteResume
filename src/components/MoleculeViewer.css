@@ -1,0 +1,29 @@
+.molecule-viewer-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.molecule-viewer {
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.molecule-viewer-name {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    font-size: 0.65rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1px 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    line-height: 1.4;
+}
+
+.mylearning-card:hover .molecule-viewer-name {
+    opacity: 1;
+}
