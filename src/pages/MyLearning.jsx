@@ -2,7 +2,23 @@ import { Link } from 'react-router-dom'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
 import MoleculeViewer from '../components/MoleculeViewer'
+import cifData from '../assets/1ud2.cif?raw'
 import './MyLearning.css'
+
+const ethanolPdb = `HETATM    1  C1  UNL     1       0.000   0.000   0.000
+HETATM    2  C2  UNL     1       1.540   0.000   0.000
+HETATM    3  O   UNL     1       2.090   1.200   0.000
+HETATM    4  H1  UNL     1      -0.540   0.900   0.000
+HETATM    5  H2  UNL     1      -0.540  -0.900   0.000
+HETATM    6  H3  UNL     1       1.900  -0.900   0.000
+HETATM    7  H4  UNL     1       1.900   1.900   0.000
+HETATM    8  H5  UNL     1       2.900   1.200   0.900
+HETATM    9  H6  UNL     1       2.900   1.200  -0.900
+CONECT    1    2    4    5
+CONECT    2    1    3    6    7
+CONECT    3    2    8    9
+END
+`
 
 const topics = [
     {
@@ -15,13 +31,13 @@ const topics = [
         slug: 'biology',
         title: 'Biology',
         description: 'Molecular biology, biophysics, and the science of living systems.',
-        molecule: true,
+        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } } },
     },
     {
         slug: 'chemistry',
         title: 'Chemistry',
         description: 'Chemical principles, spectroscopy, and materials science.',
-        icon: '⚗️',
+        molecule: { data: ethanolPdb, format: 'pdb', viewStyle: { stick: {} } },
     },
 ]
 
@@ -52,7 +68,11 @@ export default function MyLearning() {
                                         }}
                                     />
                                 ) : topic.molecule ? (
-                                    <MoleculeViewer />
+                                    <MoleculeViewer
+                                        data={topic.molecule.data}
+                                        format={topic.molecule.format}
+                                        viewStyle={topic.molecule.viewStyle}
+                                    />
                                 ) : (
                                     topic.icon
                                 )}
