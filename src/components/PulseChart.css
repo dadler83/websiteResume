@@ -19,6 +19,8 @@
 .pulse-chart-container svg {
     /*background-color: #fafafa;*/
     border-radius: 8px;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Responsive design */

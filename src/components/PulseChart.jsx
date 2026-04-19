@@ -101,9 +101,13 @@ export default function PulseChart() {
         d3.select(svgRef.current).selectAll("*").remove();
 
         // Create SVG
+        const totalWidth = width + margin.left + margin.right;
+        const totalHeight = height + margin.top + margin.bottom;
         const svg = d3.select(svgRef.current)
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
+            .attr('width', totalWidth)
+            .attr('height', totalHeight)
+            .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
+            .attr('preserveAspectRatio', 'xMidYMid meet')
             .append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
 
