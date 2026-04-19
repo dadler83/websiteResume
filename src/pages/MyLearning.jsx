@@ -17,6 +17,7 @@ const topics = [
         latex: 'f(n) \\in \\mathbb{O}(g(n))' +
             '\\newline \\Leftrightarrow \\newline' +
             ' \\big( \\forall n \\in \\mathbb{N}. \\ \\exists c \\in \\mathbb{R}^{+}. \\ \\exists n_0 \\in \\mathbb{N}. \\ n \\geq n_0 \\implies f(n) \\leq c \\cdot g(n) \\big)',
+        latexName: 'Definition of Big O',
     },
     {
         slug: 'biology',
@@ -53,11 +54,14 @@ export default function MyLearning() {
                             <h2 className="mylearning-card-title">{topic.title}</h2>
                             <span className="mylearning-card-icon">
                                 {topic.latex ? (
-                                    <span
-                                        dangerouslySetInnerHTML={{
-                                            __html: katex.renderToString(topic.latex, { throwOnError: false }),
-                                        }}
-                                    />
+                                    <span className="latex-viewer-wrapper">
+                                        <span
+                                            dangerouslySetInnerHTML={{
+                                                __html: katex.renderToString(topic.latex, { throwOnError: false }),
+                                            }}
+                                        />
+                                        {topic.latexName && <span className="latex-viewer-name">{topic.latexName}</span>}
+                                    </span>
                                 ) : topic.molecule ? (
                                     <MoleculeViewer
                                         data={topic.molecule.data}

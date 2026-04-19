@@ -101,6 +101,32 @@
     font-size: 1.2rem;
 }
 
+/* ── LaTeX name overlay (mirrors molecule-viewer-name) ── */
+.latex-viewer-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.latex-viewer-name {
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    font-size: 0.65rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1px 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.mylearning-card:hover .latex-viewer-name {
+    opacity: 1;
+}
+
 .mylearning-card-title {
     font-family: MontserratSemibold;
     color: #1B3720;
