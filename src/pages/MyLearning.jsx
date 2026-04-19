@@ -43,6 +43,7 @@ export default function MyLearning() {
                     >
                         <article className={`mylearning-card mylearning-card--${topic.slug}`}>
                             <span className="mylearning-card-icon">
+                                <h2 className="mylearning-card-title">{topic.title}</h2>
                                 {topic.latex ? (
                                     <span
                                         dangerouslySetInnerHTML={{
@@ -53,7 +54,6 @@ export default function MyLearning() {
                                     topic.icon
                                 )}
                             </span>
-                            <h2 className="mylearning-card-title">{topic.title}</h2>
                             <p className="mylearning-card-description">{topic.description}</p>
                         </article>
                     </Link>
