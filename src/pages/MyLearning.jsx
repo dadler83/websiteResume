@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import katex from 'katex'
+import 'katex/dist/katex.min.css'
 import './MyLearning.css'
 
 const topics = [
@@ -6,7 +8,7 @@ const topics = [
         slug: 'math-cs',
         title: 'Math & CS',
         description: 'Software development, algorithms, signal processing, and computational topics.',
-        icon: '🧮',
+        latex: '\\sum_{i=0}^{n} x_i',
     },
     {
         slug: 'biology',
@@ -40,7 +42,17 @@ export default function MyLearning() {
                         className="mylearning-card-link"
                     >
                         <article className={`mylearning-card mylearning-card--${topic.slug}`}>
-                            <span className="mylearning-card-icon">{topic.icon}</span>
+                            <span className="mylearning-card-icon">
+                                {topic.latex ? (
+                                    <span
+                                        dangerouslySetInnerHTML={{
+                                            __html: katex.renderToString(topic.latex, { throwOnError: false }),
+                                        }}
+                                    />
+                                ) : (
+                                    topic.icon
+                                )}
+                            </span>
                             <h2 className="mylearning-card-title">{topic.title}</h2>
                             <p className="mylearning-card-description">{topic.description}</p>
                         </article>
