@@ -101,9 +101,13 @@ export default function PulseChart() {
         d3.select(svgRef.current).selectAll("*").remove();
 
         // Create SVG
+        const totalWidth = width + margin.left + margin.right;
+        const totalHeight = height + margin.top + margin.bottom;
         const svg = d3.select(svgRef.current)
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
+            .attr('width', totalWidth)
+            .attr('height', totalHeight)
+            .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
+            .attr('preserveAspectRatio', 'xMidYMid meet')
             .append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
 
@@ -268,6 +272,7 @@ export default function PulseChart() {
                 </label>
 
                 <input
+                    className={"pwm-slider"}
                     id="analog-slider"
                     type="range"
                     min="0"
@@ -284,7 +289,6 @@ export default function PulseChart() {
                     }}
                     onClick={(e) => e.stopPropagation()}
                     onPointerDown={(e) => e.stopPropagation()}
-                    style={{ width: '500px', maxWidth: '60%' }}
                 />
             </div>
         </div>
