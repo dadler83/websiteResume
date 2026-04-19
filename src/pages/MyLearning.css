@@ -72,8 +72,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-content: space-between;
+    justify-content: space-between;
     gap: 0.75rem;
-    min-height: 300px;
+    min-height: 350px;
 }
 
 /* ── Per-topic card colors ────────────────────────────── */
@@ -100,7 +102,6 @@
 
 .mylearning-card-title {
     font-family: MontserratSemibold;
-    font-size: 1.5rem;
     color: #1B3720;
     margin: 0;
 }

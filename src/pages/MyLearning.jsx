@@ -5,7 +5,8 @@ import MoleculeViewer from '../components/MoleculeViewer'
 import cifData from '../assets/1ud2.cif?raw'
 import './MyLearning.css'
 
-const ethanolPdb = `HETATM    1  C1  UNL     1       0.000   0.000   0.000
+const ethanolPdb = `
+HETATM    1  C1  UNL     1       0.000   0.000   0.000
 HETATM    2  C2  UNL     1       1.540   0.000   0.000
 HETATM    3  O   UNL     1       2.090   1.200   0.000
 HETATM    4  H1  UNL     1      -0.540   0.900   0.000
@@ -31,13 +32,13 @@ const topics = [
         slug: 'biology',
         title: 'Biology',
         description: 'Molecular biology, biophysics, and the science of living systems.',
-        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } } },
+        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } }, backgroundColor: '#E0F2D8' },
     },
     {
         slug: 'chemistry',
         title: 'Chemistry',
         description: 'Chemical principles, spectroscopy, and materials science.',
-        molecule: { data: ethanolPdb, format: 'pdb', viewStyle: { stick: {} } },
+        molecule: { data: ethanolPdb, format: 'pdb', viewStyle: { stick: {} }, backgroundColor: '#EDE5F5' },
     },
 ]
 
@@ -59,8 +60,8 @@ export default function MyLearning() {
                         className="mylearning-card-link"
                     >
                         <article className={`mylearning-card mylearning-card--${topic.slug}`}>
+                            <h2 className="mylearning-card-title">{topic.title}</h2>
                             <span className="mylearning-card-icon">
-                                <h2 className="mylearning-card-title">{topic.title}</h2>
                                 {topic.latex ? (
                                     <span
                                         dangerouslySetInnerHTML={{
@@ -72,6 +73,7 @@ export default function MyLearning() {
                                         data={topic.molecule.data}
                                         format={topic.molecule.format}
                                         viewStyle={topic.molecule.viewStyle}
+                                        backgroundColor={topic.molecule.backgroundColor}
                                     />
                                 ) : (
                                     topic.icon

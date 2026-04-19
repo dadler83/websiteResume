@@ -6,6 +6,7 @@ export default function MoleculeViewer({
     data,
     format = 'pdb',
     viewStyle = { stick: {} },
+    backgroundColor = '#000',
     width = 150,
     height = 150,
 }) {
@@ -16,7 +17,7 @@ export default function MoleculeViewer({
         if (!containerRef.current || viewerRef.current || !data) return
 
         const viewer = $3Dmol.createViewer(containerRef.current, {
-            backgroundColor: 'transparent',
+            backgroundColor: backgroundColor,
         })
 
         viewer.addModel(data, format)
