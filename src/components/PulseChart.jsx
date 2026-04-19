@@ -272,6 +272,7 @@ export default function PulseChart() {
                 </label>
 
                 <input
+                    className={"pwm-slider"}
                     id="analog-slider"
                     type="range"
                     min="0"
@@ -288,7 +289,6 @@ export default function PulseChart() {
                     }}
                     onClick={(e) => e.stopPropagation()}
                     onPointerDown={(e) => e.stopPropagation()}
-                    style={{ width: '500px', maxWidth: '60%' }}
                 />
             </div>
         </div>

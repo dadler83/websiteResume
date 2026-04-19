@@ -7,8 +7,6 @@
     color: #1B3720;
     border-radius: 12px;
     /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .pulse-chart-container h3 {
@@ -25,6 +23,11 @@
     height: auto;
 }
 
+.pwm-slider {
+    width: 500px;
+    max-width: 60%;
+}
+
 /* Responsive design */
 @media (max-width: 968px) {
     .pulse-chart-container {
@@ -39,6 +42,10 @@
         width: 100%;
         height: auto;
     }
+
+    .pwm-slider {
+        width: 200px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -48,5 +55,9 @@
 
     .pulse-chart-container h3 {
         font-size: 1.1rem;
+    }
+
+    .pwm-slider {
+        width: 80px;
     }
 }
