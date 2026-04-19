@@ -3,30 +3,32 @@ import katex from 'katex'
 import 'katex/dist/katex.min.css'
 import MoleculeViewer from '../components/MoleculeViewer'
 import cifData from '../assets/1ud2.cif?raw'
-import caffeineJson from '../assets/Conformer3D_COMPOUND_CID_5202.json'
+import serotoninJson from '../assets/Conformer3D_COMPOUND_CID_5202.json'
 import pubchemToSdf from '../utils/pubchemToSdf'
 import './MyLearning.css'
 
-const caffeineSdf = pubchemToSdf(caffeineJson)
+const serotoninSdf = pubchemToSdf(serotoninJson)
 
 const topics = [
     {
         slug: 'math-cs',
         title: 'Math & CS',
         description: 'Software development, algorithms, signal processing, and computational topics.',
-        latex: '\\sum_{i=0}^{n} x_i',
+        latex: 'f(n) \\in \\mathbb{O}(g(n))' +
+            '\\newline \\Leftrightarrow \\newline' +
+            ' \\big( \\exists c \\in \\mathbb{R}. \\ \\exists n_0 \\in \\mathbb{N}. \\ n \\geq n_0 \\implies f(n) \\leq c \\cdot g(n) \\big)',
     },
     {
         slug: 'biology',
         title: 'Biology',
         description: 'Molecular biology, biophysics, and the science of living systems.',
-        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } }, backgroundColor: '#E0F2D8', name: '1UD2 Protein' },
+        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } }, backgroundColor: '#E0F2D8', name: 'alpha-amylase' },
     },
     {
         slug: 'chemistry',
         title: 'Chemistry',
         description: 'Chemical principles, spectroscopy, and materials science.',
-        molecule: { data: caffeineSdf, format: 'sdf', viewStyle: { stick: {} }, backgroundColor: '#EDE5F5', name: 'Caffeine' },
+        molecule: { data: serotoninSdf, format: 'sdf', viewStyle: { stick: {} }, backgroundColor: '#EDE5F5', name: 'Serotonin' },
     },
 ]
 
