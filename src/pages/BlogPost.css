@@ -1,0 +1,249 @@
+.blogpost-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.blogpost-loading {
+    font-size: 1.2rem;
+    color: #1B3720;
+    opacity: 0.7;
+    padding-top: 4rem;
+}
+
+/* ── Back link ────────────────────────────────────────── */
+.blogpost-back {
+    align-self: flex-start;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 1rem auto;
+    font-family: MontserratSemibold;
+    font-size: 1rem;
+    color: #1B3720;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    opacity: 0;
+    animation: blogpostFadeIn 0.5s ease-out forwards;
+}
+
+.blogpost-back:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.blogpost-header {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: blogpostFadeIn 0.5s ease-out 0.1s forwards;
+}
+
+.blogpost-date {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.blogpost-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.blogpost-tag {
+    background-color: #4F86C6;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+}
+
+/* ── Article content ──────────────────────────────────── */
+.blogpost-content {
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+    opacity: 0;
+    animation: blogpostFadeIn 0.8s ease-out 0.2s forwards;
+}
+
+.blogpost-content h1 {
+    font-family: Kingsman;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #1B3720;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+}
+
+.blogpost-content h2 {
+    font-family: Melanin;
+    font-size: 1.8rem;
+    color: #1B3720;
+    margin: 2rem 0 0.75rem 0;
+}
+
+.blogpost-content h3 {
+    font-family: MontserratSemibold;
+    font-size: 1.3rem;
+    color: #1B3720;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.blogpost-content p {
+    font-size: 1.05rem;
+    color: #333;
+    line-height: 1.8;
+    margin: 0 0 1rem 0;
+}
+
+.blogpost-content a {
+    color: #4F86C6;
+    text-decoration: underline;
+}
+
+.blogpost-content a:hover {
+    color: #3a6da3;
+}
+
+.blogpost-content ul,
+.blogpost-content ol {
+    padding-left: 1.5rem;
+    margin: 0 0 1rem 0;
+}
+
+.blogpost-content li {
+    font-size: 1.05rem;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 0.3rem;
+}
+
+.blogpost-content blockquote {
+    border-left: 4px solid #4F86C6;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background-color: rgba(79, 134, 198, 0.08);
+    border-radius: 0 12px 12px 0;
+}
+
+.blogpost-content blockquote p {
+    color: #1B3720;
+    font-style: italic;
+    margin: 0;
+}
+
+.blogpost-content pre {
+    background-color: #1B3720;
+    color: #F8FFE5;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.blogpost-content pre code {
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.blogpost-content code {
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.9rem;
+    background-color: rgba(27, 55, 32, 0.08);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    color: #1B3720;
+}
+
+.blogpost-content hr {
+    border: none;
+    border-top: 2px solid rgba(27, 55, 32, 0.15);
+    margin: 2rem 0;
+}
+
+.blogpost-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.blogpost-content th {
+    background-color: #4F86C6;
+    color: #fff;
+    font-family: MontserratSemibold;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+.blogpost-content td {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: #333;
+    border-bottom: 1px solid rgba(27, 55, 32, 0.1);
+}
+
+.blogpost-content tr:nth-child(even) td {
+    background-color: rgba(79, 134, 198, 0.05);
+}
+
+.blogpost-content strong {
+    color: #1B3720;
+}
+
+.blogpost-content em {
+    color: #555;
+}
+
+/* ── Giscus comments ──────────────────────────────────── */
+.giscus-wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(27, 55, 32, 0.15);
+    opacity: 0;
+    animation: blogpostFadeIn 0.8s ease-out 0.4s forwards;
+}
+
+/* ── Fade-in animation ────────────────────────────────── */
+@keyframes blogpostFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 580px) {
+    .blogpost-container {
+        padding: 1rem;
+    }
+
+    .blogpost-content pre {
+        padding: 1rem;
+    }
+}
