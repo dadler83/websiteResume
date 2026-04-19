@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+import MoleculeViewer from '../components/MoleculeViewer'
 import './MyLearning.css'
 
 const topics = [
@@ -14,7 +15,7 @@ const topics = [
         slug: 'biology',
         title: 'Biology',
         description: 'Molecular biology, biophysics, and the science of living systems.',
-        icon: '🧬',
+        molecule: true,
     },
     {
         slug: 'chemistry',
@@ -50,6 +51,8 @@ export default function MyLearning() {
                                             __html: katex.renderToString(topic.latex, { throwOnError: false }),
                                         }}
                                     />
+                                ) : topic.molecule ? (
+                                    <MoleculeViewer />
                                 ) : (
                                     topic.icon
                                 )}
