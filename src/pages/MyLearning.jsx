@@ -39,7 +39,7 @@ export default function MyLearning() {
                         key={topic.slug}
                         className="mylearning-card-link"
                     >
-                        <article className="mylearning-card">
+                        <article className={`mylearning-card mylearning-card--${topic.slug}`}>
                             <span className="mylearning-card-icon">{topic.icon}</span>
                             <h2 className="mylearning-card-title">{topic.title}</h2>
                             <p className="mylearning-card-description">{topic.description}</p>
