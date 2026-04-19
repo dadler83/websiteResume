@@ -9,6 +9,7 @@ export default function MoleculeViewer({
     backgroundColor = '#000',
     width = 150,
     height = 150,
+    name = '',
 }) {
     const containerRef = useRef(null)
     const viewerRef = useRef(null)
@@ -37,10 +38,13 @@ export default function MoleculeViewer({
     }, [data, format, viewStyle])
 
     return (
-        <div
-            ref={containerRef}
-            className="molecule-viewer"
-            style={{ width, height }}
-        />
+        <div className="molecule-viewer-wrapper" style={{ width, height }}>
+            <div
+                ref={containerRef}
+                className="molecule-viewer"
+                style={{ width, height }}
+            />
+            {name && <span className="molecule-viewer-name">{name}</span>}
+        </div>
     )
 }

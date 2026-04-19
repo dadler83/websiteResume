@@ -20,13 +20,13 @@ const topics = [
         slug: 'biology',
         title: 'Biology',
         description: 'Molecular biology, biophysics, and the science of living systems.',
-        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } }, backgroundColor: '#E0F2D8' },
+        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } }, backgroundColor: '#E0F2D8', name: '1UD2 Protein' },
     },
     {
         slug: 'chemistry',
         title: 'Chemistry',
         description: 'Chemical principles, spectroscopy, and materials science.',
-        molecule: { data: caffeineSdf, format: 'sdf', viewStyle: { stick: {} }, backgroundColor: '#EDE5F5' },
+        molecule: { data: caffeineSdf, format: 'sdf', viewStyle: { stick: {} }, backgroundColor: '#EDE5F5', name: 'Caffeine' },
     },
 ]
 
@@ -62,6 +62,7 @@ export default function MyLearning() {
                                         format={topic.molecule.format}
                                         viewStyle={topic.molecule.viewStyle}
                                         backgroundColor={topic.molecule.backgroundColor}
+                                        name={topic.molecule.name}
                                     />
                                 ) : (
                                     topic.icon
