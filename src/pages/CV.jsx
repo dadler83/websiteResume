@@ -5,7 +5,7 @@ import iconMail from '../assets/cv-icons/mail.svg'
 import iconLocation from '../assets/cv-icons/location.svg'
 import iconCalendar from '../assets/cv-icons/calendar.svg'
 import iconBriefcase from '../assets/cv-icons/briefcase.svg'
-import iconGradCap from '../assets/cv-icons/graduation-cap-solid.svg'
+import iconGradCap from '../assets/cv-icons/graduation-cap.svg'
 import iconProjects from '../assets/cv-icons/projects.svg'
 
 // Existing brand icons (black variants)
