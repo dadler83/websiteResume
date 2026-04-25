@@ -15,7 +15,7 @@ export default function MoleculeViewer({
     const viewerRef = useRef(null)
 
     useEffect(() => {
-        if (!containerRef.current || viewerRef.current || !data) return
+        if (!containerRef.current || viewerRef.current || !data) return;
 
         const viewer = $3Dmol.createViewer(containerRef.current, {
             backgroundColor: backgroundColor,
@@ -30,9 +30,10 @@ export default function MoleculeViewer({
         viewerRef.current = viewer
 
         return () => {
+            viewer.scene = null;
             if (viewerRef.current) {
-                viewerRef.current.clear()
-                viewerRef.current = null
+                viewerRef.current.scene = null;
+                viewerRef.current = null;
             }
         }
     }, [data, format, viewStyle])
