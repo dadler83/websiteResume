@@ -13,8 +13,8 @@ import iconGitHub from '../assets/GitHub_Invertocat_Black.svg'
 import iconLinkedIn from '../assets/linkedin-svgrepo-com.svg'
 
 const contact = {
-    email: 'david@davidadler.dev',
-    location: 'Portland, OR',
+    email: 'david.adler@highqtechnologies.com',
+    location: 'Waterloo, ON',
     website: 'davidadler.dev',
     github: 'dadler83',
     linkedin: 'david-adler-a30b3424a',
@@ -22,41 +22,54 @@ const contact = {
 
 const skills = [
     {
-        title: 'Programming',
+        title: 'Languages',
         entries: [
-            { name: 'C / C++', rating: 5 },
             { name: 'Python', rating: 5 },
+            { name: 'Make', rating: 5 },
+            { name: 'C++', rating: 4 },
+            { name: 'C', rating: 4 },
+            { name: 'C#', rating: 4 },
             { name: 'JavaScript', rating: 4 },
-            { name: 'React', rating: 4 },
-            { name: 'HTML / CSS', rating: 4 },
+            { name: 'SQL', rating: 4 },
+            { name: 'CMake', rating: 3 },
+            { name: 'Bash', rating: 3 },
+            { name: 'React (jsx)', rating: 3 },
+            { name: 'Typescript', rating: 3 },
+            { name: 'HTML / CSS', rating: 3 },
             { name: 'Java', rating: 3 },
-            { name: 'MATLAB', rating: 3 },
+            { name: 'Powershell', rating: 3 },
+            { name: 'Batch', rating: 2 },
+            { name: 'Haskell', rating: 2 },
+            { name: 'PHP', rating: 1 },
+            { name: 'Rust', rating: 1 },
         ],
     },
     {
         title: 'Technologies',
         entries: [
-            { name: 'Embedded / Firmware', rating: 5 },
-            { name: 'DSP / Signal Processing', rating: 5 },
-            { name: 'Git', rating: 4 },
-            { name: 'Qt / GUI Development', rating: 4 },
+            // { name: 'Embedded / Firmware', rating: 5 },
+            // { name: 'DSP / Signal Processing', rating: 5 },
+            { name: 'Git', rating: 5 },
+            { name: 'Docker', rating: 4 },
+            // { name: 'Qt / GUI Development', rating: 4 },
             { name: 'Linux', rating: 4 },
-            { name: 'Docker', rating: 3 },
+            { name: 'Windows', rating: 3 },
+            { name: 'MacOS', rating: 1 },
         ],
     },
-    {
-        title: 'Languages',
-        entries: [
-            { name: 'English', value: 'Native' },
-        ],
-    },
+    // {
+    //     title: 'Languages',
+    //     entries: [
+    //         { name: 'English', value: 'Native' },
+    //     ],
+    // },
 ]
 
 const education = [
     {
         name: 'B.S. Computer Science',
-        location: 'State University',
-        date: '2019 – 2023',
+        location: 'University of Toronto',
+        date: '2021 – 2025',
         description:
             'Focused on systems programming, algorithms, and applied mathematics. Completed senior capstone project on real-time audio signal processing.',
     },
@@ -66,14 +79,14 @@ const experience = [
     {
         name: 'Firmware & GUI Developer',
         location: 'HighQ Technologies',
-        date: '2023 – Present',
+        date: '2022 – Present',
         description:
             'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer. Responsibilities include real-time data acquisition systems, DSP algorithm implementation, and building intuitive visualization interfaces.',
     },
     {
-        name: 'Research Assistant',
-        location: 'University Physics Lab',
-        date: '2020 – 2021',
+        name: 'Researcher',
+        location: 'Undergraduate Research Lab',
+        date: '2024 – 2025',
         description:
             'Assisted graduate researchers with data collection pipelines, wrote signal-processing scripts to clean and analyze spectroscopy data, and maintained lab documentation.',
     },
