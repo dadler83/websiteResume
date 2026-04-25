@@ -16,7 +16,7 @@ const topics = [
         description: 'Software development, algorithms, signal processing, and computational topics.',
         latex: 'f(n) \\in \\mathbb{O}(g(n))' +
             '\\newline \\Leftrightarrow \\newline' +
-            ' \\big( \\forall n \\in \\mathbb{N}. \\ \\exists c \\in \\mathbb{R}^{+}. \\ \\exists n_0 \\in \\mathbb{N}. \\ n \\geq n_0 \\implies f(n) \\leq c \\cdot g(n) \\big)',
+            ' \\big( \\exists c \\in \\mathbb{R}^{+}. \\ \\exists n_0 \\in \\mathbb{N}. \\forall n \\in \\mathbb{N}. \\ n \\geq n_0 \\implies f(n) \\leq c \\cdot g(n) \\big)',
         latexName: 'Definition of Big O',
     },
     {
