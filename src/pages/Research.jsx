@@ -7,22 +7,26 @@ export default function Research() {
             {/* ── Hero ───────────────────────────────── */}
             <section className="research-hero">
                 <h1>Research</h1>
-                <p className="research-subtitle">Key-Value Database Systems · Data Structures · Storage Optimization</p>
+                <p className="research-subtitle">Key-Value Stores · Hardware Security · Speculation</p>
             </section>
 
             {/* ── Overview ───────────────────────────── */}
             <section className="research-overview">
-                <h2>About My Research</h2>
+                <h2>My Undergrad Research</h2>
                 <p>
-                    My research focuses on key-value database systems, where I work on improving
-                    the performance and efficiency of storage engines. In collaboration
-                    with{' '}
-                    <a href="https://www.nivdayan.net/" target="_blank" rel="noopener noreferrer">
+                    During my undergrad, despite my part-time job,
+                    I'm very thankful I got to participate in some research.
+                </p>
+                <p>
+                    The main research project I participated in focused on hardware-security, specifically speculation.
+                    From <a href="https://www.nivdayan.net/" target="_blank" rel="noopener noreferrer">
                         Dr. Niv Dayan
-                    </a>
-                    , I have been exploring techniques using{' '}
-                    <strong>RocksDB</strong> and <strong>minimal perfect hash functions</strong> to
-                    advance the state of the art in key-value storage.
+                    </a>,
+                    I also got to learn a lot about database backends, optimization, and key-value stores.
+                    My projects focused on detecting side-channels for processors before any HDL or
+                    hardware had been made and exploring optimizations for{' '}
+                    <strong>RocksDB</strong> using <strong>minimal perfect hash functions</strong> to
+                    improve key lookup times for SSTs cached on the CPU.
                 </p>
             </section>
 
