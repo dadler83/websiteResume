@@ -1,0 +1,210 @@
+.research-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.research-hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    gap: 1rem;
+    opacity: 0;
+    animation: researchFadeIn 0.8s ease-out forwards;
+}
+
+.research-hero h1 {
+    font-family: Kingsman;
+    color: #1B3720;
+    margin: 0;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.research-hero .research-subtitle {
+    font-family: MontserratSemibold;
+    font-size: 1.6rem;
+    color: #1B3720;
+    opacity: 0.75;
+    text-align: center;
+    margin: 0;
+}
+
+/* ── Overview ─────────────────────────────────────────── */
+.research-overview {
+    width: 100%;
+    max-width: 1100px;
+    opacity: 0;
+    animation: researchFadeIn 0.8s ease-out 0.2s forwards;
+}
+
+.research-overview h2 {
+    font-family: Melanin;
+    font-size: 2rem;
+    color: #1B3720;
+    margin: 0 0 1rem 0;
+}
+
+.research-overview p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
+    margin: 0 0 0.75rem 0;
+}
+
+.research-overview a {
+    color: #4F86C6;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.research-overview a:hover {
+    color: #1B3720;
+}
+
+/* ── Section header ───────────────────────────────────── */
+.research-section-header {
+    font-family: Melanin;
+    font-size: 2.8rem;
+    color: #1B3720;
+    margin: 0;
+    align-self: flex-start;
+    width: 100%;
+}
+
+/* ── Publications ─────────────────────────────────────── */
+.research-publications {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: researchFadeIn 0.8s ease-out 0.4s forwards;
+}
+
+.publication-card {
+    background-color: #4F86C6;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publication-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.publication-venue {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.publication-card h3 {
+    font-family: MontserratSemibold;
+    font-size: 1.3rem;
+    margin: 0.5rem 0 0.75rem 0;
+}
+
+.publication-card h3 a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.publication-card h3 a:hover {
+    opacity: 0.85;
+}
+
+.publication-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* ── Collaborators ────────────────────────────────────── */
+.research-collaborators {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: researchFadeIn 0.8s ease-out 0.5s forwards;
+}
+
+.collaborator-card {
+    background-color: #F8FFE5;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collaborator-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.collaborator-card h3 {
+    font-family: MontserratSemibold;
+    font-size: 1.2rem;
+    color: #1B3720;
+    margin: 0 0 0.5rem 0;
+}
+
+.collaborator-card h3 a {
+    color: #4F86C6;
+    text-decoration: underline;
+}
+
+.collaborator-card h3 a:hover {
+    color: #1B3720;
+}
+
+.collaborator-card p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Fade-in animation ────────────────────────────────── */
+@keyframes researchFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+    .research-overview {
+        text-align: center;
+    }
+
+    .research-collaborators {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 580px) {
+    .research-container {
+        padding: 1rem;
+    }
+}
