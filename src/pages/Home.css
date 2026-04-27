@@ -249,7 +249,7 @@
     }
 
     .fathom-image img {
-        width: 120px;
+        width: 100%;
     }
 }
 
@@ -283,7 +283,8 @@
     }
 
     .rounded-box {
-        max-width: 100%;
+        max-width: calc(100% - 2.5rem);
+        padding: 1.5rem;
     }
 }
 
@@ -296,9 +297,9 @@
         font-size: 1rem;
     }
 
-    .rounded-box {
-        padding: 1.5rem;
-    }
+    /*.rounded-box {*/
+    /*    padding: 1.5rem;*/
+    /*}*/
 
     .rounded-box h2 {
         font-size: 1.5rem;

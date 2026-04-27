@@ -90,7 +90,10 @@ export default function About() {
             </div>
 
             {/* ── Gaming ─────────────────────────────── */}
-            <h2 className="about-section-header">Gaming</h2>
+            <div className="about-section-header">
+                <h2 className="about-section-header">Gaming</h2>
+                <Link to="/cv" className="cv-link">View Full CV →</Link>
+            </div>
             <div className="about-gaming">
                 <div className="gaming-blurb">
                     <h3>A lifelong gamer</h3>

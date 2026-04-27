@@ -78,7 +78,7 @@
 /* ── Section header ───────────────────────────────────── */
 .about-section-header {
     font-family: Melanin;
-    font-size: 2.8rem;
+    font-size: 4.0rem;
     color: #1B3720;
     margin: 0;
     align-self: flex-start;
@@ -321,6 +321,10 @@
     display: block;
 }
 
+.about-section-header h2 {
+    text-align: left;
+}
+
 /* ── Fade-in animation ────────────────────────────────── */
 @keyframes aboutFadeIn {
     from {
@@ -359,10 +363,6 @@
 
     .gaming-sketch-wrapper {
         justify-self: center;
-    }
-
-    .about-section-header h2 {
-        text-align: left;
     }
 }
 
