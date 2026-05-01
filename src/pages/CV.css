@@ -1,13 +1,14 @@
 /* ── Page wrapper ──────────────────────────────────────── */
 .cv-page {
-    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem 1rem;
 }
 
 /* ── Paper container ──────────────────────────────────── */
 .cv-container {
+    min-height: 100vh;
     width: 100%;
     max-width: 850px;
     max-height: 1100px;
@@ -286,6 +287,24 @@
     }
 }
 
+/* ── Print button ─────────────────────────────────────── */
+.cv-print-btn {
+    margin-top: 0.5rem;
+    padding: 0.6em 3em;
+    background-color: #1B3720;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: MontserratSemibold, system-ui, sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cv-print-btn:hover {
+    background-color: #2d5c35;
+}
+
 /* ── Print ────────────────────────────────────────────── */
 @media print {
 
@@ -301,8 +320,8 @@
         padding: 0 !important;
     }
 
-    /* Hide navigation/footer */
-    .navbar, footer {
+    /* Hide navigation/footer and print button */
+    .navbar, footer, .cv-print-btn {
         display: none !important;
     }
 
