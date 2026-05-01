@@ -2,7 +2,8 @@
 .cv-page {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem 1rem;
 }
 
@@ -286,6 +287,25 @@
     }
 }
 
+/* ── Print button ─────────────────────────────────────── */
+.cv-print-btn {
+    margin-top: 1.5rem;
+    padding: 0.6em 1.8em;
+    background-color: #1B3720;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: MontserratSemibold, system-ui, sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    align-self: center;
+    transition: background-color 0.2s;
+}
+
+.cv-print-btn:hover {
+    background-color: #2d5c35;
+}
+
 /* ── Print ────────────────────────────────────────────── */
 @media print {
 
@@ -301,8 +321,8 @@
         padding: 0 !important;
     }
 
-    /* Hide navigation/footer */
-    .navbar, footer {
+    /* Hide navigation/footer and print button */
+    .navbar, footer, .cv-print-btn {
         display: none !important;
     }
 
