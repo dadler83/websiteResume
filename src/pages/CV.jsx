@@ -70,11 +70,16 @@ const education = [
         name: 'Honors B.S. Computer Science',
         location: 'University of Toronto',
         date: '2021 – 2025',
-        description:
-            'Dr. James A. & Connie P. Dickson Scholarship In Science & Mathematics\n' +
-            'John Leyerle/plum Foundation Scholarship\n' +
-            'Louis Savlov (Uc\'37) Scholarships In Sciences And Humanities At University College\n' +
-            'Focused on systems programming, algorithms, and applied mathematics. Completed senior capstone project on real-time audio signal processing.',
+        description: (
+            <>
+                <ul>
+                    <li>Dr. James A. &amp; Connie P. Dickson Scholarship In Science &amp; Mathematics</li>
+                    <li>John Leyerle/Plum Foundation Scholarship</li>
+                    <li>Louis Savlov (UC&apos;37) Scholarships In Sciences And Humanities At University College</li>
+                </ul>
+                Focused on systems programming, algorithms, and applied mathematics. Completed senior capstone project on real-time audio signal processing.
+            </>
+        ),
     },
 ]
 
@@ -83,15 +88,25 @@ const experience = [
         name: 'Full-Stack Software Developer and Field Service Technician',
         location: 'Waterloo, ON',
         date: '2022 – Present',
-        description:
-            'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer. Responsibilities include real-time data acquisition systems, DSP algorithm implementation, and building intuitive visualization interfaces.',
+        description: (
+            <ul>
+                <li>Lead firmware and GUI development for the Fathom Spectrometer — the world&apos;s first quantum-enabled EPR spectrometer.</li>
+                <li>Designed and implemented real-time data acquisition systems and DSP algorithms.</li>
+                <li>Built intuitive visualization interfaces for complex spectroscopy data.</li>
+            </ul>
+        ),
     },
     {
         name: 'CS Researcher',
         location: 'UofT Research Lab',
         date: '2024 – 2025',
-        description:
-            'Assisted graduate researchers with data collection pipelines, wrote signal-processing scripts to clean and analyze spectroscopy data, and maintained lab documentation.',
+        description: (
+            <ul>
+                <li>Assisted graduate researchers with data collection pipelines.</li>
+                <li>Wrote signal-processing scripts to clean and analyze spectroscopy data.</li>
+                <li>Maintained lab documentation and reproducibility tooling.</li>
+            </ul>
+        ),
     },
 ]
 
@@ -100,16 +115,24 @@ const projects = [
         name: 'Fathom Spectrometer GUI',
         date: '2023 – Present',
         tech: 'C++; Qt; Python',
-        description:
-            'Desktop application for controlling and visualizing data from the Fathom EPR spectrometer. Features real-time signal processing, interactive data visualization, and experiment configuration.',
+        description: (
+            <ul>
+                <li>Desktop application for controlling and visualizing data from the Fathom EPR spectrometer.</li>
+                <li>Features real-time signal processing, interactive data visualization, and experiment configuration.</li>
+            </ul>
+        ),
     },
     {
         name: 'Personal Portfolio Website',
         date: '2024 – Present',
         tech: 'React; Vite; D3.js',
         link: 'https://davidadler.dev',
-        description:
-            'Interactive developer portfolio built with React and Vite. Features include a live code editor, signal processing visualizations, and a Tetris game implemented with p5.js.',
+        description: (
+            <ul>
+                <li>Interactive developer portfolio built with React and Vite.</li>
+                <li>Features a live code editor, signal processing visualizations, and a Tetris game implemented with p5.js.</li>
+            </ul>
+        ),
     },
 ]
 
@@ -207,7 +230,7 @@ export default function CV() {
                                         </div>
                                         <div className="cv-entry-name">{item.name}</div>
                                     </div>
-                                    <p className="cv-entry-description">{item.description}</p>
+                                    <div className="cv-entry-description">{item.description}</div>
                                 </div>
                             ))}
                         </section>
@@ -226,7 +249,7 @@ export default function CV() {
                                         </div>
                                         <div className="cv-entry-name">{item.name}</div>
                                     </div>
-                                    <p className="cv-entry-description">{item.description}</p>
+                                    <div className="cv-entry-description">{item.description}</div>
                                 </div>
                             ))}
                         </section>
@@ -253,7 +276,7 @@ export default function CV() {
                                             <span><img src={iconProjects} alt="" className="cv-inline-icon" /> {item.tech}</span>
                                         </div>
                                     </div>
-                                    <p className="cv-entry-description">{item.description}</p>
+                                    <div className="cv-entry-description">{item.description}</div>
                                 </div>
                             ))}
                         </section>

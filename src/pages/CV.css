@@ -224,6 +224,16 @@
     color: #333;
 }
 
+.cv-entry-description ul {
+    margin: 0.2em 0 0 0;
+    padding-left: 1.4em;
+    list-style-type: disc;
+}
+
+.cv-entry-description li {
+    margin-bottom: 0.2em;
+}
+
 /* ── Projects ─────────────────────────────────────────── */
 .cv-project {
     margin-bottom: 1em;
