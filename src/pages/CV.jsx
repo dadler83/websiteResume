@@ -257,9 +257,11 @@ export default function CV() {
                     </div>
                 </div>
             </div>
-            <button className="cv-print-btn" onClick={() => window.print()}>
-                Print CV
-            </button>
+            <div style={{display: "flex", justifyContent: "flex-end", alignItems: "flex-end", width: "95%"}}>
+                <button className="cv-print-btn" onClick={() => window.print()}>
+                    Print CV
+                </button>
+            </div>
         </div>
     )
 }
