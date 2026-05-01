@@ -88,7 +88,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <h3 className={"section-header"}>Some Things I do</h3>
+            <h1 className={"section-header"}>Some Things I do</h1>
             <div className="signal-content">
                 <div className="signal-box">
                     <h3 className={"section-header"}>Signal Processing</h3>

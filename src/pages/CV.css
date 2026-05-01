@@ -1,6 +1,6 @@
 /* ── Page wrapper ──────────────────────────────────────── */
 .cv-page {
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     padding: 2rem 1rem;
@@ -288,12 +288,53 @@
 
 /* ── Print ────────────────────────────────────────────── */
 @media print {
+
+    /* Remove page padding */
     .cv-page {
-        padding: 0;
+        padding: 0 !important;
+        width: 100% !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
+    main {
+        padding: 0 !important;
+    }
+
+    /* Hide navigation/footer */
+    .navbar, footer {
+        display: none !important;
+    }
+
+    /* Remove box shadow and width limits */
     .cv-container {
-        box-shadow: none;
-        max-width: 100%;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        max-height: none !important;
+    }
+
+    /* Remove ALL body margins */
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Ensure grid fills the page */
+    .cv-body {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    @page {
+        size: A4;
+        margin: 0;
+
+        @top-left { content: none; }
+        @top-center { content: none; }
+        @top-right { content: none; }
+
+        @bottom-left { content: none; }
+        @bottom-center { content: none; }
+        @bottom-right { content: none; }
     }
 }
