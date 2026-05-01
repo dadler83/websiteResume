@@ -67,25 +67,28 @@ const skills = [
 
 const education = [
     {
-        name: 'B.S. Computer Science',
+        name: 'Honors B.S. Computer Science',
         location: 'University of Toronto',
         date: '2021 – 2025',
         description:
+            'Dr. James A. & Connie P. Dickson Scholarship In Science & Mathematics\n' +
+            'John Leyerle/plum Foundation Scholarship\n' +
+            'Louis Savlov (Uc\'37) Scholarships In Sciences And Humanities At University College\n' +
             'Focused on systems programming, algorithms, and applied mathematics. Completed senior capstone project on real-time audio signal processing.',
     },
 ]
 
 const experience = [
     {
-        name: 'Firmware & GUI Developer',
-        location: 'HighQ Technologies',
+        name: 'Full-Stack Software Developer and Field Service Technician',
+        location: 'Waterloo, ON',
         date: '2022 – Present',
         description:
             'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer. Responsibilities include real-time data acquisition systems, DSP algorithm implementation, and building intuitive visualization interfaces.',
     },
     {
-        name: 'Researcher',
-        location: 'Undergraduate Research Lab',
+        name: 'CS Researcher',
+        location: 'UofT Research Lab',
         date: '2024 – 2025',
         description:
             'Assisted graduate researchers with data collection pipelines, wrote signal-processing scripts to clean and analyze spectroscopy data, and maintained lab documentation.',
