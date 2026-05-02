@@ -10,6 +10,7 @@ export default function MoleculeViewer({
     width = 150,
     height = 150,
     name = '',
+    link = '',
 }) {
     const containerRef = useRef(null)
     const viewerRef = useRef(null)
@@ -45,7 +46,29 @@ export default function MoleculeViewer({
                 className="molecule-viewer"
                 style={{ width, height }}
             />
-            {name && <span className="molecule-viewer-name">{name}</span>}
+            {name && (
+                link ? (
+                    <span
+                        className="molecule-viewer-name molecule-viewer-name--link"
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            window.open(link, '_blank', 'noopener,noreferrer')
+                        }}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.stopPropagation()
+                                window.open(link, '_blank', 'noopener,noreferrer')
+                            }
+                        }}
+                    >
+                        {name}
+                    </span>
+                ) : (
+                    <span className="molecule-viewer-name">{name}</span>
+                )
+            )}
         </div>
     )
 }

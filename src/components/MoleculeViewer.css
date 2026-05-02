@@ -24,6 +24,12 @@
     line-height: 1.4;
 }
 
+.molecule-viewer-name--link {
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .mylearning-card:hover .molecule-viewer-name {
     opacity: 1;
 }
