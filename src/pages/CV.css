@@ -16,8 +16,8 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     display: flex;
     flex-direction: column;
-    font-family: MontserratSemibold, system-ui, sans-serif;
-    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85em;
     color: #000;
 }
 
@@ -246,14 +246,10 @@
 }
 
 .cv-project-name {
+    text-align: left;
     font-size: 1.2em;
     font-weight: bold;
     color: #1B3720;
-}
-
-.cv-project-name a {
-    color: #1B3720;
-    text-decoration: none;
 }
 
 .cv-project-name a:hover {
