@@ -7,6 +7,7 @@ import iconCalendar from '../assets/cv-icons/calendar.svg'
 import iconBriefcase from '../assets/cv-icons/briefcase.svg'
 import iconGradCap from '../assets/cv-icons/graduation-cap.svg'
 import iconProjects from '../assets/cv-icons/projects.svg'
+import iconLink from '../assets/cv-icons/link.svg'
 
 // Existing brand icons (black variants)
 import iconGitHub from '../assets/GitHub_Invertocat_Black.svg'
@@ -67,14 +68,22 @@ const skills = [
 
 const education = [
     {
-        name: 'Honors B.S. Computer Science',
+        name: 'Honors B.S. in Computer Science',
         location: 'University of Toronto',
         date: '2021 – 2025',
-        description:
-            'Dr. James A. & Connie P. Dickson Scholarship In Science & Mathematics\n' +
-            'John Leyerle/plum Foundation Scholarship\n' +
-            'Louis Savlov (Uc\'37) Scholarships In Sciences And Humanities At University College\n' +
-            'Focused on systems programming, algorithms, and applied mathematics. Completed senior capstone project on real-time audio signal processing.',
+        description: (
+            <>
+                Coursework focused in Biology, Chemistry, System Architecture, Database Design, and Machine Learning.
+                Completed senior projects in database research, cache side-channel research, and video game design.
+                <ul>
+                    <li><strong>Final Cumulative GPA</strong>: 3.91/4.0</li>
+                    <li>Awarded Dean's List Scholar (2021-2025)</li>
+                    <li>Awarded <a href={"https://www.uc.utoronto.ca/scholarships-awards/louis-savlov-uc-1937-scholarships-science-social-sciences-and-humanities"}>Louis Savlov (UC&apos;37) Scholarships In Sciences And Humanities At University College</a> (2025)</li>
+                    <li>Awarded <a href={"https://www.uc.utoronto.ca/scholarships-awards/dr-james-connie-p-dickson-scholarships-sciences-and-mathematics"}>Dr. James A. &amp; Connie P. Dickson Scholarship In Science &amp; Mathematics</a> (2022)</li>
+                    <li>Awarded <a href={"https://www.uc.utoronto.ca/scholarships-awards/john-leyerleplum-foundation-scholarships"}>John Leyerle/Plum Foundation Scholarship</a> (2021)</li>
+                </ul>
+            </>
+        ),
     },
 ]
 
@@ -83,33 +92,42 @@ const experience = [
         name: 'Full-Stack Software Developer and Field Service Technician',
         location: 'Waterloo, ON',
         date: '2022 – Present',
-        description:
-            'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer. Responsibilities include real-time data acquisition systems, DSP algorithm implementation, and building intuitive visualization interfaces.',
+        description: (
+            <ul>
+                <li>Lead firmware and GUI development for the <a href={"https://highqtechnologies.com/"}>Fathom Spectrometer</a> — the world&apos;s first quantum-enabled EPR spectrometer.</li>
+                <li>Designed real-time data acquisition systems, motor control systems, and high-performance domain specific algorithms for nanosecond precision qubit control.</li>
+                <li>Physical component maintenance, setup, sample handling and loading.</li>
+            </ul>
+        ),
     },
     {
         name: 'CS Researcher',
         location: 'UofT Research Lab',
         date: '2024 – 2025',
-        description:
-            'Assisted graduate researchers with data collection pipelines, wrote signal-processing scripts to clean and analyze spectroscopy data, and maintained lab documentation.',
+        description: (
+            <ul>
+                <li>Assisted graduate researchers with data collection pipelines, analysis, reproducibility,
+                    fuzzing CPUs, bug-fixing and paper writing.</li>
+                <li><a href={"https://dl.acm.org/doi/epdf/10.1145/3676641.3716247"}>Hardware Security paper</a> published
+                    in <strong>ASPLOS</strong>, a world leading conference in computer architecture.</li>
+                <li>Implemented and benchmarked database hash table improvements in RocksDB.</li>
+            </ul>
+        ),
     },
 ]
 
 const projects = [
     {
-        name: 'Fathom Spectrometer GUI',
-        date: '2023 – Present',
-        tech: 'C++; Qt; Python',
-        description:
-            'Desktop application for controlling and visualizing data from the Fathom EPR spectrometer. Features real-time signal processing, interactive data visualization, and experiment configuration.',
-    },
-    {
-        name: 'Personal Portfolio Website',
-        date: '2024 – Present',
+        name: 'Portfolio Website',
+        date: '2025 – Present',
         tech: 'React; Vite; D3.js',
         link: 'https://davidadler.dev',
-        description:
-            'Interactive developer portfolio built with React and Vite. Features include a live code editor, signal processing visualizations, and a Tetris game implemented with p5.js.',
+        description: (
+            <>
+                Interactive developer portfolio; Features a blog, signal processing visualizations, a Tetris game implemented with p5.js,
+                3D molecule visualizations, and more about me.
+            </>
+        ),
     },
 ]
 
@@ -207,7 +225,7 @@ export default function CV() {
                                         </div>
                                         <div className="cv-entry-name">{item.name}</div>
                                     </div>
-                                    <p className="cv-entry-description">{item.description}</p>
+                                    <div className="cv-entry-description">{item.description}</div>
                                 </div>
                             ))}
                         </section>
@@ -226,7 +244,7 @@ export default function CV() {
                                         </div>
                                         <div className="cv-entry-name">{item.name}</div>
                                     </div>
-                                    <p className="cv-entry-description">{item.description}</p>
+                                    <div className="cv-entry-description">{item.description}</div>
                                 </div>
                             ))}
                         </section>
@@ -234,7 +252,7 @@ export default function CV() {
                         {/* Projects */}
                         <section>
                             <h2 className="cv-section-heading">
-                                <img src={iconProjects} alt="" className="cv-section-icon" /> Projects
+                                <img src={iconProjects} alt="" className="cv-section-icon" /> Projects And More
                             </h2>
                             {projects.map((item) => (
                                 <div className="cv-project" key={item.name}>
@@ -242,7 +260,7 @@ export default function CV() {
                                         <span className="cv-project-name">
                                             {item.link ? (
                                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                                    {item.name}
+                                                    {item.name} <img src={iconLink} alt="" className="cv-inline-icon" />
                                                 </a>
                                             ) : (
                                                 item.name
@@ -253,15 +271,29 @@ export default function CV() {
                                             <span><img src={iconProjects} alt="" className="cv-inline-icon" /> {item.tech}</span>
                                         </div>
                                     </div>
-                                    <p className="cv-entry-description">{item.description}</p>
+                                    <div className="cv-entry-description">{item.description}</div>
                                 </div>
                             ))}
+                            <div className="cv-entry-description">
+                                Other Accolades
+                                <ul>
+                                    <li>Top 64 at National Speech and Debate Association debate
+                                        tournament (2019)</li>
+                                    <li>Louisiana All-State Cross Country Honors Athlete (2020)</li>
+                                </ul>
+                            </div>
                         </section>
                     </div>
                 </div>
             </div>
             <div style={{display: "flex", justifyContent: "flex-end", alignItems: "flex-end", width: "95%"}}>
-                <button className="cv-print-btn" onClick={() => window.print()}>
+                <button className="cv-print-btn" onClick={() => {
+                    let temp = document.title;
+                    const today = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+                    document.title = "Adler_David_CV_" + today;
+                    window.print();
+                    document.title = temp;
+                }}>
                     Print CV
                 </button>
             </div>
