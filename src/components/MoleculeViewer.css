@@ -27,7 +27,29 @@
 .molecule-viewer-name--link {
     pointer-events: auto;
     cursor: pointer;
+}
+
+.molecule-viewer-name--link:hover {
+    pointer-events: auto;
+    cursor: pointer;
     text-decoration: underline;
+    color: #9da0ff;
+}
+
+.molecule-viewer-inline-icon {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 0.15em;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.molecule-viewer-inline-icon:hover {
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #9da0ff;
 }
 
 .mylearning-card:hover .molecule-viewer-name {
