@@ -287,7 +287,13 @@ export default function CV() {
                 </div>
             </div>
             <div style={{display: "flex", justifyContent: "flex-end", alignItems: "flex-end", width: "95%"}}>
-                <button className="cv-print-btn" onClick={() => window.print()}>
+                <button className="cv-print-btn" onClick={() => {
+                    let temp = document.title;
+                    const today = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+                    document.title = "Adler_David_CV_" + today;
+                    window.print();
+                    document.title = temp;
+                }}>
                     Print CV
                 </button>
             </div>
