@@ -16,8 +16,8 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     display: flex;
     flex-direction: column;
-    font-family: MontserratSemibold, system-ui, sans-serif;
-    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85em;
     color: #000;
 }
 
@@ -224,6 +224,16 @@
     color: #333;
 }
 
+.cv-entry-description ul {
+    margin: 0.2em 0 0 0;
+    padding-left: 1.4em;
+    list-style-type: disc;
+}
+
+.cv-entry-description li {
+    margin-bottom: 0.2em;
+}
+
 /* ── Projects ─────────────────────────────────────────── */
 .cv-project {
     margin-bottom: 1em;
@@ -236,14 +246,10 @@
 }
 
 .cv-project-name {
+    text-align: left;
     font-size: 1.2em;
     font-weight: bold;
     color: #1B3720;
-}
-
-.cv-project-name a {
-    color: #1B3720;
-    text-decoration: none;
 }
 
 .cv-project-name a:hover {
