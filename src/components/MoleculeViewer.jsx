@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import * as $3Dmol from '3dmol'
 import './MoleculeViewer.css'
-import iconLink from "../assets/cv-icons/link.svg";
+import iconLinkWhite from "../assets/link-white.svg";
+import iconLinkPurple from "../assets/link-light-purple.svg";
 
 export default function MoleculeViewer({
     data,
@@ -65,7 +66,8 @@ export default function MoleculeViewer({
                         }}
                     >
                         {name}
-                        <img src={iconLink} alt="" className="molecule-viewer-inline-icon" />
+                        <img src={iconLinkWhite} alt="" className="molecule-viewer-inline-icon molecule-viewer-inline-icon--white" />
+                        <img src={iconLinkPurple} alt="" className="molecule-viewer-inline-icon molecule-viewer-inline-icon--purple" />
                     </div>
                 ) : (
                     <span className="molecule-viewer-name">{name}</span>
