@@ -22,16 +22,23 @@ export default function TetrisSketch() {
             currentWidthRef.current = width;
         }
 
-        startSketch(container.offsetWidth || DEFAULT_TETRIS_WIDTH);
-
+        // Do NOT read container.offsetWidth here — layout hasn't completed yet
+        // and it returns 0 or an incorrect value. Let ResizeObserver provide
+        // the real width after the browser's first layout pass.
         const observer = new ResizeObserver((entries) => {
             for (const entry of entries) {
                 const newWidth = Math.floor(entry.contentRect.width);
                 if (newWidth > 0 && newWidth !== currentWidthRef.current) {
-                    clearTimeout(debounceTimerRef.current);
-                    debounceTimerRef.current = setTimeout(() => {
+                    if (currentWidthRef.current === null) {
+                        // Initial observation — start immediately, no debounce
                         startSketch(newWidth);
-                    }, 150);
+                    } else {
+                        // Subsequent resize — debounce to avoid thrashing
+                        clearTimeout(debounceTimerRef.current);
+                        debounceTimerRef.current = setTimeout(() => {
+                            startSketch(newWidth);
+                        }, 150);
+                    }
                 }
             }
         });
