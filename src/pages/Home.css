@@ -41,7 +41,6 @@
     font-family: MontserratSemibold;
     color: #1B3720;
     line-height: 1.2;
-    font-size: clamp(1.25rem, 3vw, 2rem);
 }
 
 .home-left p {
@@ -195,14 +194,6 @@
     font-family: Melanin;
 }
 
-h1.section-header {
-    font-size: clamp(1.5rem, 4vw, 3rem);
-}
-
-h3.section-header {
-    font-size: clamp(1rem, 2.5vw, 1.75rem);
-}
-
 .signal-content {
     align-items: center;
     align-content: center;
@@ -292,13 +283,21 @@ h3.section-header {
         width: 100%;
     }
 
-    .home-right .flip-card {
-        width: 100%;
-    }
-
     .rounded-box {
         max-width: calc(100% - 2.5rem);
         padding: 1.5rem;
+    }
+
+    h1.section-header {
+        font-size: 1.75rem;
+    }
+
+    h3.section-header {
+        font-size: 1.25rem;
+    }
+
+    .home-right h2 {
+        font-size: 1.5rem;
     }
 }
 
@@ -317,6 +316,18 @@ h3.section-header {
 
     .rounded-box h2 {
         font-size: 1.5rem;
+    }
+
+    h1.section-header {
+        font-size: 1.4rem;
+    }
+
+    h3.section-header {
+        font-size: 1.1rem;
+    }
+
+    .home-right h2 {
+        font-size: 1.25rem;
     }
 }
 
