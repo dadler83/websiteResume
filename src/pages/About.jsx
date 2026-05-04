@@ -108,12 +108,14 @@ export default function About() {
                         and has an extremely high skill ceiling. When getting comfortable with a new language or GUI framework,
                         a Tetris implementation was always one of my gotos; I once turned the console into a writable buffer
                         to make it work in ASCII.
-                        So, have a go at playing my latest web-version if you please. I'd love to add a leader board,
-                        but I haven't wanted to set up a backend for this project :)
 
                         {/*I even wrote my own*/}
                         {/*p5.js implementation with SRS wall kicks, a piece-bag randomizer, and a*/}
                         {/*lock-delay system — give it a try!*/}
+                    </p>
+                    <p>
+                        So, have a go at playing my latest web-version if you please. I'd love to add a leader board,
+                        but I haven't wanted to set up a backend for this project :)
                     </p>
                 </div>
                 <div className="hobbies-flip-container">
