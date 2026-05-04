@@ -65,8 +65,8 @@
 .flip-card-sparkle,
 .flip-card-pointer {
     position: absolute;
-    width: 22px;
-    height: 22px;
+    width: 8em;
+    height: 8em;
     fill: var(--flip-card-icon-color, #1B3720);
     opacity: 0;
     pointer-events: none;
@@ -75,22 +75,22 @@
 }
 
 .flip-card-sparkle {
-    top: 8px;
-    left: 8px;
+    top: -3em;
+    left: -3em;
     /* Start slightly rotated and small; rotate to 0deg on hover for a subtle spin-in effect */
-    transform: scale(0.7) rotate(-15deg);
+    transform: scale(0.7) rotate(-35deg);
 }
 
 .flip-card-pointer {
-    bottom: 8px;
-    right: 8px;
-    transform: scale(0.7);
+    bottom: -4em;
+    right: -4em;
+    transform: scale(0.7) rotate(5deg);
 }
 
 .flip-card:not(.flipped):hover .flip-card-sparkle,
 .flip-card:not(.flipped):hover .flip-card-pointer {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
 }
 
 .flip-card:not(.flipped):hover .flip-card-sparkle {
