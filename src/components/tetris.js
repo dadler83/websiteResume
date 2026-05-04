@@ -3,7 +3,7 @@
 // Fully self-contained, no external assets required
 
 
-const DEFAULT_TETRIS_WIDTH = 472;
+const DEFAULT_TETRIS_WIDTH = 380;
 
 const createTetrisSketch = (totalWidth = DEFAULT_TETRIS_WIDTH) => (p) => {
     const COLS = 10;
@@ -252,7 +252,7 @@ const createTetrisSketch = (totalWidth = DEFAULT_TETRIS_WIDTH) => (p) => {
             }
             p.noStroke();
 
-            p.textSize(Math.round(16 * uiScale));
+            p.textSize(Math.round(24 * uiScale));
             p.fill(200);
             p.text("Controls:", p.width / 2 - Math.round(5 * uiScale), p.height / 2 + Math.round(50 * uiScale));
             p.textSize(Math.round(14 * uiScale));
