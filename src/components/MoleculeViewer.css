@@ -24,6 +24,38 @@
     line-height: 1.4;
 }
 
+.molecule-viewer-name--link {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.molecule-viewer-name--link:hover {
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #9da0ff;
+}
+
+.molecule-viewer-inline-icon {
+    width: 8px;
+    height: 8px;
+    vertical-align: middle;
+    margin-left: 0.25em;
+    pointer-events: none;
+}
+
+.molecule-viewer-inline-icon--purple {
+    display: none;
+}
+
+.molecule-viewer-name--link:hover .molecule-viewer-inline-icon--white {
+    display: none;
+}
+
+.molecule-viewer-name--link:hover .molecule-viewer-inline-icon--purple {
+    display: inline;
+}
+
 .mylearning-card:hover .molecule-viewer-name {
     opacity: 1;
 }
