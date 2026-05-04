@@ -40,16 +40,16 @@ export default function About() {
                 <div className="about-bio-text">
                     <h2>A little about me</h2>
                     <p>
-                        I'm a software developer with a passion for building things that sit at the
-                        intersection of hardware and software. My background spans embedded firmware,
-                        real-time signal processing, and modern web development — which means I'm
-                        equally comfortable writing C close to the metal as I am crafting React
-                        components in the browser.
+                        I've been a programmer for over a decade now, and I've always loved everything
+                        science and computers. My programming background spans many languages, including niches
+                        such as embedded development, real-time signal processing, domain-specific languages,
+                        and high-performance computing.
                     </p>
                     <p>
-                        When I'm not coding, you'll find me reading about quantum physics, strumming
-                        a guitar, or exploring trails in the Pacific Northwest. I believe the best
-                        software is built by people who are curious about everything.
+                        Aside from my recent focuses in computer science,
+                        you can find me at the gym or running, no better way to clear the head.
+                        I also enjoy a number of intellectual and creative pursuits: biology, chemistry,
+                        writing, drawing, and painting. And, I love getting involved with new people!
                     </p>
                 </div>
             </section>
