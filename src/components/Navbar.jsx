@@ -33,8 +33,9 @@ export default function Navbar() {
 
     // Prevent body scroll when mobile menu is open
     useEffect(() => {
-        document.body.style.overflow = isMenuOpen ? 'hidden' : ''
-        return () => { document.body.style.overflow = '' }
+        const prev = document.body.style.overflow
+        document.body.style.overflow = isMenuOpen ? 'hidden' : prev
+        return () => { document.body.style.overflow = prev }
     }, [isMenuOpen])
 
     const closeMenu = () => setIsMenuOpen(false)
