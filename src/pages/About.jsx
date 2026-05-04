@@ -89,13 +89,13 @@ export default function About() {
                 </div>
             </div>
 
-            {/* ── Gaming ─────────────────────────────── */}
+            {/* ── hobbies ─────────────────────────────── */}
             <div className="about-section-header">
-                <h2 className="about-section-header">Gaming</h2>
+                <h2 className="about-section-header">Hobbies</h2>
                 <Link to="/cv" className="cv-link">View Full CV →</Link>
             </div>
-            <div className="about-gaming">
-                <div className="gaming-blurb">
+            <div className="about-hobbies">
+                <div className="hobbies-blurb">
                     <h3>A lifelong gamer</h3>
                     <p>
                         Video games have been a constant companion since childhood. They taught me
@@ -109,18 +109,18 @@ export default function About() {
                         lock-delay system — give it a try!
                     </p>
                 </div>
-                <div className="gaming-flip-container">
+                <div className="hobbies-flip-container">
                     <FlipCard
                         frontContent={
-                        <div className="gaming-sketch-wrapper">
+                        <div className="hobbies-sketch-wrapper">
 
                             <TetrisSketch />
-                            <p className="gaming-controls">
+                            <p className="hobbies-controls">
                                 <strong>Controls:</strong>  <br/> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; <br/> ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
                             </p>
                         </div>
                     }
-                        backContent={<div className="gaming-sketch-wrapper" style={{width: "100%", height: "100%", padding: "0"}}/>}
+                        backContent={<div className="hobbies-sketch-wrapper" style={{width: "100%", height: "100%", padding: "0"}}/>}
                     />
                 </div>
             </div>
