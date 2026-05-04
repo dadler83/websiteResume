@@ -109,7 +109,7 @@ export default function About() {
                         lock-delay system — give it a try!
                     </p>
                 </div>
-                <div>
+                <div className="gaming-flip-container">
                     <FlipCard
                         frontContent={
                         <div className="gaming-sketch-wrapper">

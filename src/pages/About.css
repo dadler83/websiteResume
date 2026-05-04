@@ -297,6 +297,10 @@
     color: #F8FFE5 !important;
 }
 
+.gaming-flip-container {
+    overflow: hidden;
+}
+
 .gaming-sketch-wrapper {
     display: flex;
     background-color: #E5E1EE;
