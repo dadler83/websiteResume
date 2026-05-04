@@ -273,6 +273,7 @@
 
     .cv-container {
         box-shadow: none;
+        max-height: none;
     }
 
     .cv-entry-header {
