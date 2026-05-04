@@ -55,7 +55,8 @@ export default function MoleculeViewer({
                         role="button"
                         tabIndex={0}
                         onClick={(e) => {
-                            e.stopPropagation()
+                            e.stopPropagation();
+                            e.preventDefault();
                             window.open(link, '_blank', 'noopener,noreferrer')
                         }}
                         onKeyDown={(e) => {
@@ -63,6 +64,10 @@ export default function MoleculeViewer({
                                 e.stopPropagation()
                                 window.open(link, '_blank', 'noopener,noreferrer')
                             }
+                        }}
+                        onPointerDown={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
                         }}
                     >
                         {name}
