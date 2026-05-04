@@ -6,18 +6,19 @@ import FlipCard from '../components/FlipCard.jsx'
 
 const experiences = [
     {
-        date: '2023 – Present',
-        role: 'Firmware & GUI Developer',
+        date: '2022 – Present',
+        role: 'Full-Stack Software Developer and Field Service Technician',
         company: 'HighQ Technologies',
         description:
-            'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer. Responsibilities include real-time data acquisition systems, DSP algorithm implementation, and building intuitive visualization interfaces.',
+            'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer.',
     },
     {
-        date: '2020 – 2021',
-        role: 'Research Assistant',
-        company: 'University Physics Lab',
+        date: '2024 – 2025',
+        role: 'Undergraduate Researcher',
+        company: 'University of Toronto CS',
         description:
-            'Assisted graduate researchers with data collection pipelines, wrote signal-processing scripts to clean and analyze spectroscopy data, and maintained lab documentation.',
+            'Assisted graduate researchers with data collection pipelines, analysis, reproducibility, fuzzing CPUs, ' +
+            'bug-fixing and paper writing.',
     },
 ]
 
@@ -79,12 +80,12 @@ export default function About() {
             </div>
             <div className="about-education">
                 <div className="education-card">
-                    <h3>B.S. Computer Science</h3>
-                    <p className="edu-institution">State University</p>
-                    <p className="edu-year">2019 – 2023</p>
+                    <h3>Honors B.S. in Computer Science</h3>
+                    <p className="edu-institution">University of Toronto</p>
+                    <p className="edu-year">2021 – 2025</p>
                     <p>
-                        Focused on systems programming, algorithms, and applied mathematics.
-                        Completed senior capstone project on real-time audio signal processing.
+                        Coursework focused in Biology, Chemistry, System Architecture, Database Design,
+                        and Machine Learning.
                     </p>
                 </div>
             </div>
@@ -96,17 +97,23 @@ export default function About() {
             </div>
             <div className="about-hobbies">
                 <div className="hobbies-blurb">
-                    <h3>A lifelong gamer</h3>
+                    <h3>I like video games...</h3>
                     <p>
-                        Video games have been a constant companion since childhood. They taught me
-                        problem-solving, pattern recognition, and — perhaps most importantly — how
-                        to stay calm under pressure when the blocks start falling faster.
+                        Video games have been a great source of inspiration over the years. When done well,
+                        they are not only entertaining but bring together a blend of my favorite interests:
+                        programming, managing compute, art, making music, and more.
                     </p>
                     <p>
-                        Tetris holds a special place in my heart. It's elegant in its simplicity,
-                        infinitely replayable, and genuinely hard to master. I even wrote my own
-                        p5.js implementation with SRS wall kicks, a piece-bag randomizer, and a
-                        lock-delay system — give it a try!
+                        Tetris is a game I've loved over the years. It's elegant in its simplicity, a fun puzzler,
+                        and has an extremely high skill ceiling. When getting comfortable with a new language or GUI framework,
+                        a Tetris implementation was always one of my gotos; I once turned the console into a writable buffer
+                        to make it work in ASCII.
+                        So, have a go at playing my latest web-version if you please. I'd love to add a leader board,
+                        but I haven't wanted to set up a backend for this project :)
+
+                        {/*I even wrote my own*/}
+                        {/*p5.js implementation with SRS wall kicks, a piece-bag randomizer, and a*/}
+                        {/*lock-delay system — give it a try!*/}
                     </p>
                 </div>
                 <div className="hobbies-flip-container">
