@@ -1,4 +1,5 @@
 .flip-card {
+    position: relative;
     perspective: 1000px;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -58,4 +59,40 @@
 
 .flip-card.flipped .flip-card-back {
     opacity: 1;
+}
+
+/* Hover indicator icons */
+.flip-card-sparkle,
+.flip-card-pointer {
+    position: absolute;
+    width: 8em;
+    height: 8em;
+    fill: var(--flip-card-icon-color, #1B3720);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 10;
+}
+
+.flip-card-sparkle {
+    top: -3em;
+    left: -3em;
+    /* Start slightly rotated and small; rotate to 0deg on hover for a subtle spin-in effect */
+    transform: scale(0.7) rotate(-35deg);
+}
+
+.flip-card-pointer {
+    bottom: -4em;
+    right: -4em;
+    transform: scale(0.7) rotate(5deg);
+}
+
+.flip-card:not(.flipped):hover .flip-card-sparkle,
+.flip-card:not(.flipped):hover .flip-card-pointer {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.flip-card:not(.flipped):hover .flip-card-sparkle {
+    transform: scale(1) rotate(0deg);
 }

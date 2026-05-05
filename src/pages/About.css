@@ -300,12 +300,8 @@
     color: #F8FFE5 !important;
 }
 
-.gaming-flip-container {
-    overflow: hidden;
-}
-
 .hobbies-flip-container {
-    overflow: hidden;
+    overflow: visible;
     padding: 3rem 0.5rem;
 }
 
