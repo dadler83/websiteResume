@@ -249,7 +249,7 @@
     }
 
     .fathom-image img {
-        width: 120px;
+        width: 100%;
     }
 }
 
@@ -280,10 +280,24 @@
     .home-right {
         justify-content: center;
         right: 0;
+        width: 100%;
     }
 
     .rounded-box {
-        max-width: 100%;
+        max-width: calc(100% - 2.5rem);
+        padding: 1.5rem;
+    }
+
+    h1.section-header {
+        font-size: 1.75rem;
+    }
+
+    h3.section-header {
+        font-size: 1.25rem;
+    }
+
+    .home-right h2 {
+        font-size: 1.5rem;
     }
 }
 
@@ -296,12 +310,24 @@
         font-size: 1rem;
     }
 
-    .rounded-box {
-        padding: 1.5rem;
-    }
+    /*.rounded-box {*/
+    /*    padding: 1.5rem;*/
+    /*}*/
 
     .rounded-box h2 {
         font-size: 1.5rem;
+    }
+
+    h1.section-header {
+        font-size: 1.4rem;
+    }
+
+    h3.section-header {
+        font-size: 1.1rem;
+    }
+
+    .home-right h2 {
+        font-size: 1.25rem;
     }
 }
 

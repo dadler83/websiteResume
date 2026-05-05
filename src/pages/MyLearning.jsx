@@ -16,20 +16,20 @@ const topics = [
         description: 'Software development, algorithms, signal processing, and computational topics.',
         latex: 'f(n) \\in \\mathbb{O}(g(n))' +
             '\\newline \\Leftrightarrow \\newline' +
-            ' \\big( \\forall n \\in \\mathbb{N}. \\ \\exists c \\in \\mathbb{R}^{+}. \\ \\exists n_0 \\in \\mathbb{N}. \\ n \\geq n_0 \\implies f(n) \\leq c \\cdot g(n) \\big)',
+            ' \\big( \\exists c \\in \\mathbb{R}^{+}. \\ \\exists n_0 \\in \\mathbb{N}. \\forall n \\in \\mathbb{N}. \\ n \\geq n_0 \\implies f(n) \\leq c \\cdot g(n) \\big)',
         latexName: 'Definition of Big O',
     },
     {
         slug: 'biology',
         title: 'Biology',
         description: 'Molecular biology, biophysics, and the science of living systems.',
-        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } }, backgroundColor: '#E0F2D8', name: 'alpha-amylase' },
+        molecule: { data: cifData, format: 'cif', viewStyle: { cartoon: { color: 'spectrum' } }, backgroundColor: '#E0F2D8', name: 'alpha-amylase', link: 'https://www.rcsb.org/structure/1UD2' },
     },
     {
         slug: 'chemistry',
         title: 'Chemistry',
         description: 'Chemical principles, spectroscopy, and materials science.',
-        molecule: { data: serotoninSdf, format: 'sdf', viewStyle: { stick: {} }, backgroundColor: '#EDE5F5', name: 'Serotonin' },
+        molecule: { data: serotoninSdf, format: 'sdf', viewStyle: { stick: {} }, backgroundColor: '#EDE5F5', name: 'Serotonin', link: 'https://pubchem.ncbi.nlm.nih.gov/compound/5202' },
     },
 ]
 
@@ -69,6 +69,7 @@ export default function MyLearning() {
                                         viewStyle={topic.molecule.viewStyle}
                                         backgroundColor={topic.molecule.backgroundColor}
                                         name={topic.molecule.name}
+                                        link={topic.molecule.link}
                                     />
                                 ) : (
                                     topic.icon

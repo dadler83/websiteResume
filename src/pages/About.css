@@ -78,7 +78,7 @@
 /* ── Section header ───────────────────────────────────── */
 .about-section-header {
     font-family: Melanin;
-    font-size: 2.8rem;
+    font-size: 4.0rem;
     color: #1B3720;
     margin: 0;
     align-self: flex-start;
@@ -257,39 +257,42 @@
     margin: 0;
 }
 
-/* ── Gaming ───────────────────────────────────────────── */
-.about-gaming {
+/* ── hobbies ───────────────────────────────────────────── */
+.about-hobbies {
     width: 100%;
     max-width: 1100px;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 3rem;
     align-items: start;
     opacity: 0;
     animation: aboutFadeIn 0.8s ease-out 0.7s forwards;
 }
 
-.gaming-blurb {
+.hobbies-blurb {
     display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
     flex-direction: column;
     gap: 1rem;
 }
 
-.gaming-blurb h3 {
+.hobbies-blurb h3 {
     font-family: MontserratSemibold;
     font-size: 1.4rem;
     color: #1B3720;
     margin: 0;
 }
 
-.gaming-blurb p {
+.hobbies-blurb p {
     font-size: 1rem;
     color: #333;
     line-height: 1.8;
     margin: 0;
 }
 
-.gaming-controls {
+.hobbies-controls {
     font-size: 0.9rem !important;
     background-color: #1B3720;
     border-radius: 12px;
@@ -297,7 +300,12 @@
     color: #F8FFE5 !important;
 }
 
-.gaming-sketch-wrapper {
+.hobbies-flip-container {
+    overflow: visible;
+    padding: 3rem 0.5rem;
+}
+
+.hobbies-sketch-wrapper {
     display: flex;
     background-color: #E5E1EE;
     padding: 1rem;
@@ -313,12 +321,21 @@
 .tetris-sketch-container {
     position: relative;
     line-height: 0;
+    width: 100%;
+    max-width: 472px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tetris-sketch-container canvas {
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     display: block;
+}
+
+.about-section-header h2 {
+    text-align: left;
 }
 
 /* ── Fade-in animation ────────────────────────────────── */
@@ -353,16 +370,12 @@
         gap: 0.5rem;
     }
 
-    .about-gaming {
+    .about-hobbies {
         grid-template-columns: 1fr;
     }
 
-    .gaming-sketch-wrapper {
+    .hobbies-sketch-wrapper {
         justify-self: center;
-    }
-
-    .about-section-header h2 {
-        text-align: left;
     }
 }
 

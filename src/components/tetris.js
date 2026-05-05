@@ -3,12 +3,15 @@
 // Fully self-contained, no external assets required
 
 
-const tetrisSketch = (p) => {
+const DEFAULT_TETRIS_WIDTH = 380;
+
+const createTetrisSketch = (totalWidth = DEFAULT_TETRIS_WIDTH) => (p) => {
     const COLS = 10;
     const ROWS = 20;
-    const BLOCK_SIZE = 30;
     const SPACING = 2;
-    const SIDEBAR_WIDTH = 150;
+    const uiScale = totalWidth / DEFAULT_TETRIS_WIDTH;
+    const SIDEBAR_WIDTH = Math.round(150 * uiScale);
+    const BLOCK_SIZE = Math.floor((totalWidth - SIDEBAR_WIDTH - SPACING * (COLS + 1)) / COLS);
 
     let board = [];
     let currentPiece;
@@ -109,9 +112,9 @@ const tetrisSketch = (p) => {
 
         // Create start button
         startButton = p.createButton('START');
-        startButton.   position(p.width / 2 - 60, p.height / 2 + 20);
-        startButton.size(120, 40);
-        startButton.style('font-size', '18px');
+        startButton.   position(p.width / 2 - Math.round(60 * uiScale), p.height / 2 + Math.round(20 * uiScale));
+        startButton.size(Math.round(120 * uiScale), Math.round(40 * uiScale));
+        startButton.style('font-size', `${Math.round(18 * uiScale)}px`);
         startButton.   style('font-weight', 'bold');
         startButton.style('background-color', '#FF0000');
         startButton.style('color', 'white');
@@ -126,9 +129,9 @@ const tetrisSketch = (p) => {
 
         // Create restart button (initially hidden)
         restartButton = p.createButton('RESTART');
-        restartButton.   position(boardWidth / 2 - 50, p.height / 2 + 100);
-        restartButton.size(100, 40);
-        restartButton.style('font-size', '16px');
+        restartButton.   position(boardWidth / 2 - Math.round(50 * uiScale), p.height / 2 + Math.round(100 * uiScale));
+        restartButton.size(Math.round(100 * uiScale), Math.round(40 * uiScale));
+        restartButton.style('font-size', `${Math.round(16 * uiScale)}px`);
         restartButton.    style('font-weight', 'bold');
         restartButton. style('background-color', '#4CAF50');
         restartButton.style('color', 'white');
@@ -233,10 +236,10 @@ const tetrisSketch = (p) => {
 
         // Show start screen if game hasn't started
         if (!  gameStarted) {
-            p.textSize(48);
+            p.textSize(Math.round(48 * uiScale));
             p.textAlign(p.CENTER, p.CENTER);
-            let letterSpacing = [30, 30, 30, 22, 20];
-            let letterOrigin = -75;
+            let letterSpacing = [30, 30, 30, 22, 20].map(v => Math.round(v * uiScale));
+            let letterOrigin = Math.round(-75 * uiScale);
             let colors = ["#FD4766", "#FD9715", "#FFCF24", "#55D53E", "#00D1EF", "#D328D0"];
             let letters = "TETRIS";
             p.stroke(255);
@@ -245,16 +248,16 @@ const tetrisSketch = (p) => {
                 p.text(letters[i],
                     p.width / 2 + letterOrigin +
                     letterSpacing.slice(0, i).reduce((prev, curr) => (prev + curr), 0),
-                    p.height / 2 - 100);
+                    p.height / 2 - Math.round(100 * uiScale));
             }
             p.noStroke();
 
-            p.textSize(16);
+            p.textSize(Math.round(24 * uiScale));
             p.fill(200);
-            p.text("Controls:", p.width / 2 - 5, p.height / 2 + 50);
-            p.textSize(14);
-            p.text("← → :  Move  |  ↑ : Rotate  |  ↓ :  Soft Drop", p.width / 2, p.height / 2 + 75);
-            p.text("Space : Hard Drop  |  Z : Hold", p.width / 2, p.height / 2 + 95);
+            p.text("Controls:", p.width / 2 - Math.round(5 * uiScale), p.height / 2 + Math.round(50 * uiScale));
+            p.textSize(Math.round(14 * uiScale));
+            p.text("← → :  Move  |  ↑ : Rotate  |  ↓ :  Soft Drop", p.width / 2, p.height / 2 + Math.round(75 * uiScale));
+            p.text("Space : Hard Drop  |  Z : Hold", p.width / 2, p.height / 2 + Math.round(95 * uiScale));
             return;
         }
 
@@ -268,12 +271,12 @@ const tetrisSketch = (p) => {
 
             // Display pause message
             p.fill(255, 255, 255, 200);
-            p.textSize(24);
+            p.textSize(Math.round(24 * uiScale));
             p.textAlign(p.CENTER, p.CENTER);
             let boardWidth = SPACING + COLS * (BLOCK_SIZE + SPACING);
             p.text("PAUSED", boardWidth / 2, p.height / 2);
-            p.textSize(16);
-            p.text("Click to resume", boardWidth / 2, p.height / 2 + 30);
+            p.textSize(Math.round(16 * uiScale));
+            p.text("Click to resume", boardWidth / 2, p.height / 2 + Math.round(30 * uiScale));
             return;
         }
 
@@ -398,7 +401,7 @@ const tetrisSketch = (p) => {
 
         if (gameOver) {
             p.fill(255, 0, 0);
-            p.textSize(32);
+            p.textSize(Math.round(32 * uiScale));
             p.textAlign(p.CENTER, p.CENTER);
             let boardWidth = SPACING + COLS * (BLOCK_SIZE + SPACING);
             p.text("GAME OVER", boardWidth / 2, p.height / 2);
@@ -459,15 +462,15 @@ const tetrisSketch = (p) => {
         // Draw "NEXT" label
         p.fill(255);
         p.textAlign(p.LEFT, p.TOP);
-        p.textSize(16);
-        p.text("NEXT", sidebarX, 160);
+        p.textSize(Math.round(16 * uiScale));
+        p.text("NEXT", sidebarX, Math.round(160 * uiScale));
 
         // Get the shape of the next piece
         let nextShape = SHAPES[nextPieceType];
         let nextColor = COLORS[nextPieceType];
 
         // Calculate preview block size (smaller than game blocks)
-        let previewBlockSize = 15;
+        let previewBlockSize = Math.round(15 * uiScale);
         let previewSpacing = 1;
 
         // Calculate centering offset
@@ -478,7 +481,7 @@ const tetrisSketch = (p) => {
 
         // Center the preview in the available space
         let previewX = sidebarX + (SIDEBAR_WIDTH - 20 - previewWidth) / 2;
-        let previewY = 190;
+        let previewY = Math.round(190 * uiScale);
 
         // Draw the next piece preview
         p.fill(nextColor);
@@ -504,8 +507,8 @@ const tetrisSketch = (p) => {
         // Draw "HOLD" label
         p.fill(255);
         p.textAlign(p.LEFT, p.TOP);
-        p.textSize(16);
-        p.text("HOLD", sidebarX, 280);
+        p.textSize(Math.round(16 * uiScale));
+        p.text("HOLD", sidebarX, Math.round(280 * uiScale));
 
         // Only draw if there's a held piece
         if (holdPieceType !== null) {
@@ -520,7 +523,7 @@ const tetrisSketch = (p) => {
             }
 
             // Calculate preview block size (smaller than game blocks)
-            let previewBlockSize = 15;
+            let previewBlockSize = Math.round(15 * uiScale);
             let previewSpacing = 1;
 
             // Calculate centering offset
@@ -531,7 +534,7 @@ const tetrisSketch = (p) => {
 
             // Center the preview in the available space
             let previewX = sidebarX + (SIDEBAR_WIDTH - 20 - previewWidth) / 2;
-            let previewY = 310;
+            let previewY = Math.round(310 * uiScale);
 
             // Draw the held piece preview
             p.fill(holdColor);
@@ -557,18 +560,18 @@ const tetrisSketch = (p) => {
 
         p.fill(255);
         p.textAlign(p.LEFT, p.TOP);
-        p.textSize(16);
+        p.textSize(Math.round(16 * uiScale));
 
         // Draw Score
-        p.text("SCORE", sidebarX, 20);
-        p.textSize(24);
-        p.text(score, sidebarX, 45);
+        p.text("SCORE", sidebarX, Math.round(20 * uiScale));
+        p.textSize(Math.round(24 * uiScale));
+        p.text(score, sidebarX, Math.round(45 * uiScale));
 
         // Draw Lines
-        p.textSize(16);
-        p.text("LINES", sidebarX, 90);
-        p.textSize(24);
-        p.text(linesCleared, sidebarX, 115);
+        p.textSize(Math.round(16 * uiScale));
+        p.text("LINES", sidebarX, Math.round(90 * uiScale));
+        p.textSize(Math.round(24 * uiScale));
+        p.text(linesCleared, sidebarX, Math.round(115 * uiScale));
 
         // Draw next piece preview
         drawNextPiece();
@@ -962,4 +965,4 @@ const tetrisSketch = (p) => {
     }
 }
 
-export { tetrisSketch };
+export { createTetrisSketch, DEFAULT_TETRIS_WIDTH };

@@ -70,9 +70,13 @@ export default function ModulationChart() {
         root.selectAll("*").remove();
 
         // SVG + group
+        const totalWidth = innerWidth + margin.left + margin.right;
+        const totalHeight = innerHeight + margin.top + margin.bottom;
         const svg = root
-            .attr("width", innerWidth + margin.left + margin.right)
-            .attr("height", innerHeight + margin.top + margin.bottom);
+            .attr("width", totalWidth)
+            .attr("height", totalHeight)
+            .attr("viewBox", `0 0 ${totalWidth} ${totalHeight}`)
+            .attr("preserveAspectRatio", "xMidYMid meet");
 
         const g = svg
             .append("g")

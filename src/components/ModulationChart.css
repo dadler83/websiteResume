@@ -83,6 +83,11 @@
 }
 
 /* D3 chart styles */
+.mc-container svg {
+    max-width: 100%;
+    height: auto;
+}
+
 .mc-axis text {
     font-size: 11px;
 }

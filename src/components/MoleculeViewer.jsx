@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import * as $3Dmol from '3dmol'
 import './MoleculeViewer.css'
+import iconLinkWhite from "../assets/link-white.svg";
+import iconLinkPurple from "../assets/link-light-purple.svg";
 
 export default function MoleculeViewer({
     data,
@@ -10,12 +12,13 @@ export default function MoleculeViewer({
     width = 150,
     height = 150,
     name = '',
+    link = '',
 }) {
     const containerRef = useRef(null)
     const viewerRef = useRef(null)
 
     useEffect(() => {
-        if (!containerRef.current || viewerRef.current || !data) return
+        if (!containerRef.current || viewerRef.current || !data) return;
 
         const viewer = $3Dmol.createViewer(containerRef.current, {
             backgroundColor: backgroundColor,
@@ -30,9 +33,10 @@ export default function MoleculeViewer({
         viewerRef.current = viewer
 
         return () => {
+            viewer.scene = null;
             if (viewerRef.current) {
-                viewerRef.current.clear()
-                viewerRef.current = null
+                viewerRef.current.scene = null;
+                viewerRef.current = null;
             }
         }
     }, [data, format, viewStyle])
@@ -44,7 +48,36 @@ export default function MoleculeViewer({
                 className="molecule-viewer"
                 style={{ width, height }}
             />
-            {name && <span className="molecule-viewer-name">{name}</span>}
+            {name && (
+                link ? (
+                    <div
+                        className="molecule-viewer-name molecule-viewer-name--link"
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            window.open(link, '_blank', 'noopener,noreferrer')
+                        }}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.stopPropagation()
+                                window.open(link, '_blank', 'noopener,noreferrer')
+                            }
+                        }}
+                        onPointerDown={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                        }}
+                    >
+                        {name}
+                        <img src={iconLinkWhite} alt="" className="molecule-viewer-inline-icon molecule-viewer-inline-icon--white" />
+                        <img src={iconLinkPurple} alt="" className="molecule-viewer-inline-icon molecule-viewer-inline-icon--purple" />
+                    </div>
+                ) : (
+                    <span className="molecule-viewer-name">{name}</span>
+                )
+            )}
         </div>
     )
 }

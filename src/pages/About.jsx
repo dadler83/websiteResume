@@ -6,18 +6,19 @@ import FlipCard from '../components/FlipCard.jsx'
 
 const experiences = [
     {
-        date: '2023 – Present',
-        role: 'Firmware & GUI Developer',
+        date: '2022 – Present',
+        role: 'Full-Stack Software Developer and Field Service Technician',
         company: 'HighQ Technologies',
         description:
-            'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer. Responsibilities include real-time data acquisition systems, DSP algorithm implementation, and building intuitive visualization interfaces.',
+            'Lead firmware and GUI development for the Fathom Spectrometer — the world\'s first quantum-enabled EPR spectrometer.',
     },
     {
-        date: '2020 – 2021',
-        role: 'Research Assistant',
-        company: 'University Physics Lab',
+        date: '2024 – 2025',
+        role: 'Undergraduate Researcher',
+        company: 'University of Toronto CS',
         description:
-            'Assisted graduate researchers with data collection pipelines, wrote signal-processing scripts to clean and analyze spectroscopy data, and maintained lab documentation.',
+            'Assisted graduate researchers with data collection pipelines, analysis, reproducibility, fuzzing CPUs, ' +
+            'bug-fixing and paper writing.',
     },
 ]
 
@@ -40,16 +41,16 @@ export default function About() {
                 <div className="about-bio-text">
                     <h2>A little about me</h2>
                     <p>
-                        I'm a software developer with a passion for building things that sit at the
-                        intersection of hardware and software. My background spans embedded firmware,
-                        real-time signal processing, and modern web development — which means I'm
-                        equally comfortable writing C close to the metal as I am crafting React
-                        components in the browser.
+                        I've been a programmer for over a decade now, and I've always loved everything
+                        science and computers. My programming background spans many languages, including niches
+                        such as embedded development, real-time signal processing, domain-specific languages,
+                        and high-performance computing.
                     </p>
                     <p>
-                        When I'm not coding, you'll find me reading about quantum physics, strumming
-                        a guitar, or exploring trails in the Pacific Northwest. I believe the best
-                        software is built by people who are curious about everything.
+                        Aside from my recent focuses in computer science,
+                        you can find me at the gym or running, no better way to clear the head.
+                        I also enjoy a number of intellectual and creative pursuits: biology, chemistry,
+                        writing, drawing, and painting. And, I love getting involved with new people!
                     </p>
                 </div>
             </section>
@@ -79,45 +80,56 @@ export default function About() {
             </div>
             <div className="about-education">
                 <div className="education-card">
-                    <h3>B.S. Computer Science</h3>
-                    <p className="edu-institution">State University</p>
-                    <p className="edu-year">2019 – 2023</p>
+                    <h3>Honors B.S. in Computer Science</h3>
+                    <p className="edu-institution">University of Toronto</p>
+                    <p className="edu-year">2021 – 2025</p>
                     <p>
-                        Focused on systems programming, algorithms, and applied mathematics.
-                        Completed senior capstone project on real-time audio signal processing.
+                        Coursework focused in Biology, Chemistry, System Architecture, Database Design,
+                        and Machine Learning.
                     </p>
                 </div>
             </div>
 
-            {/* ── Gaming ─────────────────────────────── */}
-            <h2 className="about-section-header">Gaming</h2>
-            <div className="about-gaming">
-                <div className="gaming-blurb">
-                    <h3>A lifelong gamer</h3>
+            {/* ── hobbies ─────────────────────────────── */}
+            <div className="about-section-header">
+                <h2 className="about-section-header">Hobbies</h2>
+                <Link to="/cv" className="cv-link">View Full CV →</Link>
+            </div>
+            <div className="about-hobbies">
+                <div className="hobbies-blurb">
+                    <h3>I like video games...</h3>
                     <p>
-                        Video games have been a constant companion since childhood. They taught me
-                        problem-solving, pattern recognition, and — perhaps most importantly — how
-                        to stay calm under pressure when the blocks start falling faster.
+                        Video games have been a great source of inspiration over the years. When done well,
+                        they are not only entertaining but bring together a blend of my favorite interests:
+                        programming, managing compute, art, making music, and more.
                     </p>
                     <p>
-                        Tetris holds a special place in my heart. It's elegant in its simplicity,
-                        infinitely replayable, and genuinely hard to master. I even wrote my own
-                        p5.js implementation with SRS wall kicks, a piece-bag randomizer, and a
-                        lock-delay system — give it a try!
+                        Tetris is a game I've loved over the years. It's elegant in its simplicity, a fun puzzler,
+                        and has an extremely high skill ceiling. When getting comfortable with a new language or GUI framework,
+                        a Tetris implementation was always one of my gotos; I once turned the console into a writable buffer
+                        to make it work in ASCII.
+
+                        {/*I even wrote my own*/}
+                        {/*p5.js implementation with SRS wall kicks, a piece-bag randomizer, and a*/}
+                        {/*lock-delay system — give it a try!*/}
+                    </p>
+                    <p>
+                        So, have a go at playing my latest web-version if you please. I'd love to add a leader board,
+                        but I haven't wanted to set up a backend for this project :)
                     </p>
                 </div>
-                <div>
+                <div className="hobbies-flip-container">
                     <FlipCard
                         frontContent={
-                        <div className="gaming-sketch-wrapper">
+                        <div className="hobbies-sketch-wrapper">
 
                             <TetrisSketch />
-                            <p className="gaming-controls">
+                            <p className="hobbies-controls">
                                 <strong>Controls:</strong>  <br/> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; <br/> ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
                             </p>
                         </div>
                     }
-                        backContent={<div className="gaming-sketch-wrapper" style={{width: "100%", height: "100%", padding: "0"}}/>}
+                        backContent={<div className="hobbies-sketch-wrapper" style={{width: "100%", height: "100%", padding: "0"}}/>}
                     />
                 </div>
             </div>

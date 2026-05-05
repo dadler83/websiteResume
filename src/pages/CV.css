@@ -1,21 +1,23 @@
 /* ── Page wrapper ──────────────────────────────────────── */
 .cv-page {
-    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem 1rem;
 }
 
 /* ── Paper container ──────────────────────────────────── */
 .cv-container {
+    min-height: 100vh;
     width: 100%;
-    max-width: 800px;
+    max-width: 850px;
+    max-height: 1100px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     display: flex;
     flex-direction: column;
-    font-family: MontserratSemibold, system-ui, sans-serif;
-    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85em;
     color: #000;
 }
 
@@ -83,7 +85,7 @@
     display: flex;
     align-items: center;
     gap: 0.5em;
-    font-size: 0.95em;
+    font-size: 0.90em;
     word-break: break-all;
 }
 
@@ -222,6 +224,16 @@
     color: #333;
 }
 
+.cv-entry-description ul {
+    margin: 0.2em 0 0 0;
+    padding-left: 1.4em;
+    list-style-type: disc;
+}
+
+.cv-entry-description li {
+    margin-bottom: 0.2em;
+}
+
 /* ── Projects ─────────────────────────────────────────── */
 .cv-project {
     margin-bottom: 1em;
@@ -234,14 +246,10 @@
 }
 
 .cv-project-name {
+    text-align: left;
     font-size: 1.2em;
     font-weight: bold;
     color: #1B3720;
-}
-
-.cv-project-name a {
-    color: #1B3720;
-    text-decoration: none;
 }
 
 .cv-project-name a:hover {
@@ -265,6 +273,7 @@
 
     .cv-container {
         box-shadow: none;
+        max-height: none;
     }
 
     .cv-entry-header {
@@ -285,14 +294,73 @@
     }
 }
 
+/* ── Print button ─────────────────────────────────────── */
+.cv-print-btn {
+    margin-top: 0.5rem;
+    padding: 0.6em 3em;
+    background-color: #1B3720;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: MontserratSemibold, system-ui, sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cv-print-btn:hover {
+    background-color: #2d5c35;
+}
+
 /* ── Print ────────────────────────────────────────────── */
 @media print {
+
+    /* Remove page padding */
     .cv-page {
-        padding: 0;
+        padding: 0 !important;
+        width: 100% !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
+    main {
+        padding: 0 !important;
+    }
+
+    /* Hide navigation/footer and print button */
+    .navbar, footer, .cv-print-btn {
+        display: none !important;
+    }
+
+    /* Remove box shadow and width limits */
     .cv-container {
-        box-shadow: none;
-        max-width: 100%;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        max-height: none !important;
+    }
+
+    /* Remove ALL body margins */
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Ensure grid fills the page */
+    .cv-body {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    @page {
+        size: A4;
+        margin: 0;
+
+        @top-left { content: none; }
+        @top-center { content: none; }
+        @top-right { content: none; }
+
+        @bottom-left { content: none; }
+        @bottom-center { content: none; }
+        @bottom-right { content: none; }
     }
 }
