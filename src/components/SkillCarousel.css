@@ -158,4 +158,9 @@
         /* Show 1 card on mobile */
         max-width: var(--skill-card-width-sm);
     }
+
+    .skill-card-back p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
 }

@@ -96,3 +96,9 @@
 .flip-card:not(.flipped):hover .flip-card-sparkle {
     transform: scale(1) rotate(0deg);
 }
+
+@media (max-width: 968px) {
+    .flip-card-sparkle {
+        display: none;
+    }
+}
