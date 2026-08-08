@@ -40,15 +40,15 @@ export default function Home() {
                         }
                         backContent={
                             <div className="rounded-box" style={{width:'100%', height: '100%', padding: '0px', alignItems: 'center', display: "flex", flexDirection: 'column', justifyContent: 'center'}}>
-                                <p>
+                                <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
                                     I've worked in many languages and frameworks over the years, but I think
                                     you learn to move around; I wouldn't consider myself a "React developer", but
                                     I strung this website together using React, Vite, and many other libraries.
                                 </p>
-                                <p>
+                                <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
                                     So, I just do whatever it takes to get the job done, and I pick up new tools as needed along the way.
                                 </p>
-                                <p>
+                                <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
                                     That said, low-level performance-critical programming is where I feel most at home,
                                     and I have a lot of experience writing embedded firmware in C and C++ for microcontrollers and DSLs for proprietary devices.
                                 </p>
@@ -70,12 +70,12 @@ export default function Home() {
                     }
                     backContent={
                         <div className="fathom-box" style={{width:'100%', height: '100%', padding: '0px', margin: '0px', display: "flex", flexDirection: 'column', justifyContent: 'center'}}>
-                            <p>
+                            <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
                                 The Fathom Spectrometer has had a lot of interesting challenges to solve along the way.
                                 I wish I could go over all of the design intricacies and engineering decisions that went into it,
                                 but I don't want to give away any trade secrets.
                             </p>
-                            <p>
+                            <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
                                 For now, I can say that I'm thankful I've gotten to solve some truly one-of-a-kind problems,
                                 and <a href={"https://en.wikipedia.org/wiki/Electron_paramagnetic_resonance#Hardware_components"}>
                                     EPR spectroscopy
@@ -110,9 +110,17 @@ export default function Home() {
                             }
                             backContent={
                                 <div className="signal-widget-box" style={{width:'100%', height: '100%', padding: '0px'}}>
-                                    {/*<div className="fathom-image">*/}
-                                    {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
-                                    {/*</div>*/}
+                                    <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
+                                        Digital signals are only 1 or 0, on or off, voltage high or low.
+                                        In order to represent, analog signals or ranges of values using digital signals,
+                                        the digital signal is flickered on and off over a period of time. The percentage
+                                        of time it is on is translated into a numeric value.
+                                    </p>
+                                    <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
+                                        This flickering strategy is called PWM (Pulse width modulation). If we have
+                                        8-bits to represent this digital signal, it can take on values from 0 to 255
+                                        (if it represents an unsigned value).
+                                    </p>
                                 </div>
                             }
                         />
@@ -124,9 +132,15 @@ export default function Home() {
                             }
                             backContent={
                                 <div className="signal-widget-box" style={{width:'100%', height: '100%', padding: '0px'}}>
-                                    {/*<div className="fathom-image">*/}
-                                    {/*    <img src={fathom} alt="HighQ Fathom Spectormeter" />*/}
-                                    {/*</div>*/}
+                                    <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
+                                        Analog signals take on ranges of values. When sending data using an analog signal,
+                                        for example, over WIFI, it is common to modulate the desired signal using another
+                                        higher frequency wave. This prevents signal degredation as it travels through media.
+                                    </p>
+                                    <p style={{paddingLeft: '2rem', paddingRight: '2rem'}}>
+                                        When a modulated signal is received, it is demodulated using the known carrier
+                                        frequency and phase to extract the original signal.
+                                    </p>
                                 </div>
                             }
                         />
