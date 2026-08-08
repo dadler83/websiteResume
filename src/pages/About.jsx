@@ -3,6 +3,7 @@ import './About.css'
 import TetrisSketch from '../components/TetrisSketch.jsx'
 import RoundedPictureFrame from '../components/RoundedPictureFrame.jsx'
 import FlipCard from '../components/FlipCard.jsx'
+import {useEffect} from "react";
 
 const experiences = [
     {
@@ -24,6 +25,14 @@ const experiences = [
 
 
 export default function About() {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    useEffect(() => {
+        scrollToTop()
+    }, []);
+
     return (
         <div className="about-container">
 

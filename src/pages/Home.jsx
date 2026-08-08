@@ -5,8 +5,17 @@ import PulseChart from "../components/PulseChart.jsx";
 import FlipCard from "../components/FlipCard.jsx";
 import ModulationChart from "../components/ModulationChart.jsx";
 import SkillCarousel from "../components/SkillCarousel.jsx";
+import {useEffect} from "react";
 
 export default function Home() {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    useEffect(() => {
+        scrollToTop()
+    }, []);
+
     return (
         <div className="home-container">
             <div className="home-content">
