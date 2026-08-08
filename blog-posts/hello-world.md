@@ -17,8 +17,7 @@ I plan to write about a variety of topics including:
 1. Embedded systems and firmware development
 2. Web development with React and modern JavaScript
 3. Signal processing and data visualization
-4. Quantum computing and EPR spectroscopy
-5. General software engineering best practices
+4. General software engineering best practices
 
 Stay tuned for more posts!
 
