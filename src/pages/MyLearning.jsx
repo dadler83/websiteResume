@@ -6,6 +6,7 @@ import cifData from '../assets/1ud2.cif?raw'
 import serotoninJson from '../assets/Conformer3D_COMPOUND_CID_5202.json'
 import pubchemToSdf from '../utils/pubchemToSdf'
 import './MyLearning.css'
+import {useEffect} from "react";
 
 const serotoninSdf = pubchemToSdf(serotoninJson)
 
@@ -34,6 +35,14 @@ const topics = [
 ]
 
 export default function MyLearning() {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    useEffect(() => {
+        scrollToTop()
+    }, []);
+
     return (
         <div className="mylearning-container">
             <section className="mylearning-hero">

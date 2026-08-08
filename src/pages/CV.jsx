@@ -12,6 +12,7 @@ import iconLink from '../assets/cv-icons/link.svg'
 // Existing brand icons (black variants)
 import iconGitHub from '../assets/GitHub_Invertocat_Black.svg'
 import iconLinkedIn from '../assets/linkedin-svgrepo-com.svg'
+import {useEffect} from "react";
 
 const contact = {
     email: 'david.adler@highqtechnologies.com',
@@ -149,6 +150,14 @@ function RatingDots({ rating }) {
 }
 
 export default function CV() {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    useEffect(() => {
+        scrollToTop()
+    }, []);
+
     return (
         <div className="cv-page">
             <div className="cv-container">

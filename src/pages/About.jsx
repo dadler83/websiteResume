@@ -3,6 +3,7 @@ import './About.css'
 import TetrisSketch from '../components/TetrisSketch.jsx'
 import RoundedPictureFrame from '../components/RoundedPictureFrame.jsx'
 import FlipCard from '../components/FlipCard.jsx'
+import {useEffect} from "react";
 
 const experiences = [
     {
@@ -24,6 +25,14 @@ const experiences = [
 
 
 export default function About() {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    useEffect(() => {
+        scrollToTop()
+    }, []);
+
     return (
         <div className="about-container">
 
@@ -119,18 +128,25 @@ export default function About() {
                     </p>
                 </div>
                 <div className="hobbies-flip-container">
-                    <FlipCard
-                        frontContent={
-                        <div className="hobbies-sketch-wrapper">
+                    <div className="hobbies-sketch-wrapper">
 
-                            <TetrisSketch />
-                            <p className="hobbies-controls">
-                                <strong>Controls:</strong>  <br/> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; <br/> ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
-                            </p>
-                        </div>
-                    }
-                        backContent={<div className="hobbies-sketch-wrapper" style={{width: "100%", height: "100%", padding: "0"}}/>}
-                    />
+                        <TetrisSketch />
+                        <p className="hobbies-controls">
+                            <strong>Controls:</strong>  <br/> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; <br/> ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold
+                        </p>
+                    </div>
+                    {/*<FlipCard*/}
+                    {/*    frontContent={*/}
+                    {/*    <div className="hobbies-sketch-wrapper">*/}
+
+                    {/*        <TetrisSketch />*/}
+                    {/*        <p className="hobbies-controls">*/}
+                    {/*            <strong>Controls:</strong>  <br/> ← → Move &nbsp;·&nbsp; ↑ Rotate &nbsp;·&nbsp; <br/> ↓ Soft drop &nbsp;·&nbsp; Space Hard drop &nbsp;·&nbsp; Z Hold*/}
+                    {/*        </p>*/}
+                    {/*    </div>*/}
+                    {/*}*/}
+                    {/*    backContent={<div className="hobbies-sketch-wrapper" style={{width: "100%", height: "100%", padding: "0"}}/>}*/}
+                    {/*/>*/}
                 </div>
             </div>
 
